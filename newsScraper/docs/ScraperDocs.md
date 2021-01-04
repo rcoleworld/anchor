@@ -30,6 +30,14 @@
 ## Config format:
 ```json
 {
+    "article_db_creds": {
+        "user": "user",
+        "password": "password"
+    },
+    "media_store_creds": {
+        "user": "user",
+        "password": "password"
+    },
     "websites": [
         {
             "website_name": "website name", 
@@ -62,9 +70,15 @@
         - get_metadata() - parses input_data for desired metadata such as upload date or author name
 - Putter(Putter.py) - Putter()
     - Instance Variables:
-        - .
+        - article_db_creds: dict
+        - media_store_creds: dict
+        - db_session: MongoClient
+        - media_store: Media Store Client
     - Methods:
-        - .
+        - create_db_connection() - establishes session with MongoDB
+        - create_media_store_connection() - establishes session with media store
+        - put_media - puts article media into media store
+        - put_article - puts article text and metadata into MongoDB
 - Crawler(Crawler.py) - Crawler( url_name: str )
     - Instance Variables:
         - website_url: str
