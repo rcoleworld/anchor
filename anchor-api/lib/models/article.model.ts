@@ -11,8 +11,8 @@ type AIOutput = {
 
 export interface IArticle extends Document {
   url: string,
-  firstPublishDate: Date,
-  lastPublishDate: Date,
+  firstPublishDate: Timestamp,
+  lastPublishDate: Timestamp,
   contributers: string [],
   headline: string,
   section: string,
@@ -24,8 +24,8 @@ export interface IArticle extends Document {
 
 const ArticleSchema: Schema = new Schema({
   url: { type: String, required: true },
-  firstPublishDate: { type: Date, required: true },
-  lastPublishDate: { type: Date, required: true },
+  firstPublishDate: { type: Timestamp, required: true },
+  lastPublishDate: { type: Timestamp, required: true },
   contributers: { type: [String], required: false },
   headline: { type: String, required: true },
   section: { type: String, required: false },
