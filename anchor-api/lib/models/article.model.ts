@@ -7,12 +7,11 @@ type AIOutput = {
   objectivityDetectionResult: number,
   sentimentDetectionResult: number
 }
- 
 
 export interface IArticle extends Document {
   url: string,
-  firstPublishDate: Timestamp,
-  lastPublishDate: Timestamp,
+  firstPublishDate: Date,
+  lastPublishDate: Date,
   contributers: string [],
   headline: string,
   section: string,
@@ -24,8 +23,8 @@ export interface IArticle extends Document {
 
 const ArticleSchema: Schema = new Schema({
   url: { type: String, required: true },
-  firstPublishDate: { type: Timestamp, required: true },
-  lastPublishDate: { type: Timestamp, required: true },
+  firstPublishDate: { type: Date, required: true },
+  lastPublishDate: { type: Date, required: true },
   contributers: { type: [String], required: false },
   headline: { type: String, required: true },
   section: { type: String, required: false },
@@ -35,4 +34,5 @@ const ArticleSchema: Schema = new Schema({
   publisher: { type: String, required: false}
 });
 
+// exports a model named Article
 export default mongoose.model<IArticle>('Article', ArticleSchema);
