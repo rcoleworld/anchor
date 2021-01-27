@@ -1,5 +1,6 @@
 import express from 'express';
 import Article from './models/article.model';
+import { helloWorld } from './controllers/helloController';
 
 // Article is a Model (a fancy constructor for our ArticleSchema)
 // An instance of a model is known as a Document
@@ -29,9 +30,7 @@ const PORT: number = Number(process.env.PORT) || 5001;
 const HOST: string = process.env.HOST || '0.0.0.0';
 const app = express();
 
-app.get('/', (req: express.Request, res: express.Response) => {
-  res.send(`<h1>Hello ${testArticle.url}</h1>`);
-})
+app.get('/', helloWorld);
 
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
