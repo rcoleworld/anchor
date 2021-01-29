@@ -22,7 +22,7 @@ export interface IArticle extends Document {
 }
 
 const ArticleSchema: Schema = new Schema({
-  url: { type: String, required: true },
+  url: { type: String, required: true , unique: true},
   firstPublishDate: { type: Date, required: true },
   lastPublishDate: { type: Date, required: true },
   contributers: { type: [String], required: false },

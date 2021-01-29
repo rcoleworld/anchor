@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', helloWorld);
-app.post('/articles/add', handleWebScraper);
+app.post('/articles', handleWebScraper);
 
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
