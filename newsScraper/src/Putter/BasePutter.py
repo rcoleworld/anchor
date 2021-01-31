@@ -1,4 +1,4 @@
-class Putter:
+class BasePutter:
     article_db_creds = None
     media_store_creds = None
     db_session = None
@@ -16,5 +16,5 @@ class Putter:
     def put_media(self):
         pass
 
-    def put_article(self):
-        pass
+    def put_article(self, article):
+        print(article)

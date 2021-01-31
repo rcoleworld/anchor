@@ -1,4 +1,5 @@
-class Crawler:
+
+class BaseCrawler:
     website_url = None
     webpage_data = None
     already_crawled = False
@@ -6,7 +7,7 @@ class Crawler:
     def __init__(self):
         pass
 
-    def get_page(self):
+    def get_articles(self, url = None):
         pass
 
     def get_images(self):
@@ -14,3 +15,4 @@ class Crawler:
 
     def get_links(self):
         pass
+

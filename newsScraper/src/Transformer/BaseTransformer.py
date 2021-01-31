@@ -4,6 +4,10 @@ class Transformer:
     
     def __init__(self):
         pass
+
+    def transform(self):
+        pass
+
     def get_article_text(self):
         pass
 
