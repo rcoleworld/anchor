@@ -1,7 +1,7 @@
 import express from 'express';
 import Article from './models/article.model';
 import { helloWorld } from './controllers/helloController';
-import { handleWebScraper } from './controllers/handleWebScraper';
+import { getArticles, handleWebScraper } from './controllers/handleWebScraper';
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
 
@@ -17,7 +17,9 @@ const app = express();
 app.use(express.json());
 
 app.get('/', helloWorld);
+
 app.post('/articles', handleWebScraper);
+app.get('/articles', getArticles);
 
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
