@@ -1,3 +1,5 @@
 node_modules/
 dist/
 mongo-database/
+package-lock.*
+.eslintcache
