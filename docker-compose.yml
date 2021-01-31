@@ -38,6 +38,8 @@ services:
       - anchor-api-network
     volumes:
       - ./mongo-database:/data/db
+    ports:
+      - '27017:27017'
 
 networks:
   anchor-api-network:

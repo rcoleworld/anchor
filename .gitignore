@@ -3,3 +3,4 @@ dist/
 mongo-database/
 package-lock.*
 .eslintcache
+.env/
