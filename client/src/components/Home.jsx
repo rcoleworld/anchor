@@ -2,6 +2,8 @@ import React, { Component,} from 'react';
 import { Link, BrowserRouter as Router, Switch, Route, } from 'react-router-dom'
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ArticleThumb from './ArticleThumb';
+import styles from '../stylesheets/homepage.css'
 
 const defaultArticle = {
     id: "h_3858475923h9s8d7f",
@@ -36,40 +38,24 @@ const testArticle = {
     body: "Police are investigating vandalism and an explosion at a church in the San Gabriel Valley of Los Angeles County on Saturday. Police were called to First Works Baptist Church in El Monte around 1 a.m. where they found the walls of the church vandalized and smoke coming out of the church's window, which appeared to be smashed in. \"We realized that the windows were not smashed, that they had actually blown out from some type of explosion,\" said El Monte Police Department Lt. Christopher Cano. The FBI's Los Angeles field office said agents responded along with El Monte police and the Los Angeles County Sheriff's Department to what it called an \"IED attack\" at the church. IED is an acronym for improvised explosive device. \"Bomb Technicians and an Evidence Response Team are processing the scene which sustained damage. No injuries are reported,\" the field office said in a statement. The field office said a joint investigation is underway and anyone with information on the incident should contact the Los Angeles field office. Police did not provide any further details and church representatives were not readily available for comment.  The church had been the center of some local protests due to its condemnation of same-sex relationships, according to CNN affiliate KCAL.  The church is described as an \"independent, fundamental\" Baptist church on its website, which includes a doctrinal statement listing the church's beliefs. One of the beliefs listed is: \"We believe that homosexuality is a sin and an abomination which God punishes with the death penalty.\" A protest scheduled for Sunday by a group called Keep El Monte Friendly has been canceled, according to the group's Facebook page. El Monte is located about 16 miles east of Los Angeles."
 };
 
-class Home extends Component {
+const Home = () => {
 
     // Request grabbing a list of articles
 
-    render() {
         return (
+
             <div className="Home">
             {/* Display list of articles */}
-            Recent Articles
-                {/* When article clicked, routes to page */}
-                <Link to = {`/${defaultArticle.section}/${defaultArticle.id}`}>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={"./logo512.png"} />
-                        <Card.Body>
-                            <Card.Title>{defaultArticle.headline}</Card.Title>
-                            <Card.Text>{defaultArticle.description}</Card.Text>
-                            <Card.Subtitle className="mb-2 text-muted">From {defaultArticle.source}</Card.Subtitle>
-                        </Card.Body>
-                    </Card>
-                </Link>
-                <Link to = {`/${testArticle.section}/${testArticle.id}`}>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="./anchor.png" />
-                        <Card.Body>
-                            <Card.Title>{testArticle.headline}</Card.Title>
-                            <Card.Text>{testArticle.description}</Card.Text>
-                            <Card.Subtitle className="mb-2 text-muted">From {testArticle.source}</Card.Subtitle>
-                        </Card.Body>
-                    </Card>
-                </Link>
+
+            <ArticleThumb></ArticleThumb> 
+            <ArticleThumb></ArticleThumb>
+            <ArticleThumb></ArticleThumb>
+            <ArticleThumb></ArticleThumb>
+            <ArticleThumb></ArticleThumb>
         </div>
         
         )
-    }
+    
 }
 
 export default Home;

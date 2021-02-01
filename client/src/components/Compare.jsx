@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-class Compare extends Component {
-    render() {
+const Compare = () => {
         return (
             <div className="Compare">
             This is the compare page. 
             </div>
         )
-    }
 }
 
 export default Compare;

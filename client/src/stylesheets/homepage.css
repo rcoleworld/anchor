@@ -1,0 +1,24 @@
+
+  .box {
+    border: 1px solid black;
+    margin: 10px;
+    width: 320px;
+    height:auto;
+    float: left;
+    margin: 1% 1.5%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  }
+  .title {
+    font-weight: bold;
+  }
+  .description {
+    font-size: small;
+  }
+  .thumbnail {
+    border:5px solid;
+    max-width: 100%;
+    height: auto;
+  }
+  
