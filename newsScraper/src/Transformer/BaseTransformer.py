@@ -1,4 +1,4 @@
-class Transformer:
+class BaseTransformer:
     input_data = None
     transformed_data = None
     

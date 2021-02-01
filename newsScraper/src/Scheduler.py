@@ -10,14 +10,11 @@ class Scheduler:
     transformers = {}
 
     def __init__(self):
-        self.load_configs()
-        self.create_queue()
         try:
             self.putter = BasePutter()
         except Exception as e:
             print(f"Backend Connection Failed:\n{e}")
             exit(-1)
-        self.parse_queue()
 
     def load_configs(self):
         """
@@ -26,7 +23,7 @@ class Scheduler:
         with open("config.json", "r") as read_configs:
             self.configs = json.load(read_configs)
 
-    def create_cnn_queue(self, query: str) -> dict:
+    def create_cnn_queue(self, query="*") -> dict:
         """
         Returns queue of articles to parse for CNN
 
@@ -62,4 +59,10 @@ class Scheduler:
                 t = self.transformers.get(website).transform(article)
                 if t is not None:
                     self.putter.put_article(t)
-s = Scheduler()
+                    return t
+
+if __name__ == '__main__':
+    s = Scheduler()
+    s.create_queue()
+    s.load_configs()
+    s.parse_queue()

@@ -1,4 +1,6 @@
-class CNNTransformer:
+from .BaseTransformer import BaseTransformer
+
+class CNNTransformer(BaseTransformer):
     def __init__(self):
         pass
 

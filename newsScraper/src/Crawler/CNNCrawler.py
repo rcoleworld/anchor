@@ -1,20 +1,24 @@
-from Crawler.BaseCrawler import *
+from .BaseCrawler import BaseCrawler
 import requests
 import json
 
 class CNNCrawler(BaseCrawler):
     articles_list = []
 
-    def __init__(self, query="*"):
-        self.articles_list = self.get_articles("https://search.api.cnn.io/content?q=" + query + "&sort=newest&size=50&from={}")
+    def __init__(self, query="*", num_of_articles=500):
+        self.articles_list = self.get_articles("https://search.api.cnn.io/content?q=" + query + "&sort=newest&size=50&from={}", num_of_articles)
 
-    def get_articles(self, endpoint: str):
+    def get_articles(self, endpoint: str, num_of_articles=500):
         articles = []
         with requests.Session() as req:
-            for item in range(1, 500, 50):
-                r = req.get(endpoint.format(item)).json()
-                for article in r.get("result"):
+            r = ""
+            for item in range(1, num_of_articles, 50):
+                r = req.get(endpoint.format(item))
+                obj = json.loads(r.text)
+                for article in obj.get("result"):
                     articles.append(article)
+        self.articles_list = articles
         return articles
 
-c = CNNCrawler()
+if __name__ == '__main__':
+    c = CNNCrawler()
