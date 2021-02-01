@@ -4,6 +4,7 @@ import { helloWorld } from './controllers/helloController';
 import { getArticles, handleWebScraper } from './controllers/handleWebScraper';
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/', helloWorld);
 

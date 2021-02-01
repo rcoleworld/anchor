@@ -1,9 +1,10 @@
-import React, { Component,} from 'react';
-import { Link, BrowserRouter as Router, Switch, Route, } from 'react-router-dom'
+import React, { Component, useEffect, useState} from 'react';
+import { Link, BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ArticleThumb from './ArticleThumb';
-import styles from '../stylesheets/homepage.css'
+import styles from '../stylesheets/homepage.css';
+import axios from 'axios';
 
 const defaultArticle = {
     id: "h_3858475923h9s8d7f",
@@ -40,18 +41,42 @@ const testArticle = {
 
 const Home = () => {
 
+    const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5001/articles').then((response) => {
+            if(response.status === 201) {
+                setArticles(response.data)
+                console.log(response)
+                console.log(articles)
+            }  else {
+                setArticles([defaultArticle])
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
+
+    }, []) //will change, it's to load all articles at once when the page loads /
     // Request grabbing a list of articles
+
 
         return (
 
             <div className="Home">
-            {/* Display list of articles */}
-
-            <ArticleThumb></ArticleThumb> 
-            <ArticleThumb></ArticleThumb>
-            <ArticleThumb></ArticleThumb>
-            <ArticleThumb></ArticleThumb>
-            <ArticleThumb></ArticleThumb>
+            {articles !== undefined && articles.length > 0 &&
+            articles.map((article, index) => (
+                <ArticleThumb headline = {article.headline}
+                id = {article._id}
+                thumbnail = {article.thumbnailUrl}
+                ></ArticleThumb>
+            ))
+            }
+            <ArticleThumb 
+            headline = {testArticle.headline}
+            id = {testArticle.id}
+            description = {testArticle.description}
+            thumbnail = {testArticle.thumbnailUrl}
+            ></ArticleThumb>
         </div>
         
         )

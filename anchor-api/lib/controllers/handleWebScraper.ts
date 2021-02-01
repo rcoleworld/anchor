@@ -20,7 +20,7 @@ function bodyParser(body: string) {
 }
 
 export function handleWebScraper(req: express.Request, res: express.Response) {
-  const articleList: typeof Article[] = [];
+  const articleList: any = [];
 
   for (const key in req.body) {
     // checks to see if request body is an array of JSON objects or not
@@ -79,7 +79,7 @@ export function getArticles(req: express.Request, res: express.Response) {
 
   Article.find(where, {}, options)
     .sort(sort)
-    .exec((error, results) => {
+    .exec((error: any, results: any) => {
       if (error) {
         res.status(403).send(error);
         throw error;
