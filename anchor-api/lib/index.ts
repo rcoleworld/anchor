@@ -1,6 +1,5 @@
 import express from 'express';
 import Article from './models/article.model';
-import { helloWorld } from './controllers/helloController';
 import { getArticles, handleWebScraper } from './controllers/handleWebScraper';
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
@@ -15,8 +14,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
 app.use(express.json());
-
-app.get('/', helloWorld);
 
 app.post('/articles', handleWebScraper);
 app.get('/articles', getArticles);
