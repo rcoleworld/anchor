@@ -1,5 +1,5 @@
 {
-  "name": "soundfy-backend",
+  "name": "anchor-backend",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rcoleworld/soundfy-backend/issues"
+    "url": "https://github.com/rcoleworld/anchor/issues"
   },
-  "homepage": "https://github.com/rcoleworld/soundfy-backend#readme",
+  "homepage": "https://github.com/rcoleworld/anchor#readme",
   "dependencies": {
     "@types/mongoose": "^5.7.28",
     "body-parser": "^1.19.0",
