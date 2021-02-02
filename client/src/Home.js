@@ -55,12 +55,12 @@ const Home = () => {
                 id = {article._id}
                 thumbnail = {article.thumbnailUrl}
                 section = {article.section}
-                description = {article.description}
                 category = {article.category}
                 body = {article.body}
                 url = {article.url}
                 date = {article.firstPublishDate}
-                
+                source = {article.publisher}
+                authors = {article.contributers}
                 ></ArticleThumb>
             ))
             }
