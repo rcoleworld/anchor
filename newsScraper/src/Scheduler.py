@@ -54,15 +54,17 @@ class Scheduler:
         """
         Parses queue for each website enabled and puts into the database
         """
+        i = 0
         for website in self.queue:
             for article in self.queue.get(website):
                 t = self.transformers.get(website).transform(article)
                 if t is not None:
                     self.putter.put_article(t)
-                    return t
+                    # testing return
+                    #return t
 
 if __name__ == '__main__':
     s = Scheduler()
-    s.create_queue()
     s.load_configs()
+    s.create_queue()
     s.parse_queue()
