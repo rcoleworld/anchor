@@ -4,3 +4,4 @@ mongo-database/
 package-lock.*
 .eslintcache
 .env/
+.DS_Store
