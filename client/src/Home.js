@@ -1,9 +1,7 @@
-import React, { useEffect, useState} from 'react';
-import {useRouteMatch } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from 'react';
 import ArticleThumb from './components/ArticleThumb';
-import styles from './stylesheets/homepage.css';
 import axios from 'axios';
+import './stylesheets/homepage.css';
 
 const defaultArticle = {
         contributers: [
@@ -82,61 +80,41 @@ const defaultArticle = {
         publisher: "CNN",
         "__v": 0
     };
- 
 
 const Home = () => {
-
-    const {path} = useRouteMatch();
     const [articles, setArticles] = useState([]);
-
     useEffect(() => {
         axios.get('http://127.0.0.1:5001/articles').then((response) => {
             if(response.status === 201) {
                 setArticles(response.data)
                 console.log(response)
-                console.log(articles)
             }  else {
                 setArticles([defaultArticle])
             }
         }).catch((error) => {
             console.log(error)
         })
-
     }, []) //will change, it's to load all articles at once when the page loads /
     // Request grabbing a list of articles
-
-    console.log("default", defaultArticle)
         return (
-
-
             <div className="Home">
-                
             {articles !== undefined && articles.length > 0 &&
-            articles.map((article, index) => (
-                <ArticleThumb 
-                headline = {article.headline}
-                id = {article._id}
-                thumbnail = {article.thumbnailUrl}
-                section = {article.section}
-                category = {article.category}
-                body = {article.body}
-                url = {article.url}
-                date = {article.firstPublishDate}
-                source = {article.publisher}
-                authors = {article.contributers}
-                ></ArticleThumb>
-            ))
+                articles.map((article, index) => (
+                    <ArticleThumb 
+                    headline = {article.headline}
+                    id = {article._id}
+                    thumbnail = {article.thumbnailUrl}
+                    section = {article.section}
+                    category = {article.category}
+                    body = {article.body}
+                    url = {article.url}
+                    date = {article.firstPublishDate}
+                    source = {article.publisher}
+                    authors = {article.contributers}
+                    ></ArticleThumb>
+                ))
             }
-
         </div>
-        
-        )
-    
+     )
 }
-
 export default Home;
-
-// Issues:
-//  App and Home are separate, but maybe should be together?
-//      Issue because as it is currently implemented, the routing defaults to the default article, as it cannot
-//      check what is being linked?

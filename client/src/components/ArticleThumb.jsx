@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-import uuid from 'uuid';
-import { updateFunctionDeclaration } from 'typescript';
 
 const ArticleThumb = (props) => {
         return (

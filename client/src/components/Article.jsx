@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import { Link, withRouter } from 'react-router-dom'
-import styles from '../stylesheets/articleview.css';
+import { withRouter } from 'react-router-dom'
+import '../stylesheets/articleview.css';
 
 const Article = (props) => {
     const article = props.location.state.article.props;
