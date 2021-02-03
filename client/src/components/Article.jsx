@@ -33,8 +33,8 @@ const Article = (props) => {
                     Bias: 15.67%    |    Objectivity: 89.34%    |    Sentiment: 67.24%
                 </div>
                 <div className="horizontal-line"></div>
-                <div className="article-url">8
-                    Find this article at: {article.url}
+                <div className="article-url">
+                    Find this article at: <a target="_blank" href={article.url}>{article.url}</a>
                 </div>
             </div>
         )
