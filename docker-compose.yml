@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  anchor-frontend:
+    container_name: anchor-frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - './client:/usr/src/app/client'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      
+  anchor-api:
+    container_name: anchor-api
+    image: anchor-api
+    build:
+      context: ./anchor-api
+      dockerfile: Dockerfile
+    networks:
+      - anchor-api-network
+    ports:
+      - '5001:5001'
+    volumes:
+      - ./anchor-api/:/usr/src/app/anchor-api
+      - /app/node_modules/
+
+  redis:
+    image: 'redis:alpine'
+
+  mongo-database:
+    container_name: mongo-database
+    image: mongo:latest
+    networks:
+      - anchor-api-network
+    volumes:
+      - ./mongo-database:/data/db
+    ports:
+      - '27017:27017'
+
+networks:
+  anchor-api-network:
+    driver: bridge
