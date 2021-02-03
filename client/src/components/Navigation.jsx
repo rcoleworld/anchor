@@ -9,7 +9,7 @@ const Navigation = () => {
         <Nav className="mr-auto">
           <Navbar.Brand href="/">
             <img
-                src="./images/anchor.png"
+                src="./images/anchor-light.png"
                 width="30"
                 height="35"
                 className="d-inline-block align-center"

@@ -28,8 +28,13 @@ const Article = (props) => {
                 <div className="article-body">
                     {sentences.map((sentence, index) => ( sentence + "" ))}
                 </div>
-                <div className="article-url">
-                    <b>Find this article at: {article.url} </b>
+                <div className="horizontal-line"></div>
+                <div className="article-rating">
+                    Bias: 15.67%    |    Objectivity: 89.34%    |    Sentiment: 67.24%
+                </div>
+                <div className="horizontal-line"></div>
+                <div className="article-url">8
+                    Find this article at: {article.url}
                 </div>
             </div>
         )
