@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Navigation = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Navbar.Brand href="/">

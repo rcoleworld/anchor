@@ -1,10 +1,14 @@
+@import url("https://use.typekit.net/kdg1ffy.css");
+
 .article {
     margin: auto;
     max-width: 700px;
 }
 
 .article-title, .article-info, .article-date {
-    font-family: 'questa-grande';
+    font-family: questa-grande, serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .article-image {
@@ -15,11 +19,15 @@
 
 .article-body {
     padding-top: 10px;
-    font-family: 'abril-text';
+    font-family: questa-grande, serif;
+    font-weight: 500;
+    font-style: normal;
     text-align: justify;
 }
 
 .article-url {
     padding-top: 70px;
-    font-family: 'abril-text';
+    font-family: questa-grande, serif;
+    font-weight: 900;
+    font-style: normal;
 }

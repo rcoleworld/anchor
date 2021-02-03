@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 const ArticleThumb = (props) => {
         return (
             
-            <div>
                 <div className="box">
-                <div className="thumbnail">
-                    <img src={props.thumbnail} alt = "nothing here"></img>
+                <div>
+                    <img className= "thumbnail" src={props.thumbnail} alt = "nothing here"></img>
                 </div>
                 <div className="title">
                 <Link to = {{
@@ -15,14 +14,13 @@ const ArticleThumb = (props) => {
                         article: {props}
                     }}}>
                     {props.headline}
+                
                 </Link>
                 </div>
                 <div className="description">
                     {props.description}
                 </div>
                 </div>
-            </div>
-
             
         )
 }

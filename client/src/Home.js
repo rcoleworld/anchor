@@ -98,6 +98,10 @@ const Home = () => {
     // Request grabbing a list of articles
         return (
             <div className="Home">
+                <div className="homeHeader">
+                Recent Stories
+                </div>
+                <div className="articles">
             {articles !== undefined && articles.length > 0 &&
                 articles.map((article, index) => (
                     <ArticleThumb 
@@ -114,6 +118,7 @@ const Home = () => {
                     ></ArticleThumb>
                 ))
             }
+            </div>
         </div>
      )
 }
