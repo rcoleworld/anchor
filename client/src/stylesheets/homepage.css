@@ -1,0 +1,124 @@
+
+  @import url("https://use.typekit.net/kdg1ffy.css");
+
+  h1 {
+    font-size: xx-large;
+    font-family: bely-display, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  body {
+    background-color: #6f858c;
+    color: rgba(255, 255, 255, 0.822);
+    text-align: center;
+}
+  .trending-box {
+    overflow: auto;
+    border: 1px solid transparent;
+    width: 280px;
+    display:inline-block;
+    vertical-align: top;
+    font-family: bely, serif;
+    font-weight: 600;
+    font-style: normal;
+    margin: 1% 0.75%; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5%;
+  }
+
+  .trending-title {
+    overflow: auto;
+    background-color:#315f6c;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+
+    
+  }
+  .trending-title :hover {
+    color: #c0c9be;
+  }
+  .trending-description {
+    display: flex;
+    border: 1px solid transparent;
+    height: 25px;
+    background-color:#315f6c;
+    justify-content: center;
+    align-items: center;
+  }
+  .trending-thumbnail {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: auto;
+  }
+
+  .default-box {
+    overflow: auto;
+    border: 1px solid transparent;
+    width: 280px;
+    display:inline-block;
+    vertical-align: top;
+    font-family: bely, serif;
+    font-weight: 600;
+    font-style: normal;
+    margin: 1% 0.75%; 
+  }
+
+  .default-title {
+    overflow: auto;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+
+    
+  }
+  .default-title :hover {
+    color: #c0c9be;
+  }
+  .default-description {
+    display: flex;
+    border: 1px solid transparent;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+  .default-thumbnail {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: auto;
+  }
+
+  .about-picture {
+    margin: 0px;
+    height: 220px;
+    width: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .container {
+    width: 250px;
+    height: 300px;
+    display: inline-block;
+    vertical-align: top;
+    
+  }
+  
+  .center-category {
+    position: relative;
+    top: -40%;
+    font-weight: bold;
+    
+  }

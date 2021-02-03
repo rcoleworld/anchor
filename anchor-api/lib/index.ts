@@ -3,6 +3,7 @@ import Article from './models/article.model';
 import { getArticles, handleWebScraper } from './controllers/handleWebScraper';
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.post('/articles', handleWebScraper);
 app.get('/articles', getArticles);
