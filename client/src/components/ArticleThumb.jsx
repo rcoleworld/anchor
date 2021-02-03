@@ -5,7 +5,14 @@ const ArticleThumb = (props) => {
             
                 <div className="box">
                 <div>
+                <Link to = {{
+                    pathname: `${props.section}/${props.id}`,
+                    state: {
+                        article: {props}
+                    }}}>
                     <img className= "thumbnail" src={props.thumbnail} alt = "nothing here"></img>
+                
+                </Link>
                 </div>
                 <div className="title">
                 <Link to = {{
