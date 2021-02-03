@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ArticleThumb from './components/ArticleThumb';
+import ArticleThumbTrending from './components/ArticleThumbTrending';
+import ArticleThumb from './components/AritcleThumb'
 import axios from 'axios';
 import './stylesheets/homepage.css';
 
@@ -98,13 +99,34 @@ const Home = () => {
     // Request grabbing a list of articles
         return (
             <div className="Home">
-                <div className="homeHeader">
+                <h1>
+                Trending
+                </h1>
+                <div className="trending-articles">
+            {articles !== undefined && articles.length > 0 &&
+                articles.map((article, index) => (
+                    <ArticleThumbTrending 
+                    headline = {article.headline}
+                    id = {article._id}
+                    thumbnail = {article.thumbnailUrl}
+                    section = {article.section}
+                    category = {article.category}
+                    body = {article.body}
+                    url = {article.url}
+                    date = {article.firstPublishDate}
+                    source = {article.publisher}
+                    authors = {article.contributers}
+                    ></ArticleThumbTrending>
+                ))
+            }
+            </div>
+            <h1>
                 Recent Stories
-                </div>
+                </h1>
                 <div className="articles">
             {articles !== undefined && articles.length > 0 &&
                 articles.map((article, index) => (
-                    <ArticleThumb 
+                    <ArticleThumb
                     headline = {article.headline}
                     id = {article._id}
                     thumbnail = {article.thumbnailUrl}
