@@ -17,6 +17,7 @@ class CNNCrawler(BaseCrawler):
                 obj = json.loads(r.text)
                 for article in obj.get("result"):
                     articles.append(article)
+
         self.articles_list = articles
         return articles
 
