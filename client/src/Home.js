@@ -84,6 +84,7 @@ const defaultArticle = {
 
 const Home = () => {
     const [articles, setArticles] = useState([]);
+    const [trendingArticles, setTrendingArticles] = useState([]);
     useEffect(() => {
         axios.get('http://127.0.0.1:5001/articles').then((response) => {
             if(response.status === 201) {
@@ -97,14 +98,26 @@ const Home = () => {
         })
     }, []) //will change, it's to load all articles at once when the page loads /
     // Request grabbing a list of articles
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5001/articles?limit=3').then((response) => {
+            if(response.status === 201) {
+                setTrendingArticles(response.data)
+                console.log(response)
+            }  else {
+                setTrendingArticles([defaultArticle])
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []) 
         return (
             <div className="Home">
                 <h1>
                 Trending
                 </h1>
                 <div className="trending-articles">
-            {articles !== undefined && articles.length > 0 &&
-                articles.map((article, index) => (
+            {trendingArticles !== undefined && trendingArticles.length > 0 &&
+                trendingArticles.map((article, index) => (
                     <ArticleThumbTrending 
                     headline = {article.headline}
                     id = {article._id}

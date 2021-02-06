@@ -74,7 +74,6 @@
 
   .default-title {
     overflow: auto;
-    border: 1px solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +86,6 @@
   }
   .default-description {
     display: flex;
-    border: 1px solid transparent;
     height: 25px;
     justify-content: center;
     align-items: center;
