@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+.navbar {
+    width: 100%;
+    display: flex;
+    font-family: 'IBM Plex Mono','Inconsolata', monospace;
+    background-color: rgb(46, 47, 56);
+    align-items: center;
+}
+
+.navbar-logo {
+    max-width: 30px;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+}
+
+.search-icon {
+    max-width: 15px;
+}
+
+.search-bar {
+    background: rgb(182, 179, 180);
+    visibility:hidden;
+    width: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
+
+li a:hover {
+    color: rgb(163, 162, 162);
+}
