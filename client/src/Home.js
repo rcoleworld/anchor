@@ -86,7 +86,7 @@ const Home = () => {
     const [articles, setArticles] = useState([]);
     const [trendingArticles, setTrendingArticles] = useState([]);
     useEffect(() => {
-        axios.get('http://127.0.0.1:5001/articles').then((response) => {
+        axios.get('http://127.0.0.1:5001/articles?orderBy=firstPublishDate&orderType=des').then((response) => {
             if(response.status === 201) {
                 setArticles(response.data)
                 console.log(response)

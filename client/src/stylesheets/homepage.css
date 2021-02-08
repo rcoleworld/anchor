@@ -11,43 +11,35 @@
   }
 
   body {
-    background-color: #6f858c;
+    background-color: #5b6264;
     color: rgba(255, 255, 255, 0.822);
-    text-align: center;
 }
   .trending-box {
-    overflow: auto;
-    border: 1px solid transparent;
-    width: 280px;
+    background-color:#6f858c;
+    width: 30%;
     display:inline-block;
     vertical-align: top;
-    font-family: bely, serif;
+    font-family: neue-haas-unica;
     font-weight: 600;
     font-style: normal;
     margin: 1% 0.75%; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5%;
   }
 
   .trending-title {
-    overflow: auto;
-    background-color:#315f6c;
     border: 1px solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
-
-    
+    height: auto;
   }
-  .trending-title :hover {
+  .trending-title :hover{
     color: #c0c9be;
   }
   .trending-description {
     display: flex;
     border: 1px solid transparent;
     height: 25px;
-    background-color:#315f6c;
     justify-content: center;
     align-items: center;
   }
@@ -56,47 +48,65 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    width: auto;
+    width: 100%;
+    height: auto;
   }
 
+
+
+
+.articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
+}
+
   .default-box {
-    overflow: auto;
-    border: 1px solid transparent;
-    width: 280px;
-    display:inline-block;
-    vertical-align: top;
-    font-family: bely, serif;
-    font-weight: 600;
+    width: 250px;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content:stretch;
+    align-items: stretch;
+    align-content: stretch;
+    font-family: neue-haas-unica;
+    font-weight: 500;
     font-style: normal;
     margin: 1% 0.75%; 
+    flex-grow: 1;
+    font-size: small;
   }
 
   .default-title {
-    overflow: auto;
+    text-transform: uppercase;
     display: flex;
+    font-family: ff-basic-gothic-pro, sans-serif;
+    font-weight: 600;
+    font-style: normal;
     justify-content: center;
     align-items: center;
-    height: 80px;
-
-    
+    height: auto;
   }
-  .default-title :hover {
+  .default-box :hover {
     color: #c0c9be;
+  }
+  .default-box a:hover {
+    color: white !important;
+  } 
+  .default-thumbnail :hover {
+    color: white;
   }
   .default-description {
     display: flex;
     height: 25px;
     justify-content: center;
-    align-items: center;
   }
   .default-thumbnail {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: auto;
+    width: 100%;
+    height: auto;
   }
 
   .about-picture {
