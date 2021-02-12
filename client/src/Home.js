@@ -116,6 +116,7 @@ const Home = () => {
                     <h1>
                     Trending
                     </h1>
+                    
                     <div className="trending-articles">
             {trendingArticles !== undefined && trendingArticles.length > 0 &&
                 trendingArticles.map((article, index) => (

@@ -18,39 +18,46 @@
 
 .trending-class {
   background-color: rgb(134, 65, 68);
-  
 }
+.trending-articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+  .trending-box-container {
+  display: grid;
+  font-family: neue-haas-unica;
+  margin: 1% 0.75%; 
+  flex-grow: 1;
+  width: 300px;
+
+  }
   .trending-box {
-    background-color:#6f858c;
-    width: 30%;
-    display:inline-block;
-    vertical-align: top;
-    font-family: neue-haas-unica;
-    font-weight: 600;
-    font-style: normal;
-    margin: 1% 0.75%; 
+    color: rgba(255, 255, 255, 0.822);
+    text-decoration: none;
+    display: grid;
+    flex-grow: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   .trending-title {
-    border: 1px solid transparent;
-    display: flex;
+    pointer-events: none;
+    text-transform: uppercase;
+    font-family: ff-basic-gothic-pro, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
+    vertical-align: middle;
+    padding: 5px;
     justify-content: center;
     align-items: center;
     height: auto;
   }
-  .trending-description {
-    display: flex;
-    border: 1px solid transparent;
-    height: 25px;
-    justify-content: center;
-    align-items: center;
-  }
+
   .trending-thumbnail {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    pointer-events: none;
     width: 100%;
     height: auto;
   }
