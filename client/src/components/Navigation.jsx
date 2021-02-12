@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../stylesheets/navigationbar.css';
 
 const Navigation = () => {
@@ -17,10 +18,10 @@ const Navigation = () => {
         </NavItem>
         <NavItem text = "Categories▾">
           <div className="navbar-dropdown">
-            <a href="/category/politics" className="navbar-dropdown-item">Politics</a>
-            <a href="/category/world" className="navbar-dropdown-item">World</a>
-            <a href="/category/health" className="navbar-dropdown-item">Health</a>
-            <a href="/category/science" className="navbar-dropdown-item">Science</a>
+            <Link className="navbar-dropdown-item" to = {{pathname: "/politics", state: {category: "politics"}}}>Politics</Link>
+            <Link className="navbar-dropdown-item" to = {{pathname: "/world", state: {category: "world"}}}>World</Link>
+            <Link className="navbar-dropdown-item" to = {{pathname: "/health", state: {category: "health"}}}>Health</Link>
+            <Link className="navbar-dropdown-item" to = {{pathname: "/science", state: {category: "science"}}}>Science</Link>
             <div className="navbar-horizontal-line"></div>
             <a href="/categories" className="navbar-dropdown-item">View All</a>
           </div>
