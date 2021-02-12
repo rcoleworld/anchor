@@ -21,7 +21,6 @@
 
 .navbar-left {
     display: flex;
-    flex: 50%;
     justify-content: flex-start;
 }
 
