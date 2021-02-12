@@ -4,31 +4,22 @@ import '../stylesheets/homepage.css';
 const ArticleThumbTrending = (props) => {
         return (
             
-                <div className="trending-box">
-                <div>
-                <Link to = {{
-                    pathname: `${props.section}/${props.id}`,
-                    state: {
-                        article: {props}
-                    }}}>
+            <div className="trending-box-container">
+            <Link className= "trending-box" to = {{
+                pathname: `${props.section}/${props.id}`,
+                state: {
+                    article: {props}
+                }}}>
+                
+                
                     <img className= "trending-thumbnail" src={props.thumbnail} alt = "nothing here"></img>
                 
-                </Link>
+                <div className="trending--title">
+                    <p id="headline">{props.headline}</p>
                 </div>
-                <div className="trending-title">
-                <Link to = {{
-                    pathname: `${props.section}/${props.id}`,
-                    state: {
-                        article: {props}
-                    }}}>
-                    {props.headline}
                 
                 </Link>
-                </div>
-                <div className="trending-description">
-                    Source: {props.source} | Bias: {props.id[7]}0%
-                </div>
-                </div>
+            </div>
             
         )
 }
