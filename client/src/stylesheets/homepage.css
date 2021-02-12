@@ -93,9 +93,7 @@
   .default-box :hover {
     color: #c0c9be;
   }
-  .default-box a:hover {
-    color: white !important;
-  } 
+  
   .default-thumbnail :hover {
     color: white;
   }
