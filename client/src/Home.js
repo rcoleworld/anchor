@@ -112,10 +112,11 @@ const Home = () => {
     }, []) 
         return (
             <div className="Home">
-                <h1>
-                Trending
-                </h1>
-                <div className="trending-articles">
+                <div className="trending-class">
+                    <h1>
+                    Trending
+                    </h1>
+                    <div className="trending-articles">
             {trendingArticles !== undefined && trendingArticles.length > 0 &&
                 trendingArticles.map((article, index) => (
                     <ArticleThumbTrending 
@@ -133,6 +134,9 @@ const Home = () => {
                 ))
             }
             </div>
+
+                </div>
+                
             <h1>
                 Recent Stories
                 </h1>

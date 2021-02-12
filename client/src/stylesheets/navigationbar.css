@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
-
+body {
+    margin: 0;
+}
 .navbar ul {
     list-style: none;
     padding: 0;
@@ -13,7 +15,7 @@
 
 .navbar {
     height: 60px;
-    background-color: rgb(46, 47, 56);
+    background-color: #75a09c;
     display: flex;
     padding: 0;
     font-family:'IBM Plex Mono','Inconsolata', monospace;
