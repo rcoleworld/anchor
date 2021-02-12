@@ -2,7 +2,7 @@
   @import url("https://use.typekit.net/kdg1ffy.css");
 
   h1 {
-    font-size: xx-large;
+    font-size: 35px;
     font-family: bely-display, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -11,7 +11,7 @@
   }
 
   body {
-    background-color: #5b6264;
+    background-color:#6f858c;
     color: rgba(255, 255, 255, 0.822);
 }
   .trending-box {
@@ -33,9 +33,6 @@
     align-items: center;
     height: auto;
   }
-  .trending-title :hover{
-    color: #c0c9be;
-  }
   .trending-description {
     display: flex;
     border: 1px solid transparent;
@@ -53,58 +50,56 @@
   }
 
 
-
-
 .articles {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
-  align-content: stretch;
 }
 
-  .default-box {
-    width: 250px;
-    border: 2px solid white;
-    display: flex;
-    flex-direction: column;
-    justify-content:stretch;
-    align-items: stretch;
-    align-content: stretch;
-    font-family: neue-haas-unica;
-    font-weight: 500;
-    font-style: normal;
-    margin: 1% 0.75%; 
-    flex-grow: 1;
-    font-size: small;
+.default-box-container {
+  border: 2px solid red;
+  display: grid;
+  font-family: neue-haas-unica;
+  margin: 1% 0.75%; 
+  flex-grow: 1;
+  width: 250px;
+
+}
+.default-box {
+  border: 2px solid green;
+  vertical-align: middle;
+}
+
+  .default-box-container :hover {
+    cursor: pointer;
+    opacity: 0.5;
+    color: rgba(255, 255, 255, 0.822);
+    text-decoration: none;
+    transition: 0.5s;
+    transform: translate3d(0px, -4px, 0px);
   }
 
   .default-title {
+    pointer-events: none;
+    border: 2px solid purple;
     text-transform: uppercase;
-    display: flex;
     font-family: ff-basic-gothic-pro, sans-serif;
     font-weight: 600;
     font-style: normal;
-    justify-content: center;
-    align-items: center;
-    height: auto;
+    font-size: 13px;
+    vertical-align: middle;
+    
   }
-  .default-box :hover {
-    color: #c0c9be;
+
+  #headline {
+    vertical-align: middle;
+    margin: 0 auto;
   }
-  .default-box a:hover {
-    color: white !important;
-  } 
-  .default-thumbnail :hover {
-    color: white;
-  }
-  .default-description {
-    display: flex;
-    height: 25px;
-    justify-content: center;
-  }
+
   .default-thumbnail {
+    pointer-events: none;
+    border: 2px solid yellow;
     width: 100%;
     height: auto;
   }
