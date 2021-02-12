@@ -1,48 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
 .navbar {
-    width: 100%;
-    display: flex;
-    font-family: 'IBM Plex Mono','Inconsolata', monospace;
+    height: 60px;
     background-color: rgb(46, 47, 56);
-    align-items: center;
+    display: flex;
+    padding: 0;
+    font-family:'IBM Plex Mono','Inconsolata', monospace;
+}
+
+.navbar-left {
+    display: flex;
+    flex: 50%;
+    justify-content: flex-start;
 }
 
 .navbar-logo {
     max-width: 30px;
+    margin-left: 5px;
+    align-self: center;
 }
 
-.search-button {
+.navbar-right {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.navbar-dropdown {
+    position: absolute;
+    top: 68px;
+    width: 90px;
+    transform: translateX(+0%);
+    overflow: hidden;
+    background-color:rgb(46, 47, 56);
+    padding-left: 15px;
+}
+
+.navbar-dropdown-item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.navbar-search-bar {
+    background: rgb(206, 203, 204);
+    border: none;
+    border-radius: 2px;
+    height: 20px;
+    width: 150px;
+    align-self: center;
+    font: inherit
+} 
+
+.navbar-search-icon {
+    max-width: 16px;
+}
+
+.navbar-search-button {
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 
-.search-icon {
-    max-width: 15px;
+.navbar-horizontal-line {
+    width: 80px;
+    height: 1px;
+    background-color: rgb(197, 194, 194);
 }
 
-.search-bar {
-    background: rgb(182, 179, 180);
-    visibility:hidden;
-    width: 0;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-li {
-    float: left;
-    text-decoration: none;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 8px;
-}
-
-li a:hover {
+.navbar-dropdown-item:hover{
     color: rgb(163, 162, 162);
+}
+
+.navbar-link:hover{
+    color: rgb(163, 162, 162);
+    cursor: pointer;
 }
