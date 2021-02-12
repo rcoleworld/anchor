@@ -2,6 +2,11 @@
 body {
     margin: 0;
 }
+
+:root{
+    --bg: #75a09c;
+}
+
 .navbar ul {
     list-style: none;
     padding: 0;
@@ -15,10 +20,11 @@ body {
 
 .navbar {
     height: 60px;
-    background-color: #75a09c;
+    background-color: var(--bg);
     display: flex;
-    padding: 0;
     font-family:'IBM Plex Mono','Inconsolata', monospace;
+    width: 100%;
+    
 }
 
 .navbar-left {
@@ -39,60 +45,77 @@ body {
     justify-content: flex-end;
 }
 
-.navbar-item {
+.navbar-categories, .navbar-compare{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
+    font-family: inherit;
+    color: white;
 }
 
-.navbar-dropdown {
+.navbar-compare-dropdown {
     position: absolute;
+    display: none;
     top: 68px;
-    width: 90px;
-    transform: translateX(+0%);
-    overflow: hidden;
-    background-color:rgb(46, 47, 56);
-    padding-left: 15px;
+    width: 110px;
+    transform: translateY(-10%);
+    background-color: var(--bg);
+    opacity: 95%;
+}
+
+.navbar-category-dropdown {
+    position: absolute;
+    display: none;
+    top: 68px;
+    width: 140px;
+    transform: translateY(-4%);
+    background-color:var(--bg);
+    opacity: 95%;
 }
 
 .navbar-dropdown-item {
     display: flex;
     align-items: center;
     height: 40px;
+    padding-left: 15px;
+    pointer-events: all;
 }
 
 .navbar-search-bar {
-    background: rgb(206, 203, 204);
+    background: white;
     border: none;
     border-radius: 2px;
     height: 20px;
     width: 150px;
     align-self: center;
-    font: inherit
+    font: inherit;
 } 
 
 .navbar-search-icon {
     max-width: 16px;
 }
 
-.navbar-search-button {
+.navbar-search-button{
+    font-family:inherit;
+    color: white;
     background: transparent;
     border: none;
     cursor: pointer;
 }
 
 .navbar-horizontal-line {
-    width: 80px;
+    width: 140px;
     height: 1px;
-    background-color: rgb(197, 194, 194);
+    background-color: rgb(219, 216, 216);
 }
 
-.navbar-dropdown-item:hover{
-    color: rgb(163, 162, 162);
+.navbar-link{
+    padding: 15px;
 }
 
-.navbar-link:hover{
-    color: rgb(163, 162, 162);
-    cursor: pointer;
-}
+.navbar-category-dropdown a:hover {background-color: pink;}
+.navbar-compare-dropdown a:hover {background-color: pink;}
+
+.navbar-categories:hover .navbar-category-dropdown {display: block}
+.navbar-compare:hover .navbar-compare-dropdown {display: block}

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../stylesheets/navigationbar.css';
 
@@ -9,38 +8,32 @@ const Navigation = () => {
         <img className="navbar-logo" src="../images/anchor-light.png" alt = ""></img>
       </a>
       <ul className="navbar-right">
-        <NavItem text = "About" link = "/about"/>
-        <NavItem text = "Compare▾">
-          <div className="navbar-dropdown">
-            <a href="compare/sources" className="navbar-dropdown-item">Sources</a>
-            <a href="compare/articles" className="navbar-dropdown-item">Articles</a>
-          </div>
-        </NavItem>
-        <NavItem text = "Categories▾">
-          <div className="navbar-dropdown">
-            <Link className="navbar-dropdown-item" to = {{pathname: "/politics", state: {category: "politics"}}}>Politics</Link>
-            <Link className="navbar-dropdown-item" to = {{pathname: "/world", state: {category: "world"}}}>World</Link>
-            <Link className="navbar-dropdown-item" to = {{pathname: "/health", state: {category: "health"}}}>Health</Link>
-            <Link className="navbar-dropdown-item" to = {{pathname: "/science", state: {category: "science"}}}>Science</Link>
+        <li className="navbar-compare">
+          <a href="/about" className="navbar-link" >About</a>
+        </li>
+        <li className="navbar-compare">
+          <a href="/compare" className="navbar-link">Compare v</a>
+              <div className="navbar-compare-dropdown">
+                <a href="compare/sources" className="navbar-dropdown-item">Sources</a>
+                <a href="compare/articles" className="navbar-dropdown-item">Articles</a>
+            </div>
+        </li>
+        <li className="navbar-categories">
+        <a href="/categories" className="navbar-link">Categories v</a>
+          <div className="navbar-category-dropdown" >
+              <Link className="navbar-dropdown-item" to = {{pathname: "/politics", state: {category: "politics"}}}>Politics</Link>
+              <Link className="navbar-dropdown-item" to = {{pathname: "/world", state: {category: "world"}}}>World</Link>
+              <Link className="navbar-dropdown-item" to = {{pathname: "/health", state: {category: "health"}}}>Health</Link>
+              <Link className="navbar-dropdown-item" to = {{pathname: "/science", state: {category: "science"}}}>Science</Link>
             <div className="navbar-horizontal-line"></div>
-            <a href="/categories" className="navbar-dropdown-item">View All</a>
-          </div>
-        </NavItem>
+          <a href="/categories" className="navbar-dropdown-item">View All</a>
+        </div>
+      </li>
         <input className = "navbar-search-bar" type="text" placeholder="Search"/>
         <button className="navbar-search-button"><img className="navbar-search-icon" src="../images/search.png"></img></button>
       </ul>
     </nav>
   )
-}
-
-const NavItem = (props) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <li className="navbar-item">
-      <a href={props.link} className="navbar-link" onClick={() => setOpen(!open)}>{props.text}</a>
-      {open && props.children}
-    </li>
-  );
 }
 
 export default Navigation;
