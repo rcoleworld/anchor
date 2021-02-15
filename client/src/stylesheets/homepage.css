@@ -88,7 +88,6 @@
 
   .default-box-container :hover {
     cursor: pointer;
-    opacity: 0.5;
     color: rgba(255, 255, 255, 0.822);
     text-decoration: none;
     transition: 0.5s;
@@ -117,16 +116,28 @@
     color: white;
   }
 
-  #headline {
-    vertical-align: middle;
-    margin: 0 auto;
-  }
-
   .default-thumbnail {
     pointer-events: none;
     width: 100%;
-    height: auto;
   }
+
+  .hovered {
+    pointer-events: none;
+    padding: 5px;
+    display: none;
+    min-height: 200px;
+  }
+.default-box:hover .unhovered {
+  display:none;
+}
+
+.default-box:hover .hovered{
+  display: block;
+}
+
+
+
+
 
   .about-picture {
     margin: 0px;
