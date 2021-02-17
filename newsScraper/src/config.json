@@ -12,6 +12,11 @@
             "website_name": "cnn", 
             "website_url": "http://www.cnn.com",
             "query": "*"
+        },
+        {
+            "website_name": "fox", 
+            "website_url": "http://www.foxnews.com",
+            "query": "*"
         }
     ]
 }

@@ -1,4 +1,6 @@
 import json
+from Crawler.FoxNewsCrawler import FoxNewsCrawler
+from Transformer.FoxNewsTransformer import FoxNewsTransformer
 from Crawler.CNNCrawler import CNNCrawler
 from Putter.BasePutter import BasePutter
 from Transformer.CNNTransformer import CNNTransformer
@@ -30,8 +32,18 @@ class Scheduler:
         input: a query to search for
         return: a dict to append to the general queue
         """
-        cnn_crawler = CNNCrawler()
+        cnn_crawler = CNNCrawler(num_of_articles=500)
         return {"cnn": cnn_crawler.articles_list}
+
+    def create_fox_queue(self, query="*") -> dict:
+        """
+        Returns queue of articles to parse for Fox News
+
+        input: a query to search for
+        return: a dict to append to the general queue
+        """
+        fox_crawler = FoxNewsCrawler(num_of_articles=500)
+        return {"fox": fox_crawler.articles_list}
 
     def create_queue(self):
         """
@@ -39,9 +51,11 @@ class Scheduler:
         """
         function_mapping = {
             "cnn": self.create_cnn_queue,
+            "fox": self.create_fox_queue,
         }
         transformer_mapping = {
             "cnn": CNNTransformer,
+            "fox": FoxNewsTransformer,
         }
 
         for website in self.configs.get("websites"):
@@ -54,7 +68,7 @@ class Scheduler:
         """
         Parses queue for each website enabled and puts into the database
         """
-        i = 0
+
         for website in self.queue:
             for article in self.queue.get(website):
                 t = self.transformers.get(website).transform(article)
