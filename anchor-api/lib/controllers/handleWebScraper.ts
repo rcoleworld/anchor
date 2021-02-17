@@ -85,14 +85,15 @@ export function getArticles(req: express.Request, res: express.Response) {
         res.status(403).send(error);
         throw error;
       }
-      res.status(201).send(results);
+      res.status(200).send(results);
     });
 }
 
 export function searchArticles(req: express.Request, res: express.Response) {
   const searchString = req.params.searchString;
-  if (!searchString) {
-    res.status(403).send({error: 'Must have search string'});
+  console.log(req.params);
+  if (!searchString || searchString === undefined) {
+    res.status(400).send({error: 'Search string is empty or undefined. Must have search string'});
     throw new Error('Must have search string');
   }
   const options: any = {};
@@ -109,6 +110,6 @@ export function searchArticles(req: express.Request, res: express.Response) {
       res.status(403).send(error);
       throw error;
     }
-    res.status(201).send(results);
+    res.status(200).send(results);
   })
 }

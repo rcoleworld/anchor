@@ -19,7 +19,7 @@ app.use(cors());
 
 app.post('/articles', handleWebScraper);
 app.get('/articles', getArticles);
-app.get('/articles/search/:searchString', searchArticles);
+app.get(['/articles/search/:searchString','/articles/search'], searchArticles);
 
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
