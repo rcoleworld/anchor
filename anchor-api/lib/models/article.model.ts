@@ -35,5 +35,7 @@ const ArticleSchema: Schema = new Schema({
   publisher: { type: String, required: false}
 });
 
+ArticleSchema.index({'$**': 'text'});
+
 // exports a model named Article
 export default mongoose.model<IArticle>('Article', ArticleSchema);
