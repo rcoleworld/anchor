@@ -1,24 +1,5 @@
 import express from 'express';
 import Article from '../models/article.model';
-import AIOutput from '../models/AIOutput';
-import { Mongoose } from 'mongoose';
-
-function bodyParser(body: string) {
-  const bodyList: AIOutput[] = [];
-
-  const split = body.split('. '); // change deliminator
-
-  split.forEach((s) => {
-    bodyList.push({
-      sentence: s,
-      biasDetectionResult: null,
-      objectivityDetectionResult: null,
-      sentimentDetectionResult: null,
-    });
-  });
-
-  return bodyList;
-}
 
 export function handleWebScraper(req: express.Request, res: express.Response) {
   const articleList: any = [];
@@ -28,13 +9,9 @@ export function handleWebScraper(req: express.Request, res: express.Response) {
     if (!isNaN(Number(key))) {
       // this is for an array of JSON objects
 
-      // access and break down body;
-      req.body[key].body = bodyParser(req.body[key].body);
-
       if (req.body.hasOwnProperty(key)) articleList.push(Object.assign(new Article(), req.body[key]));
     } else {
       // Just a single JSON object
-      req.body.body = bodyParser(req.body.body);
       articleList.push(Object.assign(new Article(), req.body));
       break;
     }
