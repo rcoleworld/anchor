@@ -156,10 +156,10 @@ html {
   .hovered {
     display: none;
     height: 0px;
-    pointer-events: none;
     padding: 5px;
     position: relative;
     top: 50px;
+    pointer-events: none;
   }
 
   .default-box-container :hover {
@@ -213,3 +213,22 @@ html {
     font-weight: bold;
     
   }
+
+  .svg {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+.svg-circle-bg {
+    fill: none;
+}
+
+.svg-circle {
+    fill: none;
+}
+.svg-circle-text {
+   font-size:inherit;
+    text-anchor: middle;
+    fill: #fff;
+}
