@@ -12,14 +12,18 @@ const Navigation = () => {
           <a href="/about" className="navbar-link" >About</a>
         </li>
         <li className="navbar-compare">
-          <a href="/compare" className="navbar-link">Compare v</a>
+          <a href="/compare" className="navbar-link">Compare
+            <img className="navbar-dropdown-arrow" src="../images/dropdown-arrow.png"></img>
+          </a>
               <div className="navbar-compare-dropdown">
                 <a href="compare/sources" className="navbar-dropdown-item">Sources</a>
                 <a href="compare/articles" className="navbar-dropdown-item">Articles</a>
             </div>
         </li>
         <li className="navbar-categories">
-        <a href="/categories" className="navbar-link">Categories v</a>
+        <a href="/categories" className="navbar-link">Categories
+          <img className="navbar-dropdown-arrow" src="../images/dropdown-arrow.png"></img>
+          </a>
           <div className="navbar-category-dropdown" >
               <Link className="navbar-dropdown-item" to = {{pathname: "/politics", state: {category: "politics"}}}>Politics</Link>
               <Link className="navbar-dropdown-item" to = {{pathname: "/world", state: {category: "world"}}}>World</Link>
