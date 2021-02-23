@@ -10,17 +10,17 @@ const ArticleThumb = (props) => {
                     article: {props}
                 }}}>
                   
-                        <div className="unhovered">
+                <div className="unhovered">
                     <img className= "default-thumbnail" src={props.thumbnail} alt = "nothing here"></img>
                 
-                <div className="default-title">
-                    <p id="headline">{props.headline}</p>
+                    <div className="default-title">
+                        {props.headline}
                     </div>
-                    </div>
-                    <div className="hovered">
+                </div>
+                <div className="hovered">
                         {props.headline}
                         <p>Bias: 90%</p>
-                    </div>
+                </div>
             
                 
                 </Link>
