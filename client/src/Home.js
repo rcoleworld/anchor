@@ -89,7 +89,6 @@ const Home = () => {
         axios.get('http://127.0.0.1:5001/articles?orderBy=firstPublishDate&orderType=des').then((response) => {
             if(response.status === 201) {
                 setArticles(response.data)
-                console.log(response)
             }  else {
                 setArticles([defaultArticle])
             }
@@ -102,7 +101,6 @@ const Home = () => {
         axios.get('http://127.0.0.1:5001/articles?limit=3').then((response) => {
             if(response.status === 201) {
                 setTrendingArticles(response.data)
-                console.log(response)
             }  else {
                 setTrendingArticles([defaultArticle])
             }
@@ -110,54 +108,60 @@ const Home = () => {
             console.log(error)
         })
     }, []) 
-        return (
-            <div className="Home">
-                <div className="trending-class">
-                    <h1>
-                    Trending
-                    </h1>
-                    
-                    <div className="trending-articles">
-            {trendingArticles !== undefined && trendingArticles.length > 0 &&
-                trendingArticles.map((article, index) => (
-                    <ArticleThumbTrending 
-                    headline = {article.headline}
-                    id = {article._id}
-                    thumbnail = {article.thumbnailUrl}
-                    section = {article.section}
-                    category = {article.category}
-                    body = {article.body}
-                    url = {article.url}
-                    date = {article.firstPublishDate}
-                    source = {article.publisher}
-                    authors = {article.contributers}
-                    ></ArticleThumbTrending>
-                ))
-            }
-            </div>
-
+    return (
+        <div className="Home">
+            <div className="title-class">
+                <div className="home-title">
+                Anchor News
                 </div>
-                
-            <h1>
-                Recent Stories
-                </h1>
+                <div className="logo">
+                Think Different
+                </div>
+                <a id="scroll" href="#trending">Get Started</a>
+            </div>
+            <div className="trending-class" id="trending">
+                <h1> Trending </h1>
+                        
+                <div className="trending-articles">
+                    {trendingArticles !== undefined && trendingArticles.length > 0 &&
+                    trendingArticles.map((article, index) => (
+                        <ArticleThumbTrending 
+                        headline = {article.headline}
+                        id = {article._id}
+                        thumbnail = {article.thumbnailUrl}
+                        section = {article.section}
+                        category = {article.category}
+                        body = {article.body}
+                        url = {article.url}
+                        date = {article.firstPublishDate}
+                        source = {article.publisher}
+                        authors = {article.contributers}
+                        ></ArticleThumbTrending>
+                    ))
+                }
+                </div>
+
+            </div>
+            <div className="recent-articles">    
+                <h1> Recent Stories </h1>
                 <div className="articles">
-            {articles !== undefined && articles.length > 0 &&
-                articles.map((article, index) => (
-                    <ArticleThumb
-                    headline = {article.headline}
-                    id = {article._id}
-                    thumbnail = {article.thumbnailUrl}
-                    section = {article.section}
-                    category = {article.category}
-                    body = {article.body}
-                    url = {article.url}
-                    date = {article.firstPublishDate}
-                    source = {article.publisher}
-                    authors = {article.contributers}
-                    ></ArticleThumb>
-                ))
-            }
+                    {articles !== undefined && articles.length > 0 &&
+                    articles.map((article, index) => (
+                        <ArticleThumb
+                            headline = {article.headline}
+                            id = {article._id}
+                            thumbnail = {article.thumbnailUrl}
+                            section = {article.section}
+                            category = {article.category}
+                            body = {article.body}
+                            url = {article.url}
+                            date = {article.firstPublishDate}
+                            source = {article.publisher}
+                            authors = {article.contributers}>
+
+                        </ArticleThumb>
+                    ))}
+                </div>
             </div>
         </div>
      )
