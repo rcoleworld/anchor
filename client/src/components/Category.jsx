@@ -20,7 +20,7 @@ const Category = ()  => {
         }).catch((error) => {
             console.log(error)
         })
-    })
+    }, [category]) 
 
     return (
         <div className="category-page">
