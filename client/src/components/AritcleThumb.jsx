@@ -38,7 +38,6 @@ const ArticleThumb = (props) => {
                 <div className="hovered"
                 >
                     {props.headline}
-                    <p>Bias: 90%</p>
                     <div id="example">
                         <ProgressRing
                             progress={progress}
