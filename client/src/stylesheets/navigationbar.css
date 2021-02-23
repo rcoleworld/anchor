@@ -4,7 +4,7 @@ body {
 }
 
 :root{
-    --bg: #75a09c;
+    --bg: rgb(80, 78, 78);
 }
 
 .navbar ul {
@@ -24,7 +24,6 @@ body {
     display: flex;
     font-family:'IBM Plex Mono','Inconsolata', monospace;
     width: 100%;
-    
 }
 
 .navbar-left {
@@ -52,6 +51,11 @@ body {
     justify-content: center;
     font-family: inherit;
     color: white;
+}
+
+.navbar-dropdown-arrow {
+    padding-left: 2px;
+    max-height: 7px;
 }
 
 .navbar-compare-dropdown {
@@ -114,8 +118,8 @@ body {
     padding: 15px;
 }
 
-.navbar-category-dropdown a:hover {background-color: pink;}
-.navbar-compare-dropdown a:hover {background-color: pink;}
+.navbar-category-dropdown a:hover {background-color: #194769;}
+.navbar-compare-dropdown a:hover {background-color: ##194769;}
 
 .navbar-categories:hover .navbar-category-dropdown {display: block}
 .navbar-compare:hover .navbar-compare-dropdown {display: block}

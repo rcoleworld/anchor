@@ -57,3 +57,12 @@
     font-size: small;
     padding-bottom: 25px;
 }
+
+.article-url a{
+    color:rgba(255, 255, 255, 0.904);
+    text-decoration: none;
+}
+
+.article-url a:hover{
+    color:rgba(255, 255, 255, 0.712);
+}
