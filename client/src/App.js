@@ -6,6 +6,7 @@ import Categories from './components/Categories'
 import Category from './components/Category'
 import Compare from './components/Compare'
 import Article from './components/Article'
+import SearchResults from './components/SearchResults'
 import Home from './Home'
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/about"><About/></Route>
           <Route path="/categories"><Categories /></Route>
           <Route path="/compare"><Compare /></Route>
+          <Route path="/search"><SearchResults/></Route>
           <Route path="/:category/:id"><Article/></Route>
           <Route path="/:category"><Category/></Route>
           <Route path="/"><Home/></Route>
