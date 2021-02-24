@@ -24,10 +24,10 @@ class FoxNewsTransformer(BaseTransformer):
         self.transformed_data = {"url": raw_article["attributes"].get("canonical_url"), 
                 "firstPublishDate": raw_article["attributes"].get("publication_date"),
                 "lastPublishDate": raw_article["attributes"].get("last_published_date"),
-                "contributers": raw_article['meta']["chartbeat"].get("authors"),
+                "contributors": raw_article['meta']["chartbeat"].get("authors"),
                 "headline": raw_article["attributes"].get("title"),
                 "section": raw_article['meta']["chartbeat"].get("section"),
-                "thumbnailUrl": raw_article["attributes"]["thumbnail"].get("url"),
+                "thumbnail": raw_article["attributes"]["thumbnail"].get("url"),
                 "body": combined_body,
                 "category": raw_article['meta']["chartbeat"].get("section"),
                 "publisher": "fox"

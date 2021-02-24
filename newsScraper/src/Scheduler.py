@@ -28,7 +28,7 @@ class Scheduler:
         input: a query to search for
         return: a dict to append to the general queue
         """
-        cnn_crawler = CNNCrawler(num_of_articles=500)
+        cnn_crawler = CNNCrawler(num_of_articles=10)
         return {"cnn": cnn_crawler.articles_list}
 
     def create_fox_queue(self, query="*") -> dict:
@@ -38,7 +38,7 @@ class Scheduler:
         input: a query to search for
         return: a dict to append to the general queue
         """
-        fox_crawler = FoxNewsCrawler(num_of_articles=500)
+        fox_crawler = FoxNewsCrawler(num_of_articles=10)
         return {"fox": fox_crawler.articles_list}
 
     def create_queue(self):
