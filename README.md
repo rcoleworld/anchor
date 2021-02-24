@@ -1,3 +1,7 @@
 # anchor
-Anchor is an online news aggregator that leverages bleeding edge, artificial intelligence, in the cloud, in order to help readers identify political biases in news articles.
-
+R/W - Lewis Johnson
+R/W - Marco Flores
+R/W - Reggie Thomas
+R/W - Promyse Ward
+R/W - Sydney Anderson
+R/W - Beverly Coronel

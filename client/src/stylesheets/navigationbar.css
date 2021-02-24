@@ -97,7 +97,7 @@ body {
 } 
 
 .navbar-search-icon {
-    max-width: 25px;
+    max-width: 16px;
 }
 
 .navbar-color-mode-icon {
@@ -113,10 +113,6 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 .navbar-horizontal-line {
