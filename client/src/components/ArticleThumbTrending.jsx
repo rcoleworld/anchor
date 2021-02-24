@@ -33,7 +33,7 @@ const ArticleThumbTrending = (props) => {
                 }}}>
                 
                 
-                <img className= "trending-thumbnail" src={props.thumbnail} alt = "nothing here"></img>
+                <img className= "bias-thumbnail" src={props.thumbnail} alt = "nothing here"></img>
                 <div>
                 <div className="bias-title">
                     {props.headline}

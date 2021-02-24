@@ -3,22 +3,21 @@
 html {
   scroll-behavior: smooth;
 }
-h1 {
-  font-size: 40px;
-  font-family: gravesend-sans, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0;
-}
+  h1 {
+    font-size: 40px;
+    font-family: gravesend-sans, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 0;
+  }
 
 body {
   background-color: rgb(39, 62, 92);
   color: black;
 }
 .title-class {
-  height: 500px;
   background-image: url(.././assets/gradient.jpg);
   background-repeat: no-repeat;
   font-family: soleil, sans-serif;
@@ -100,20 +99,21 @@ body {
   height: auto;
 }
 
-.trending-thumbnail {
+.bias-thumbnail {
   pointer-events: none;
   width: 250px;
   height: 250px;
   object-fit: cover;
 }
 
-.recent-articles {
-  color: white;
-  background-image: url(.././assets/gradient.jpg);
-  background-size: 100%;
-  margin: 0;
-  padding: 5px;
-}
+
+  .recent-articles {
+    color: white;
+    background-image: url(.././assets/gradient.jpg);
+    background-size: 100%;
+    margin: 0;
+    padding: 5px;
+  }
 
 .articles {
   display: flex;

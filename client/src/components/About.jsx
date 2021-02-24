@@ -1,39 +1,90 @@
+import "../stylesheets/about.css";
 
-import React, { Component } from 'react';
-
-class About extends Component {
-    render() {
-        return (
-            <div className="About">
-                <h1>About</h1>
-            <p> The team: </p>
-            <div className="container">
-            <img className= "about-picture" src="./images/beverly.png" alt = "nothing here"></img>
-            Beverly Coronel
+const About = () => {
+  return (
+    <div className="about-page">
+      <div className="intro-banner">
+        <div class="typewriter">
+          <h1>Welcome to Anchor News.</h1>
+          <p id="intro-description">news you need</p>
+        </div>
+      </div>
+      <div className="about-master-containers">
+        <div className="about-container">
+          <div className="about-block ubuntu">
+            <div className="ubuntu-bar">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot" id="ubuntu-orange"></span>
             </div>
-            <div className="container">
-            <img className= "about-picture" src="./images/lewis.jpg" alt = "nothing here"></img>
-            Lewis Johnson
+            <div className="content"> The Mission </div>
+          </div>
+          <div className="about-block mac" id="test">
+          <div className="mac-bar">
+              <span class="dot" id="mac-dot-1"></span>
+              <span class="dot" id="mac-dot-2"></span>
+              <span class="dot" id="mac-dot-3"></span>
             </div>
-            <div className="container">
-            <img className= "about-picture" src="./images/marco.jpg" alt = "nothing here"></img>
-            Marco Flores
+            <p> about the mission </p>
+          </div>
+        </div>
+        <div className="about-container ">
+          <div className="about-block mac" id="test">
+          <div className="mac-bar">
+              <span class="dot" id="mac-dot-1"></span>
+              <span class="dot" id="mac-dot-2"></span>
+              <span class="dot" id="mac-dot-3"></span>
             </div>
-            <div className="container">
-            <img className= "about-picture" src="./images/promyse.jpg" alt = "nothing here"></img>
-            Promyse Ward
+            <p> about the technology </p>
+          </div>
+          <div className="about-block ubuntu">
+            <div className="ubuntu-bar">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot" id="ubuntu-orange"></span>
             </div>
-            <div className="container">
-            <img className= "about-picture" src="./images/reggie.jpg" alt = "nothing here"></img>
-            Reggie Thomas
+            <div className="content"> The Technology </div>
+          </div>
+        </div>
+        <div className="about-container">
+          <div className="about-block ubuntu">
+            <div className="ubuntu-bar">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot" id="ubuntu-orange"></span>
             </div>
-            <div className="container">
-            <img className= "about-picture" src="./images/sydney.jpg" alt = "nothing here"></img>   
-            Sydney Anderson
-            </div>          
+            <div className="content"> The Team </div>
+          </div>
+          <div className="about-block mac" id="test">
+          <div className="mac-bar">
+              <span class="dot" id="mac-dot-1"></span>
+              <span class="dot" id="mac-dot-2"></span>
+              <span class="dot" id="mac-dot-3"></span>
             </div>
-        )
-    }
-}
+            <p> about the team </p>
+          </div>
+        </div>
+        <div className="about-container">
+          <div className="about-block mac" id="test">
+          <div className="mac-bar">
+              <span class="dot" id="mac-dot-1"></span>
+              <span class="dot" id="mac-dot-2"></span>
+              <span class="dot" id="mac-dot-3"></span>
+            </div>
+            <p> some extras </p>
+          </div>
+          <div className="about-block ubuntu">
+            <div className="ubuntu-bar">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot" id="ubuntu-orange"></span>
+            </div>
+            <div className="content"> Extras </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default About;
