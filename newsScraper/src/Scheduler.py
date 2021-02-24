@@ -56,10 +56,10 @@ class Scheduler:
 
         for website in self.configs.get("websites"):
             self.queue.update(function_mapping.get(website.get("website_name"))(website.get("query")))
-            
+
             self.transformers.update({website.get("website_name"): transformer_mapping.get(website.get("website_name"))()})
-            
-    
+
+
     def parse_queue(self):
         """
         Parses queue for each website enabled and puts into the database
@@ -68,6 +68,7 @@ class Scheduler:
         for website in self.queue:
             for article in self.queue.get(website):
                 t = self.transformers.get(website).transform(article)
+                t.run_ai()
                 if t is not None:
                     self.putter.put_article(t)
                     # testing return
