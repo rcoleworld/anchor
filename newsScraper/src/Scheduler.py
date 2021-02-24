@@ -12,11 +12,7 @@ class Scheduler:
     transformers = {}
 
     def __init__(self):
-        try:
-            self.putter = BasePutter()
-        except Exception as e:
-            print(f"Backend Connection Failed:\n{e}")
-            exit(-1)
+        pass
 
     def load_configs(self):
         """
@@ -80,5 +76,10 @@ class Scheduler:
 if __name__ == '__main__':
     s = Scheduler()
     s.load_configs()
+    try:
+        s.putter = BasePutter(s.configs)
+    except Exception as e:
+        print(f"Backend Connection Failed:\n{e}")
+        exit(-1)
     s.create_queue()
     s.parse_queue()
