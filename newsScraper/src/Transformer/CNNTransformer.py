@@ -19,10 +19,10 @@ class CNNTransformer(BaseTransformer):
             self.transformed_data = {"url": raw_article['url'], 
                     "firstPublishDate": raw_article['firstPublishDate'],
                     "lastPublishDate": raw_article['lastPublishDate'],
-                    "contributers": raw_article['contributors'],
+                    "contributors": raw_article['contributors'],
                     "headline": raw_article['headline'],
                     "section": raw_article['section'],
-                    "thumbnailUrl": raw_article['thumbnail'],
+                    "thumbnail": raw_article['thumbnail'],
                     "body": raw_article['body'],
                     "category": raw_article['section'],
                     "publisher": "cnn"
