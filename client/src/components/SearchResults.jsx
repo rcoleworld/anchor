@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { withRouter } from 'react-router-dom'
-import ArticleThumb from './AritcleThumb';
+import ArticleThumb from './ArticleThumb';
 import axios from 'axios';
 
 const SearchResults = (props) => {

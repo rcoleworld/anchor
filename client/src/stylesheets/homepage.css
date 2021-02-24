@@ -1,24 +1,24 @@
-
 @import url("https://use.typekit.net/kdg1ffy.css");
 
 html {
   scroll-behavior: smooth;
 }
-  h1 {
-    font-size: 40px;
-    font-family: gravesend-sans, sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    margin: 0;
-  }
+h1 {
+  font-size: 40px;
+  font-family: gravesend-sans, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+}
 
-  body {
-    background-color: rgb(39, 62, 92);
-    color: black;
+body {
+  background-color: rgb(39, 62, 92);
+  color: black;
 }
 .title-class {
+  height: 500px;
   background-image: url(.././assets/gradient.jpg);
   background-repeat: no-repeat;
   font-family: soleil, sans-serif;
@@ -38,7 +38,7 @@ html {
   font-size: 15px;
 }
 .home-title {
-  color:white;
+  color: white;
   font-size: 55px;
   font-family: soleil, sans-serif;
   font-style: normal;
@@ -47,59 +47,73 @@ html {
   text-decoration: none;
 }
 
-.trending-class {
-  border: 1px solid white;
-  background-color:rgb(39, 62, 92);
-  color: white;
-}
-.trending-articles {
-  display: flex;
+.bias-articles {
+  margin: 0% 2%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  display: inline-flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-grow: 1;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.most-bias-articles {
+  margin: 1% 2%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   justify-content: center;
 }
-
-.trending-box-container {
-    display: grid; 
-    flex-grow: 1;
-    width: 30%;
+.least-bias-articles {
+  margin: 1% 2%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
 
 }
-.trending-box {
-    color: white;
-    margin: 0% 0.5%;
-    font-family: soleil;
-    font-weight: 300px;
-    font-size: 16px;
-    text-decoration: none;
-    flex-grow: 1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+.bias-box {
+  margin: 1% 0%;
+  display: flex;
+  width: 500px;
+  color: white;
+  font-family: soleil;
+  font-weight: 300px;
+  font-size: 16px;
+  text-decoration: none;
+  flex-grow: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-  .trending-title {
-    pointer-events: none;
-    font-family: soleil;
-    font-weight: 300px;
-    font-size: 16px;
-    padding: 5px;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-  }
+.bias-title {
+  pointer-events: none;
+  font-family: soleil;
+  font-weight: 300px;
+  font-size: 16px;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: auto;
+}
 
-  .trending-thumbnail {
-    pointer-events: none;
-    width:100%;
-    object-fit: cover;
-  }
+.trending-thumbnail {
+  pointer-events: none;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
 
-  .recent-articles {
-    color: white;
-    background-image: url(.././assets/gradient.jpg);
-    background-size: 100%;
-    margin: 0;
-    padding: 5px;
-  }
+.recent-articles {
+  color: white;
+  background-image: url(.././assets/gradient.jpg);
+  background-size: 100%;
+  margin: 0;
+  padding: 5px;
+}
 
 .articles {
   display: flex;
@@ -113,8 +127,8 @@ html {
   flex-grow: 1;
   width: 300px;
   height: 300px;
-  margin: 1% 1%;
 
+  margin: 1% 1%;
 }
 .default-box {
   color: white;
@@ -122,59 +136,64 @@ html {
   display: grid;
   flex-grow: 1;
 }
-  .default-title {
-    pointer-events: none;
-    position: relative;
-    bottom: 120px;
-    font-family: soleil;
-    font-weight: 300;
-    font-size: 16px;
-    padding: 15px;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 0px 0px 6px rgb(53, 53, 53), 0px 0px 6px rgb(43, 42, 42), 0px 0px 1px black;
-    
-  }
+.default-title {
+  pointer-events: none;
+  position: relative;
+  bottom: 120px;
+  font-family: soleil;
+  font-weight: 300;
+  font-size: 16px;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0px 0px 6px rgb(53, 53, 53), 0px 0px 6px rgb(43, 42, 42),
+    0px 0px 1px black;
+}
 
-  .default-box :hover {
-    color: #c0c9be;
-  }
-  
-  .default-thumbnail :hover {
-    color: white;
-    width: 300px;
-    object-fit: cover;
-  }
+.default-box :hover {
+  color: #c0c9be;
+}
 
-  .default-thumbnail {
-    pointer-events: none;
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
+.default-thumbnail :hover {
+  color: white;
+  width: 300px;
+  object-fit: cover;
+}
 
-  .hovered {
-    display: none;
-    height: 0px;
-    padding: 5px;
-    position: relative;
-    top: 50px;
-    pointer-events: none;
-  }
+.default-thumbnail {
+  pointer-events: none;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
 
-  .default-box-container :hover {
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.822);
-    text-decoration: none;
-    transition: 0.5s;
-    transform: scale(1.03);
-  }
+.hovered {
+  display: none;
+  height: 0px;
+  padding: 5px;
+  position: relative;
+  top: 50px;
+  pointer-events: none;
+  font-family: soleil, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  text-shadow: 0px 0px 6px rgb(53, 53, 53), 0px 0px 6px rgb(43, 42, 42),
+    0px 0px 1px black;
+}
+
+.default-box-container :hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.822);
+  text-decoration: none;
+  transition: 0.5s;
+  transform: scale(1.03);
+}
 
 .default-box:hover .unhovered {
   opacity: 70%;
 }
 
-.default-box:hover .hovered{
+.default-box:hover .hovered {
   display: inline-block;
   position: relative;
   top: -250px;
@@ -189,46 +208,43 @@ html {
   font-family: soleil;
   font-weight: 300;
   font-size: 16px;
-
 }
 
-  .about-picture {
-    margin: 0px;
-    height: 220px;
-    width: auto;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  .container {
-    width: 250px;
-    height: 300px;
-    display: inline-block;
-    vertical-align: top;
-    
-  }
-  
-  .center-category {
-    position: relative;
-    top: -40%;
-    font-weight: bold;
-    
-  }
+.about-picture {
+  margin: 0px;
+  height: 220px;
+  width: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container {
+  width: 250px;
+  height: 300px;
+  display: inline-block;
+  vertical-align: top;
+}
 
-  .svg {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
+.center-category {
+  position: relative;
+  top: -40%;
+  font-weight: bold;
+}
+
+.svg {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
 }
 
 .svg-circle-bg {
-    fill: none;
+  fill: none;
 }
 
 .svg-circle {
-    fill: none;
+  fill: none;
 }
 .svg-circle-text {
-   font-size:inherit;
-    text-anchor: middle;
-    fill: #fff;
+  font-size: inherit;
+  text-anchor: middle;
+  fill: #fff;
 }

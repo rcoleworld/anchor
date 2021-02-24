@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ArticleThumb from '../components/AritcleThumb';
+import ArticleThumb from './ArticleThumb';
 import '../stylesheets/categorypage.css';
 
 const Category = ()  => {
