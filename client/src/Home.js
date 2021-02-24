@@ -83,62 +83,87 @@ const defaultArticle = {
 };
 
 const Home = () => {
-  const [articles, setArticles] = useState([]);
-  useEffect(() => {
-    axios
-      .get('http://127.0.0.1:5001/articles')
-      .then((response) => {
-        if (response.status === 201) {
-          setArticles(response.data);
-          console.log(response);
-        } else {
-          setArticles([defaultArticle]);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []); //will change, it's to load all articles at once when the page loads /
-  // Request grabbing a list of articles
-  return (
-    <div className='Home'>
-      <h1>Trending</h1>
-      <div className='trending-articles'>
-        {articles !== undefined &&
-          articles.length > 0 &&
-          articles.map((article, index) => (
-            <ArticleThumbTrending
-              headline={article.headline}
-              id={article._id}
-              thumbnail={article.thumbnailUrl}
-              section={article.section}
-              category={article.category}
-              body={article.body}
-              url={article.url}
-              date={article.firstPublishDate}
-              source={article.publisher}
-              authors={article.contributors}></ArticleThumbTrending>
-          ))}
-      </div>
-      <h1>Recent Stories</h1>
-      <div className='articles'>
-        {articles !== undefined &&
-          articles.length > 0 &&
-          articles.map((article, index) => (
-            <ArticleThumb
-              headline={article.headline}
-              id={article._id}
-              thumbnail={article.thumbnailUrl}
-              section={article.section}
-              category={article.category}
-              body={article.body}
-              url={article.url}
-              date={article.firstPublishDate}
-              source={article.publisher}
-              authors={article.contributors}></ArticleThumb>
-          ))}
-      </div>
-    </div>
-  );
-};
+    const [articles, setArticles] = useState([]);
+    const [trendingArticles, setTrendingArticles] = useState([]);
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5001/articles?orderBy=firstPublishDate&orderType=des').then((response) => {
+            if(response.status === 201) {
+                setArticles(response.data)
+            }  else {
+                setArticles([defaultArticle])
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []) //will change, it's to load all articles at once when the page loads /
+    // Request grabbing a list of articles
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5001/articles?limit=3').then((response) => {
+            if(response.status === 201) {
+                setTrendingArticles(response.data)
+            }  else {
+                setTrendingArticles([defaultArticle])
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []) 
+    return (
+        <div className="Home">
+            <div className="title-class">
+                <div className="home-title">
+                Anchor News
+                </div>
+                <div className="logo">
+                Think Different
+                </div>
+                <a id="scroll" href="#trending">Get Started</a>
+            </div>
+            <div className="trending-class" id="trending">
+                <h1> Trending </h1>
+                        
+                <div className="trending-articles">
+                    {trendingArticles !== undefined && trendingArticles.length > 0 &&
+                    trendingArticles.map((article, index) => (
+                        <ArticleThumbTrending 
+                        headline = {article.headline}
+                        id = {article._id}
+                        thumbnail = {article.thumbnailUrl}
+                        section = {article.section}
+                        category = {article.category}
+                        body = {article.body}
+                        url = {article.url}
+                        date = {article.firstPublishDate}
+                        source = {article.publisher}
+                        authors = {article.contributers}
+                        ></ArticleThumbTrending>
+                    ))
+                }
+                </div>
+
+            </div>
+            <div className="recent-articles">    
+                <h1> Recent Stories </h1>
+                <div className="articles">
+                    {articles !== undefined && articles.length > 0 &&
+                    articles.map((article, index) => (
+                        <ArticleThumb
+                            headline = {article.headline}
+                            id = {article._id}
+                            thumbnail = {article.thumbnailUrl}
+                            section = {article.section}
+                            category = {article.category}
+                            body = {article.body}
+                            url = {article.url}
+                            date = {article.firstPublishDate}
+                            source = {article.publisher}
+                            authors = {article.contributers}>
+
+                        </ArticleThumb>
+                    ))}
+                </div>
+            </div>
+        </div>
+     )
+}
 export default Home;

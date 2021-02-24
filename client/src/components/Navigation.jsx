@@ -1,43 +1,52 @@
-import { Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import '../stylesheets/navigationbar.css';
+import { useState } from 'react'
+import { v4 as uuid } from 'uuid';
 
 const Navigation = () => {
+  const [searchString, setSearchString] = useState('');
+
+  const changeSearchString = (e) => {
+    setSearchString(e.target.value);
+  }
+  
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Navbar.Brand href="/">
-            <img
-                src="./images/anchor-light.png"
-                width="30"
-                height="35"
-                className="d-inline-block align-center"
-            />
-          </Navbar.Brand>
-        </Nav>
-        <Nav>
-          <Nav.Link href="/about"> About </Nav.Link> 
-          <NavDropdown title="Categories" id="basic-nav-dropdown"> 
-            <NavDropdown.Item href="/categories/politics">Politics</NavDropdown.Item>
-            <NavDropdown.Item href="/categories/world">World</NavDropdown.Item> 
-            <NavDropdown.Item href="/categories/business">Business</NavDropdown.Item> 
-            <NavDropdown.Item href="/categories/science">Science</NavDropdown.Item> 
-            <NavDropdown.Item href="/categories/sports">Health</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/categories">View All</NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="Compare" id="basic-nav-dropdown"> 
-            <NavDropdown.Item href="/compare/articles">Articles</NavDropdown.Item>
-            <NavDropdown.Item href="/compare/sources">Sources</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+    <nav className="navbar">
+      <a className="navbar-left" href="/">
+        <img className="navbar-logo" src="../images/anchor-light.png" alt = ""></img>
+      </a>
+      <ul className="navbar-right">
+        <li className="navbar-compare">
+          <a href="/about" className="navbar-link" >About</a>
+        </li>
+        <li className="navbar-compare">
+          <a href="/compare" className="navbar-link">Compare
+            <img className="navbar-dropdown-arrow" src="../images/dropdown-arrow.png"></img>
+          </a>
+              <div className="navbar-compare-dropdown">
+                <a href="compare/sources" className="navbar-dropdown-item">Sources</a>
+                <a href="compare/articles" className="navbar-dropdown-item">Articles</a>
+            </div>
+        </li>
+        <li className="navbar-categories">
+        <a href="/categories" className="navbar-link">Categories
+          <img className="navbar-dropdown-arrow" src="../images/dropdown-arrow.png"></img>
+          </a>
+          <div className="navbar-category-dropdown" >
+              <Link className="navbar-dropdown-item" to = {{pathname: "/politics", state: {category: "politics"}}}>Politics</Link>
+              <Link className="navbar-dropdown-item" to = {{pathname: "/world", state: {category: "world"}}}>World</Link>
+              <Link className="navbar-dropdown-item" to = {{pathname: "/health", state: {category: "health"}}}>Health</Link>
+              <Link className="navbar-dropdown-item" to = {{pathname: "/science", state: {category: "science"}}}>Science</Link>
+            <div className="navbar-horizontal-line"></div>
+          <a href="/categories" className="navbar-dropdown-item">View All</a>
+        </div>
+      </li>
+        <input className = "navbar-search-bar" type="text" placeholder="Search" onChange={changeSearchString}/>
+        {/* UUID is unique everytime so everytime this link is clicked the key changes. This is used later in SearchResults.jsx to handle the react lifecycle of when this component updates. */}
+        <Link className="navbar-search-button" key={uuid()} to={{pathname: "/search", state: {search: searchString}}}><img className="navbar-search-icon" src="../images/search.png"></img></Link>
+      </ul>
+    </nav>
+  )
 }
+
 export default Navigation;

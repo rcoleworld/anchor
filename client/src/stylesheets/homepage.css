@@ -1,105 +1,196 @@
 
-  @import url("https://use.typekit.net/kdg1ffy.css");
+@import url("https://use.typekit.net/kdg1ffy.css");
 
+html {
+  scroll-behavior: smooth;
+}
   h1 {
-    font-size: xx-large;
-    font-family: bely-display, sans-serif;
+    font-size: 40px;
+    font-family: gravesend-sans, sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     padding-top: 20px;
     padding-bottom: 10px;
+    margin: 0;
   }
 
   body {
-    background-color: #6f858c;
-    color: rgba(255, 255, 255, 0.822);
-    text-align: center;
+    background-color: rgb(39, 62, 92);
+    color: black;
 }
-  .trending-box {
-    overflow: auto;
-    border: 1px solid transparent;
-    width: 280px;
-    display:inline-block;
-    vertical-align: top;
-    font-family: bely, serif;
-    font-weight: 600;
-    font-style: normal;
-    margin: 1% 0.75%; 
+.title-class {
+  background-image: url(.././assets/gradient.jpg);
+  background-repeat: no-repeat;
+  font-family: soleil, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  color: white;
+  background-size: 100%;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+#scroll {
+  color: white;
+  border: 1px solid white;
+  text-decoration: none;
+  font-size: 15px;
+}
+.home-title {
+  color:white;
+  font-size: 55px;
+  font-family: soleil, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  scroll-behavior: smooth;
+  text-decoration: none;
+}
+
+.trending-class {
+  border: 1px solid white;
+  background-color:rgb(39, 62, 92);
+  color: white;
+}
+.trending-articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trending-box-container {
+    display: grid; 
+    flex-grow: 1;
+    width: 30%;
+
+}
+.trending-box {
+    color: white;
+    margin: 0% 0.5%;
+    font-family: soleil;
+    font-weight: 300px;
+    font-size: 16px;
+    text-decoration: none;
+    flex-grow: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5%;
-  }
+}
 
   .trending-title {
-    overflow: auto;
-    background-color:#315f6c;
-    border: 1px solid transparent;
-    display: flex;
+    pointer-events: none;
+    font-family: soleil;
+    font-weight: 300px;
+    font-size: 16px;
+    padding: 5px;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: auto;
+  }
 
-    
-  }
-  .trending-title :hover {
-    color: #c0c9be;
-  }
-  .trending-description {
-    display: flex;
-    border: 1px solid transparent;
-    height: 25px;
-    background-color:#315f6c;
-    justify-content: center;
-    align-items: center;
-  }
   .trending-thumbnail {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: auto;
+    pointer-events: none;
+    width:100%;
+    object-fit: cover;
   }
 
-  .default-box {
-    overflow: auto;
-    border: 1px solid transparent;
-    width: 280px;
-    display:inline-block;
-    vertical-align: top;
-    font-family: bely, serif;
-    font-weight: 600;
-    font-style: normal;
-    margin: 1% 0.75%; 
+  .recent-articles {
+    color: white;
+    background-image: url(.././assets/gradient.jpg);
+    background-size: 100%;
+    margin: 0;
+    padding: 5px;
   }
 
+.articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.default-box-container {
+  display: grid;
+  flex-grow: 1;
+  width: 300px;
+  height: 300px;
+  margin: 1% 1%;
+
+}
+.default-box {
+  color: white;
+  text-decoration: none;
+  display: grid;
+  flex-grow: 1;
+}
   .default-title {
-    overflow: auto;
-    border: 1px solid transparent;
-    display: flex;
+    pointer-events: none;
+    position: relative;
+    bottom: 120px;
+    font-family: soleil;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 15px;
     justify-content: center;
     align-items: center;
-    height: 80px;
-
+    text-shadow: 0px 0px 6px rgb(53, 53, 53), 0px 0px 6px rgb(43, 42, 42), 0px 0px 1px black;
     
   }
-  .default-title :hover {
+
+  .default-box :hover {
     color: #c0c9be;
   }
-  .default-description {
-    display: flex;
-    border: 1px solid transparent;
-    height: 25px;
-    justify-content: center;
-    align-items: center;
+  
+  .default-thumbnail :hover {
+    color: white;
+    width: 300px;
+    object-fit: cover;
   }
+
   .default-thumbnail {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: auto;
+    pointer-events: none;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
   }
+
+  .hovered {
+    display: none;
+    height: 0px;
+    padding: 5px;
+    position: relative;
+    top: 50px;
+    pointer-events: none;
+  }
+
+  .default-box-container :hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.822);
+    text-decoration: none;
+    transition: 0.5s;
+    transform: scale(1.03);
+  }
+
+.default-box:hover .unhovered {
+  opacity: 70%;
+}
+
+.default-box:hover .hovered{
+  display: inline-block;
+  position: relative;
+  top: -250px;
+}
+
+.default-box:hover .default-title {
+  display: none;
+}
+
+.unhovered {
+  display: inline-block;
+  font-family: soleil;
+  font-weight: 300;
+  font-size: 16px;
+
+}
 
   .about-picture {
     margin: 0px;
@@ -122,3 +213,22 @@
     font-weight: bold;
     
   }
+
+  .svg {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+.svg-circle-bg {
+    fill: none;
+}
+
+.svg-circle {
+    fill: none;
+}
+.svg-circle-text {
+   font-size:inherit;
+    text-anchor: middle;
+    fill: #fff;
+}
