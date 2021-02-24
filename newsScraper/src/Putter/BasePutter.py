@@ -1,11 +1,13 @@
+import requests
+
 class BasePutter:
     article_db_creds = None
     media_store_creds = None
     db_session = None
     media_store = None
 
-    def __init__(self):
-        pass
+    def __init__(self, configs):
+        self.article_db_creds = configs.get("article_db_creds")
 
     def create_db_connection(self):
         pass
@@ -17,4 +19,6 @@ class BasePutter:
         pass
 
     def put_article(self, article):
-        print(article)
+        ret_val = requests.post(self.article_db_creds, json = article)
+        #print(article)
+        print(ret_val)
