@@ -2,6 +2,99 @@
   text-align: center;
 }
 
+.light-theme h1, .dark-theme h1, .blue-theme h1{
+  font-size: 40px;
+  font-family: gravesend-sans, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+/* Light Theme */
+.light-theme {
+  background-image: url(./assets/marble.jpg);
+  background-size: 100%;
+  color: black;
+  text-align: center;
+}
+
+.light-theme h1{
+  color: rgb(22, 22, 22);
+  text-align: center;
+}
+
+.light-theme #anchor-title{
+  color:rgb(36, 36, 36);
+}
+
+.light-theme #scroll{
+  color:rgb(36, 36, 36);
+  border: 1px solid rgb(36, 36, 36);
+}
+
+.light-theme #trending{
+  background-color: rgb(177, 177, 177);
+}
+
+.light-theme nav {
+  background-color: rgb(58, 95, 143);
+}
+
+.light-theme nav a{
+  color: rgb(255, 255, 255);
+}
+
+
+/* Dark Theme */
+.dark-theme {
+  background:rgb(36, 36, 36);
+  background-position: 50% 50%;
+  background-size:100%;
+  color: white;
+  text-align: center;
+}
+
+.dark-theme nav {
+  background-color: rgb(25, 31, 59);
+}
+
+.dark-theme nav a{
+  color: rgb(255, 255, 255);
+}
+
+.dark-theme #scroll{
+  color:white;
+  border: 1px solid whie;
+}
+
+.dark-theme #trending{
+  background-color: rgb(42, 49, 66);
+}
+
+
+/* Blue Theme */
+.blue-theme {
+  background-image: url(./assets/gradient.jpg);
+  color: white;
+  text-align: center;
+}
+
+.blue-theme nav {
+  background-color: rgb(36, 36, 36);
+}
+
+.blue-theme h1{
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.blue-theme #recent-articles{
+  background-image: url(./assets/gradient.jpg);
+
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

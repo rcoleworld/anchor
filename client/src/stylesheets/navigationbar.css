@@ -100,6 +100,13 @@ body {
     max-width: 16px;
 }
 
+.navbar-color-mode-icon {
+    max-height: 25px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    align-self:center;
+}
+
 .navbar-search-button{
     font-family:inherit;
     color: white;
