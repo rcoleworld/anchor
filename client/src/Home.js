@@ -110,8 +110,8 @@ const Home = () => {
     }, []) 
     return (
         <div className="Home">
-            <div className="title-class" id="anchor-title">
-                <div className="home-title" id="anchor-title">
+            <div className="title-class">
+                <div className="home-title">
                 Anchor News
                 </div>
                 <div className="logo">
@@ -142,7 +142,7 @@ const Home = () => {
                 </div>
 
             </div>
-            <div className="recent-articles" id="recent-articles">    
+            <div className="recent-articles">    
                 <h1> Recent Stories </h1>
                 <div className="articles">
                     {articles !== undefined && articles.length > 0 &&

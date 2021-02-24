@@ -1,5 +1,4 @@
 import React from 'react';
-import{ useState } from "react";
 import Navigation from './components/Navigation'
 import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from './components/About'
@@ -12,14 +11,10 @@ import Home from './Home'
 import './App.css';
 
 function App() {
-  const [theme, setTheme] = useState('blue-theme');
-  const handleCallback = (newTheme) =>{
-    setTheme(newTheme);
-  }
   return (
-    <div className={theme}>
+    <div className="App">
       <Router>
-      <Navigation parentCallback = {handleCallback}/>
+      <Navigation/>
       <Switch>
           <Route exact path="/about"><About/></Route>
           <Route path="/categories"><Categories /></Route>
