@@ -126,8 +126,8 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="title-class">
-        <div className="home-title">Anchor News</div>
-        <div className="logo">Think Different</div>
+        <div className="home-title" id="anchor-title">Anchor News</div>
+        <div className="logo" id="anchor-title">Think Different</div>
         <a id="scroll" href="#trending">
           Get Started
         </a>
