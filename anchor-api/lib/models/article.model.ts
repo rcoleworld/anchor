@@ -16,7 +16,7 @@ export interface IArticle extends Document {
   contributors: string[];
   headline: string;
   section: string;
-  thumbnailUrl: string;
+  thumbnail: string;
   body: string | AIOutput[];
   category: string; // TODO make this an enum
   publisher: string;
