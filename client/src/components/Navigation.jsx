@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import{ useState } from "react";
 import '../stylesheets/navigationbar.css';
+import { useState } from 'react'
+import { v4 as uuid } from 'uuid';
 
 const Navigation = (props) => {
   const [theme, setTheme] = useState('blue');
@@ -55,6 +57,7 @@ const Navigation = (props) => {
         <input className="navbar-search-bar" type="text" placeholder="Search" />
         <button className="navbar-search-button"><img className="navbar-search-icon" src="../images/search.png"></img></button>
         <img id="image" className="navbar-color-mode-icon" src={theme_image} onClick={themeToggler}></img>
+
       </ul>
     </nav>
   )

@@ -16,15 +16,16 @@ class CNNTransformer(BaseTransformer):
         dict: transformed_data - modified article data
         """
         if raw_article['type'] == "article":
-            self.transformed_data = {"id": raw_article['_id'], 
-                    "url": raw_article['url'], 
+            self.transformed_data = {"url": raw_article['url'], 
                     "firstPublishDate": raw_article['firstPublishDate'],
                     "lastPublishDate": raw_article['lastPublishDate'],
                     "contributors": raw_article['contributors'],
                     "headline": raw_article['headline'],
                     "section": raw_article['section'],
                     "thumbnail": raw_article['thumbnail'],
-                    "body": raw_article['body']
+                    "body": raw_article['body'],
+                    "category": raw_article['section'],
+                    "publisher": "cnn"
                     }
             return self.transformed_data
         else:
