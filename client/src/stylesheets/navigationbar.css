@@ -119,7 +119,7 @@ body {
 }
 
 .navbar-category-dropdown a:hover {background-color: #194769;}
-.navbar-compare-dropdown a:hover {background-color: ##194769;}
+.navbar-compare-dropdown a:hover {background-color: #194769;}
 
 .navbar-categories:hover .navbar-category-dropdown {display: block}
 .navbar-compare:hover .navbar-compare-dropdown {display: block}
