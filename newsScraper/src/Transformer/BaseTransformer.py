@@ -6,7 +6,7 @@ import tensorflow_hub as hub
 import tensorflow_text as text
 from official.nlp import optimization
 import tensorflow_model_optimization as tfmot
-
+import PreprocessingTools as pt
 class BaseTransformer:
     input_data = None
     transformed_data = None
@@ -24,9 +24,20 @@ class BaseTransformer:
         pass
 
     def run_ai(self):
+        #get the raw data
+        raw = self.transformed_data["body"]
+
+        #clean out things that don't tokenize well
+        raw = pt.remove_html(raw)
+        raw = pt.remove_url(raw)
+        raw = clean_lower(raw)
+
         #break into sentences
         sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
-        sentenceTouple = sent_detector.tokenize(self.transformed_data["body"])
+        sentenceTouple = sent_detector.tokenize(raw)
+
+        for element in range(len(sentenceTouple)):
+            sentenceTouple[element] = remove_nonalphanumeric(sentenceTouple[element])
 
         #load the BERT
         saved_model_path = "./_improvedBaisDetection"
