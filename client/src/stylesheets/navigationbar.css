@@ -100,6 +100,13 @@ body {
     max-width: 25px;
 }
 
+.navbar-color-mode-icon {
+    max-height: 25px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    align-self:center;
+}
+
 .navbar-search-button{
     font-family:inherit;
     color: white;
@@ -123,7 +130,7 @@ body {
 }
 
 .navbar-category-dropdown a:hover {background-color: #194769;}
-.navbar-compare-dropdown a:hover {background-color: ##194769;}
+.navbar-compare-dropdown a:hover {background-color: #194769;}
 
 .navbar-categories:hover .navbar-category-dropdown {display: block}
 .navbar-compare:hover .navbar-compare-dropdown {display: block}
