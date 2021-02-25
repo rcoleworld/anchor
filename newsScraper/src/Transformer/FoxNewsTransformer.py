@@ -15,6 +15,7 @@ class FoxNewsTransformer(BaseTransformer):
         Return:
         dict: transformed_data - modified article data
         """
+        self.transformed_data = None
         combined_body = ""
         for component in raw_article.get("attributes").get("components"):
             if(component.get("content_type") == "text"):
@@ -30,6 +31,6 @@ class FoxNewsTransformer(BaseTransformer):
                 "thumbnail": raw_article["attributes"]["thumbnail"].get("url"),
                 "body": combined_body,
                 "category": raw_article['meta']["chartbeat"].get("section"),
-                "publisher": "fox"
+                "publisher": "Fox News"
                 }
         return self.transformed_data

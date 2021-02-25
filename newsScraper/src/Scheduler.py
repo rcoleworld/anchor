@@ -68,9 +68,9 @@ class Scheduler:
         for website in self.queue:
             for article in self.queue.get(website):
                 t = self.transformers.get(website).transform(article)
-                t.run_ai()
-                if t is not None:
-                    self.putter.put_article(t)
+                if self.transformers.get(website).transformed_data is not None:
+                    self.transformers.get(website).run_ai()
+                    self.putter.put_article(self.transformers.get(website).transformed_data)
                     # testing return
                     #return t
 

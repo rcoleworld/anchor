@@ -8,7 +8,7 @@ def remove_url(text):
 	return re.sub(r'http\S+','',text)
 
 def remove_nonalphanumeric(text):
-	return re.sub('[^a-zA-Z.?!"\']','',text)
+	return re.sub('[^a-zA-Z.?!"\' ]','',text)
 
 def remove_html(text):
 	soup = BeautifulSoup(text,'lxml')
@@ -31,4 +31,4 @@ def remove_news(text):
 	text = text.replace("Washington Post","OOV")
 	text = text.replace("Reuters","OOV")
 	text = text.replace("Vox","OOV")
-    return text
+	return text
