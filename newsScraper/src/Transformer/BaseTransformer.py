@@ -12,6 +12,8 @@ import PreprocessingTools as pt
 class BaseTransformer:
     input_data = None
     transformed_data = None
+    saved_model_path = "./_combinedBaisDetection"
+    model_loaded = tf.keras.models.load_model(saved_model_path)
 
     def __init__(self):
         pass
@@ -26,7 +28,6 @@ class BaseTransformer:
         pass
 
     def run_ai(self):
-        tf.device('/cpu:0')
         #get the raw data
         raw = self.transformed_data["body"]
 
@@ -41,24 +42,18 @@ class BaseTransformer:
         newtuple = []
         for element in range(len(sentenceTouple)):
             newtuple.append(pt.remove_nonalphanumeric(sentenceTouple[element]))
-        
-        #load the BERT
-        saved_model_path = "./_improvedBaisDetection"
-        model_loaded = tf.keras.models.load_model(saved_model_path)
-        print("made it here")
+
         res = []
         for element in newtuple:
             print(element)
-            if element == None:
+            if element == None or element == "":
                 res.append(-1)
                 continue
-            res.append(tf.sigmoid(model_loaded(tf.constant(element))))
-            print(f"string: {element} Score: {res[-1]}")
-        #evaluate the sentence
+            res.append(float(tf.sigmoid(self.model_loaded(tf.constant([element])))[0][0]))
 
-        #format the output
+        #evaluate the sentence
         out = []
         for element in range(len(sentenceTouple)):
             out.append((sentenceTouple[element],res[element]))
-
+        print(out)
         self.transformed_data["body"] = out
