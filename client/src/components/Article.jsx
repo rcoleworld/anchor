@@ -14,7 +14,7 @@ const Article = (props) => {
         return (
             <div className="article">
                 <div className="article-title">
-                    <h2> {article.headline} </h2>
+                    <h3> {article.headline} </h3>
                 </div>
                 <div className="article-info">
                     From {article.source.charAt(0).toUpperCase() + article.source.slice(1)} | By {article.authors.map((author, index) => ( " " + author ))}
