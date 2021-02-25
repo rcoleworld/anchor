@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.light-theme h1, .dark-theme h1, .blue-theme h1{
+h1 {
   font-size: 40px;
   font-family: gravesend-sans, sans-serif;
   font-style: normal;
@@ -10,6 +10,16 @@
   padding-top: 20px;
   padding-bottom: 10px;
   margin: 0;
+}
+
+h2 {
+  color: white;
+  font-size: 55px;
+  font-family: gravesend-sans, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  scroll-behavior: smooth;
+  text-decoration: none;
 }
 
 /* Light Theme */
