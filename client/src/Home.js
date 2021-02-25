@@ -98,7 +98,7 @@ const Home = () => {
         "http://127.0.0.1:5001/articles?orderBy=firstPublishDate&orderType=des"
       )
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           setArticles(response.data);
         } else {
           setArticles([defaultArticle]);
@@ -113,7 +113,7 @@ const Home = () => {
     axios
       .get("http://127.0.0.1:5001/articles?limit=3")
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           setTrendingArticles(response.data);
         } else {
           setTrendingArticles([defaultArticle]);
