@@ -27,7 +27,7 @@ class Categories extends Component {
                     </div>
                     <div className="categories-grid-item">
                         <a href="/health">
-                            <img className="categories-image" src="./images/categories/Health.jpg" alt="nothing here"></img>
+                            <img className="categories-image" src="./images/categories/health.jpg" alt="nothing here"></img>
                             <h1>Health</h1>
                         </a>
                         <a href="/science">
