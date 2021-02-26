@@ -41,7 +41,8 @@ const SearchResults = (props) => {
             date={article.firstPublishDate}
             source={article.publisher}
             authors={article.contributors}
-            bias={article.average}></ArticleThumb>
+            bias={article.average_bias}
+            sentiment={article.average_sentiment}></ArticleThumb>
         ))}
         </div>
     </div>

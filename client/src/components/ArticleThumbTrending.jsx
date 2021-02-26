@@ -6,23 +6,21 @@ import ProgressRing from './ProgressRing';
 const ArticleThumbTrending = (props) => {
     const [progress, setProgress] = useState(0);
     const [color, setColor] = useState('');
-    const colorArray = ['#7ea9e1', "#ed004f", "#00fcf0", "#d2fc00", "#7bff00", "#fa6900"];
-
-
-
-    const randomColor = () => {
-        return colorArray[Math.floor(Math.random() * colorArray.length)];
-      }
+    const colorArray = ['#03254c', "#960019", "#00fcf0", "#d2fc00", "#7bff00", "#fa6900"];
 
     const changeProgress = () => {
-        const progressValue = Math.floor(Math.random() * 101);
-        setProgress(progressValue);
-        const randomProgressColor = randomColor();
-        setColor(randomProgressColor);
+        var bias = Math.ceil(props.bias * 100);
+        setProgress(bias);
+        if(bias < 50) {
+            setColor(colorArray[0])
+        }
+        else {
+            setColor(colorArray[1])
+        }
     }
 
     useEffect(() => {
-        changeProgress(90);
+        changeProgress();
     })
 
         return (   
@@ -33,7 +31,7 @@ const ArticleThumbTrending = (props) => {
                 }}}>
                 
                 
-                <img className= "bias-thumbnail" src={props.thumbnail} alt = "nothing here"></img>
+                <img className= "bias-thumbnail" src={props.thumbnail} alt = " "></img>
                 <div>
                 <div className="bias-title">
                     {props.headline}
