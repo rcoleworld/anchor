@@ -91,7 +91,9 @@ const defaultArticle = {
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  const [trendingArticles, setTrendingArticles] = useState([]);
+  const [mostBiasArticles, setMostBiasArticles] = useState([]);
+  const [leastBiasArticles, setLeastBiasArticles] = useState([]);
+  // Recent Articles 
   useEffect(() => {
     axios
       .get(
@@ -108,21 +110,37 @@ const Home = () => {
         console.log(error);
       });
   }, []); //will change, it's to load all articles at once when the page loads /
-  // Request grabbing a list of articles
+  // Most Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?limit=3")
+      .get("http://home.flores.sh:5001/articles?orderBy=average&limit=3")
       .then((response) => {
         if (response.status === 200) {
-          setTrendingArticles(response.data);
+          setMostBiasArticles(response.data);
         } else {
-          setTrendingArticles([defaultArticle]);
+          setMostBiasArticles([defaultArticle]);
         }
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  // Least Bias Articles 
+  useEffect(() => {
+    axios
+      .get("http://home.flores.sh:5001/articles?orderBy=average&orderType=asc&limit=3")
+      .then((response) => {
+        if (response.status === 200) {
+          setLeastBiasArticles(response.data);
+        } else {
+          setLeastBiasArticles([defaultArticle]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="Home">
       <div className="title-class">
@@ -135,9 +153,9 @@ const Home = () => {
       <div className="bias-articles" id="trending">
         <div className="most-bias-articles">
           <h1>Most Bias</h1>
-          {trendingArticles !== undefined &&
-            trendingArticles.length > 0 &&
-            trendingArticles.map((article, index) => (
+          {mostBiasArticles !== undefined &&
+            mostBiasArticles.length > 0 &&
+            mostBiasArticles.map((article, index) => (
               <ArticleThumbTrending
                 headline={article.headline}
                 id={article._id}
@@ -155,9 +173,9 @@ const Home = () => {
         </div>
         <div className="least-bias-articles">
           <h1>Least Bias</h1>
-          {trendingArticles !== undefined &&
-            trendingArticles.length > 0 &&
-            trendingArticles.map((article, index) => (
+          {leastBiasArticles !== undefined &&
+            leastBiasArticles.length > 0 &&
+            leastBiasArticles.map((article, index) => (
               <ArticleThumbTrending
                 headline={article.headline}
                 id={article._id}
