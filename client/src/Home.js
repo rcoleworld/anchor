@@ -113,7 +113,7 @@ const Home = () => {
   // Most Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average&limit=3")
+      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&limit=3")
       .then((response) => {
         if (response.status === 200) {
           setMostBiasArticles(response.data);
@@ -128,7 +128,7 @@ const Home = () => {
   // Least Bias Articles 
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average&orderType=asc&limit=3")
+      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&orderType=asc&limit=3")
       .then((response) => {
         if (response.status === 200) {
           setLeastBiasArticles(response.data);
@@ -167,7 +167,8 @@ const Home = () => {
                 date={article.firstPublishDate}
                 source={article.publisher}
                 authors={article.contributors}
-                bias={article.average}
+                bias={article.average_bias}
+                sentiment={article.average_sentiment}
               ></ArticleThumbTrending>
             ))}
         </div>
@@ -187,7 +188,8 @@ const Home = () => {
                 date={article.firstPublishDate}
                 source={article.publisher}
                 authors={article.contributors}
-                bias={article.average}
+                bias={article.average_bias}
+                sentiment={article.average_sentiment}
               ></ArticleThumbTrending>
             ))}
         </div>
@@ -209,7 +211,8 @@ const Home = () => {
                 date={article.firstPublishDate}
                 source={article.publisher}
                 authors={article.contributors}
-                bias={article.average}
+                bias={article.average_bias}
+                sentiment={article.average_sentiment}
               ></ArticleThumb>
             ))}
         </div>
