@@ -12,10 +12,10 @@ const ArticleThumbTrending = (props) => {
         var bias = Math.ceil(props.bias * 100);
         setProgress(bias);
         if(bias < 50) {
-            setColor(colorArray[0])
+            setColor(colorArray[1])
         }
         else {
-            setColor(colorArray[1])
+            setColor(colorArray[0])
         }
     }
 
