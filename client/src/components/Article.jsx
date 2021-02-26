@@ -3,14 +3,19 @@ import '../stylesheets/articleview.css';
 
 const Article = (props) => {
     const article = props.location.state.article.props;
-    // var date = article.date.replace('T00:00:00.000Z','').split("-");
-    // date = new Date(date[0], date[1]-1, date[2]);
-    // const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
-    // const month = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
-    // const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
-    // date = month + " " + day + ", " + year
-    var sentences = [ ]
-    article.body.map((body_info, index) => (sentences.push(body_info.sentence)))
+    const datetime = article.date.split("T");
+    var date = datetime[0].split("-");
+    const time = datetime[1].split(":");
+    time[2] = time[2].replace('Z','');
+    date = new Date(date[0], date[1]-1, date[2]);
+    console.log(date);
+    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+    const month = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
+    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+    date = month + " " + day + ", " + year
+    var sentences = article.body.map((body_info) => (body_info[0]))
+    var biases = article.body.map((body_info) => (body_info[1]))
+    var avgBias = (article.bias * 100).toFixed(2);
         return (
             <div className="article">
                 <div className="article-title">
@@ -20,17 +25,17 @@ const Article = (props) => {
                     From {article.source.charAt(0).toUpperCase() + article.source.slice(1)} | By {article.authors.map((author, index) => ( " " + author ))}
                 </div>
                 <div className="article-date">
-                    {article.date}
+                    {date}
                 </div>
                 <div>
                     <img className="article-image" src={article.thumbnail} alt = ""></img>
                 </div>
                 <div className="article-body">
-                    {article.body}
+                {sentences.map((sentence) => ( sentence + " "))}
                 </div>
                 <div className="horizontal-line"></div>
                 <div className="article-rating">
-                    Bias: 15.67%    |    Objectivity: 89.34%    |    Sentiment: 67.24%
+                    Bias: {avgBias}%    |    Objectivity: tbd%    |    Sentiment: tbd%
                 </div>
                 <div className="horizontal-line"></div>
                 <div className="article-url">
