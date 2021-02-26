@@ -44,16 +44,17 @@ class BaseTransformer:
             newtuple.append(pt.remove_nonalphanumeric(sentenceTouple[element]))
 
         res = []
+        ave = 0
         for element in newtuple:
-            print(element)
             if element == None or element == "":
                 res.append(-1)
                 continue
             res.append(float(tf.sigmoid(self.model_loaded(tf.constant([element])))[0][0]))
-
+            ave += res[-1]
+        ave = ave/ len(res)
         #evaluate the sentence
         out = []
         for element in range(len(sentenceTouple)):
             out.append((sentenceTouple[element],res[element]))
-        print(out)
         self.transformed_data["body"] = out
+        self.transformed_data["average"] = ave
