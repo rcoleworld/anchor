@@ -36,7 +36,7 @@ const ArticleThumb = (props) => {
             }}>
 
                 <div className="unhovered">
-                    <img className="default-thumbnail"  alt=" "style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('+props.thumbnail+')', 
+                    <img className="default-thumbnail"  alt=" "style={{display: 'block', backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('+props.thumbnail+')', 
                 backgroundSize:'cover', backgroundPosition: '50% 50%', resize:'both'}}></img>
 
                     <div className="default-title">
