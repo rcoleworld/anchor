@@ -170,6 +170,7 @@ const Home = () => {
                 authors={article.contributors}
                 bias={article.average_bias}
                 sentiment={article.average_sentiment}
+                objectivity={article.average_objectivity}
               ></ArticleThumbTrending>
             ))}
         </div>
@@ -191,6 +192,7 @@ const Home = () => {
                 authors={article.contributors}
                 bias={article.average_bias}
                 sentiment={article.average_sentiment}
+                objectivity={article.average_objectivity}
               ></ArticleThumbTrending>
             ))}
         </div>
@@ -215,6 +217,7 @@ const Home = () => {
                 authors={article.contributors}
                 bias={article.average_bias}
                 sentiment={article.average_sentiment}
+                objectivity={article.average_objectivity}
               ></ArticleThumb>
             ))}
         </div>

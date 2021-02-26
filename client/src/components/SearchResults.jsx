@@ -42,7 +42,8 @@ const SearchResults = (props) => {
             source={article.publisher}
             authors={article.contributors}
             bias={article.average_bias}
-            sentiment={article.average_sentiment}></ArticleThumb>
+            sentiment={article.average_sentiment}
+            objectivity={article.average_objectivity}></ArticleThumb>
         ))}
         </div>
     </div>
