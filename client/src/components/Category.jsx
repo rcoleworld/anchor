@@ -42,6 +42,7 @@ const Category = ()  => {
                     authors = {article.contributors}
                     bias= {article.average_bias}
                     sentiment = {article.average_sentiment}
+                    objectivity={article.average_objectivity}
                 ></ArticleThumb>
                 ))
             }
