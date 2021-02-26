@@ -80,13 +80,14 @@ h2 {
 }
 
 .dark-theme #trending{
-  background-color: rgb(42, 49, 66);
+  background-color: transparent;
 }
 
 
 /* Blue Theme */
 .blue-theme {
-  background-image: url(./assets/gradient.jpg);
+  /* background-image: url(./assets/gradient.jpg); */
+  background-color:rgb(42, 49, 66);
   background-size: 100%;
   color: white;
   text-align: center;

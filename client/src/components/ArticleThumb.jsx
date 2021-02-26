@@ -19,6 +19,13 @@ const ArticleThumb = (props) => {
         }
     }
 
+//     pointer-events: none;
+//   width: 100%;
+//   height: 300px;
+//   background-size: contain;
+//   background-position: 50% 50%;
+//   resize: both;
+//   background-repeat: no-repeat;
     return (
         <div className="default-box-container" onMouseEnter={changeProgress}>
             <Link className="default-box" to={{
@@ -29,7 +36,8 @@ const ArticleThumb = (props) => {
             }}>
 
                 <div className="unhovered">
-                    <img className="default-thumbnail" src={props.thumbnail} alt=" "></img>
+                    <img className="default-thumbnail"  alt=" "style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('+props.thumbnail+')', 
+                backgroundSize:'cover', backgroundPosition: '50% 50%', resize:'both'}}></img>
 
                     <div className="default-title">
                         {props.headline}

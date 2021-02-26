@@ -151,8 +151,9 @@ const Home = () => {
         </a> */}
       </div>
       <div className="bias-articles" id="trending">
+        <div className="bias-articles-container">
         <div className="most-bias-articles">
-          <h1>Most Bias</h1>
+          <h1>Left Leaning</h1>
           {mostBiasArticles !== undefined &&
             mostBiasArticles.length > 0 &&
             mostBiasArticles.map((article, index) => (
@@ -173,7 +174,7 @@ const Home = () => {
             ))}
         </div>
         <div className="least-bias-articles">
-          <h1>Least Bias</h1>
+          <h1>Right Leaning</h1>
           {leastBiasArticles !== undefined &&
             leastBiasArticles.length > 0 &&
             leastBiasArticles.map((article, index) => (
@@ -192,6 +193,7 @@ const Home = () => {
                 sentiment={article.average_sentiment}
               ></ArticleThumbTrending>
             ))}
+        </div>
         </div>
       </div>
       <div className="recent-articles">

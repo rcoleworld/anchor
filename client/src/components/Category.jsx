@@ -39,7 +39,8 @@ const Category = ()  => {
                     date = {article.firstPublishDate}
                     source = {article.publisher}
                     authors = {article.contributors}
-                    bias= {article.average}
+                    bias= {article.average_bias}
+                    sentiment = {article.average_sentiment}
                 ></ArticleThumb>
                 ))
             }
