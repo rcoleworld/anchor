@@ -90,6 +90,9 @@ body {
 }
 
 .bias-thumbnail {
+  background-image:url(../assets/oops.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
   pointer-events: none;
   width: 250px;
   height: 250px;
@@ -99,7 +102,6 @@ body {
 
   .recent-articles {
     color: white;
-    background-size: 100%;
     margin: 0;
     padding: 5px;
   }
