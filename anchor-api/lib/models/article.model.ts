@@ -22,6 +22,7 @@ export interface IArticle extends Document {
   publisher: string;
   average_bias: number;
   average_sentiment: number;
+  average_objectivity: number;
 }
 
 const ArticleSchema: Schema = new Schema({
@@ -37,6 +38,7 @@ const ArticleSchema: Schema = new Schema({
   publisher: { type: String, required: false },
   average_bias: { type: Number, required: false},
   average_sentiment: { type: Number, required: false},
+  average_objectivity: {type: Number, required: false},
 });
 
 ArticleSchema.index({ '$**': 'text' });
