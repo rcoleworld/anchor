@@ -95,7 +95,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "http://127.0.0.1:5001/articles?orderBy=firstPublishDate&orderType=des"
+        "http://home.flores.sh:5001/articles?limit=18&orderBy=firstPublishDate&orderType=des"
       )
       .then((response) => {
         if (response.status === 200) {
@@ -111,7 +111,7 @@ const Home = () => {
   // Request grabbing a list of articles
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5001/articles?limit=3")
+      .get("http://home.flores.sh:5001/articles?limit=3")
       .then((response) => {
         if (response.status === 200) {
           setTrendingArticles(response.data);
@@ -127,10 +127,10 @@ const Home = () => {
     <div className="Home">
       <div className="title-class">
         <div className="home-title" id="anchor-title">Anchor News</div>
-        <div className="logo" id="anchor-title">Think Different</div>
-        <a id="scroll" href="#trending">
+        <div className="logo" id="anchor-title"></div>
+        {/* <a id="scroll" href="#trending">
           Get Started
-        </a>
+        </a> */}
       </div>
       <div className="bias-articles" id="trending">
         <div className="most-bias-articles">
@@ -141,14 +141,15 @@ const Home = () => {
               <ArticleThumbTrending
                 headline={article.headline}
                 id={article._id}
-                thumbnail={article.thumbnailUrl}
+                thumbnail={article.thumbnail}
                 section={article.section}
                 category={article.category}
                 body={article.body}
                 url={article.url}
                 date={article.firstPublishDate}
                 source={article.publisher}
-                authors={article.contributers}
+                authors={article.contributors}
+                bias={article.average}
               ></ArticleThumbTrending>
             ))}
         </div>
@@ -160,14 +161,15 @@ const Home = () => {
               <ArticleThumbTrending
                 headline={article.headline}
                 id={article._id}
-                thumbnail={article.thumbnailUrl}
+                thumbnail={article.thumbnail}
                 section={article.section}
                 category={article.category}
                 body={article.body}
                 url={article.url}
                 date={article.firstPublishDate}
                 source={article.publisher}
-                authors={article.contributers}
+                authors={article.contributors}
+                bias={article.average}
               ></ArticleThumbTrending>
             ))}
         </div>
@@ -181,14 +183,15 @@ const Home = () => {
               <ArticleThumb
                 headline={article.headline}
                 id={article._id}
-                thumbnail={article.thumbnailUrl}
+                thumbnail={article.thumbnail}
                 section={article.section}
                 category={article.category}
                 body={article.body}
                 url={article.url}
                 date={article.firstPublishDate}
                 source={article.publisher}
-                authors={article.contributers}
+                authors={article.contributors}
+                bias={article.average}
               ></ArticleThumb>
             ))}
         </div>
