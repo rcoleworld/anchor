@@ -30,18 +30,17 @@ class BaseTransformer:
     def run_ai(self):
         #get the raw data
         raw = self.transformed_data["body"]
-
+        passthrough = raw
         #clean out things that don't tokenize well
         raw = pt.remove_html(raw)
         raw = pt.remove_url(raw)
-        raw = pt.clean_lower(raw)
 
         #break into sentences
         sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
         sentenceTouple = sent_detector.tokenize(raw)
         newtuple = []
         for element in range(len(sentenceTouple)):
-            newtuple.append(pt.remove_nonalphanumeric(sentenceTouple[element]))
+            newtuple.append(pt.clean_lower(pt.remove_nonalphanumeric(sentenceTouple[element])))
 
         res = []
         ave = 0
@@ -49,7 +48,8 @@ class BaseTransformer:
             if element == None or element == "":
                 res.append(-1)
                 continue
-            res.append(float(tf.sigmoid(self.model_loaded(tf.constant([element])))[0][0]))
+            padded = pt.padInput(newtuple,element)
+            res.append(float(tf.sigmoid(self.model_loaded(tf.constant([padded])))[0][0]))
             ave += res[-1]
         ave = ave/ len(res)
         #evaluate the sentence
