@@ -4,6 +4,23 @@ from bs4 import BeautifulSoup
 import string
 import re
 
+def padInput(listOfStrings,currentString):
+	out = currentString
+	currentlength = len(currentString)
+	if currentlength > 512:
+		return out
+	index = listOfStrings.index(currentString)
+	while True:
+		if index == 0:
+			return out
+		if len(listOfStrings[index-1])+currentlength > 512:
+			return out
+
+		out = listOfStrings[index-1]+out
+		currentlength = len(out)
+		index = index-1
+
+
 def remove_url(text):
 	return re.sub(r'http\S+','',text)
 
