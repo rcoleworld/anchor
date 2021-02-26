@@ -45,21 +45,21 @@ const Article = (props) => {
         setBias(true);
       for (i = 0; i < maxBias.length; i++) {
         document.getElementById(maxBias[i]).style.backgroundColor = "#0066ff";
-        document.getElementById(maxBias[i]).innerHTML =
-          sentences[i] + "(" + (biases[maxBias[i]] * 100).toFixed(2) + "%)";
+        // document.getElementById(maxBias[i]).innerHTML =
+        //   sentences[i] + "(" + (biases[maxBias[i]] * 100).toFixed(2) + "%)";
         document.getElementById(minBias[i]).style.backgroundColor = "#ff4d4d";
-        document.getElementById(minBias[i]).innerHTML =
-          sentences[i] + "(" + (biases[minBias[i]] * 100).toFixed(2) + "%)";
+        // document.getElementById(minBias[i]).innerHTML =
+        //   sentences[i] + "(" + (biases[minBias[i]] * 100).toFixed(2) + "%)";
       }
     } else {
       setBias(false);
       for (i = 0; i < maxBias.length; i++) {
         document.getElementById(maxBias[i]).style.backgroundColor =
           "transparent";
-        document.getElementById(maxBias[i]).innerHTML = sentences[i];
+        // document.getElementById(maxBias[i]).innerHTML = sentences[i];
         document.getElementById(minBias[i]).style.backgroundColor =
           "transparent";
-        document.getElementById(minBias[i]).innerHTML = sentences[i];
+        // document.getElementById(minBias[i]).innerHTML = sentences[i];
       }
     }
   };
@@ -91,28 +91,28 @@ const Article = (props) => {
       for (i = 0; i < maxSentiment.length; i++) {
         document.getElementById(maxSentiment[i]).style.backgroundColor =
           "purple";
-        document.getElementById(maxSentiment[i]).innerHTML =
-          sentences[i] +
-          "(" +
-          (sentiments[maxSentiment[i]] * 100).toFixed(2) +
-          "%)";
+        // document.getElementById(maxSentiment[i]).innerHTML =
+        //   sentences[i] +
+        //   "(" +
+        //   (sentiments[maxSentiment[i]] * 100).toFixed(2) +
+        //   "%)";
         document.getElementById(minSentiment[i]).style.backgroundColor =
           "green";
-        document.getElementById(minSentiment[i]).innerHTML =
-          sentences[i] +
-          "(" +
-          (sentiments[minSentiment[i]] * 100).toFixed(2) +
-          "%)";
+        // document.getElementById(minSentiment[i]).innerHTML =
+        //   sentences[i] +
+        //   "(" +
+        //   (sentiments[minSentiment[i]] * 100).toFixed(2) +
+        //   "%)";
       }
     } else {
       setSentiment(false);
       for (i = 0; i < maxSentiment.length; i++) {
         document.getElementById(maxSentiment[i]).style.backgroundColor =
           "transparent";
-        document.getElementById(maxSentiment[i]).innerHTML = sentences[i];
+        // document.getElementById(maxSentiment[i]).innerHTML = sentences[i];
         document.getElementById(minSentiment[i]).style.backgroundColor =
           "transparent";
-        document.getElementById(minSentiment[i]).innerHTML = sentences[i];
+        // document.getElementById(minSentiment[i]).innerHTML = sentences[i];
       }
     }
   };
