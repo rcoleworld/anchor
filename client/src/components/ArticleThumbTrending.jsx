@@ -15,14 +15,14 @@ const ArticleThumbTrending = (props) => {
       }
 
     const changeProgress = () => {
-        const progressValue = Math.floor(Math.random() * 101);
-        setProgress(progressValue);
+        var bias = Math.ceil(props.bias * 100);
+        setProgress(bias);
         const randomProgressColor = randomColor();
         setColor(randomProgressColor);
     }
 
     useEffect(() => {
-        changeProgress(90);
+        changeProgress();
     })
 
         return (   
