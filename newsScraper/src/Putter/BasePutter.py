@@ -20,5 +20,4 @@ class BasePutter:
 
     def put_article(self, article):
         ret_val = requests.post(self.article_db_creds, json = article)
-        #print(article)
         print(ret_val)
