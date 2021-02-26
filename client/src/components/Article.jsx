@@ -19,100 +19,49 @@ const Article = (props) => {
   var averageBias = (article.bias * 100).toFixed(2);
   var avgerageSentiment = (article.sentiment * 100).toFixed(2);
 
+  const displaySentenceBias = (id) => {
+    if (bias){
+        if (biases[id] > .67) document.getElementById(id).style.backgroundColor = "#0066ff";
+        if (biases[id] < .15) document.getElementById(id).style.backgroundColor = "#ff4d4d";
+        document.getElementById(id).innerHTML = sentences[id] + "(" + (biases[id] * 100).toFixed(2) + "%)";
+    }
+  }
+
+  const hideSentenceBias = (id) => {
+    // setTimeout(() => {
+    document.getElementById(id).innerHTML = sentences[id];
+    // }, 2000)
+  }
+
   const displayBias = () => {
-      var i;
-      var maxBias = [];
-      var biasCopy = biases.slice();
-      for (i = 0; i < 5; i++) {
-        var max = Math.max(...biasCopy);
-        console.log("max: " + max);
-        var index = biases.indexOf(max);
-        maxBias.push(index);
-        // Change this later
-        biasCopy[index] = 0;
-      }
-      var minBias = [];
-      biasCopy = biases.slice();
-      for (i = 0; i < 5; i++) {
-        var min = Math.min(...biasCopy);
-        console.log("max: " + min);
-        index = biases.indexOf(min);
-        minBias.push(index);
-        // Change this later
-        biasCopy[index] = 1;
-      }
     if (!bias) {
         setBias(true);
-      for (i = 0; i < maxBias.length; i++) {
-        document.getElementById(maxBias[i]).style.backgroundColor = "#0066ff";
-        // document.getElementById(maxBias[i]).innerHTML =
-        //   sentences[i] + "(" + (biases[maxBias[i]] * 100).toFixed(2) + "%)";
-        document.getElementById(minBias[i]).style.backgroundColor = "#ff4d4d";
-        // document.getElementById(minBias[i]).innerHTML =
-        //   sentences[i] + "(" + (biases[minBias[i]] * 100).toFixed(2) + "%)";
+        var i;
+      for (i = 0; i < biases.length; i++) {
+          if (biases[i] > .67) document.getElementById(i).style.backgroundColor = "#0066ff";
+          if (biases[i] < .15) document.getElementById(i).style.backgroundColor = "#ff4d4d";
       }
     } else {
       setBias(false);
-      for (i = 0; i < maxBias.length; i++) {
-        document.getElementById(maxBias[i]).style.backgroundColor =
-          "transparent";
-        // document.getElementById(maxBias[i]).innerHTML = sentences[i];
-        document.getElementById(minBias[i]).style.backgroundColor =
-          "transparent";
-        // document.getElementById(minBias[i]).innerHTML = sentences[i];
+      for (i = 0; i < biases.length; i++) {
+          document.getElementById(i).style.backgroundColor = "transparent";
+          document.getElementById(i).innerHTML = sentences[i];
       }
     }
   };
 
   const displaySentiment = () => {
     var i;
-    var maxSentiment = [];
-    var sentimentCopy = sentiments.slice();
-    for (i = 0; i < 5; i++) {
-      var max = Math.max(...sentimentCopy);
-      console.log("max: " + max);
-      var index = sentiments.indexOf(max);
-      maxSentiment.push(index);
-      // Change this later
-      sentimentCopy[index] = 0;
-    }
-    var minSentiment = [];
-    sentimentCopy = sentiments.slice();
-    for (i = 0; i < 5; i++) {
-      var min = Math.min(...sentimentCopy);
-      console.log("min: " + min);
-      index = sentiments.indexOf(min);
-      minSentiment.push(index);
-      // Change this later
-      sentimentCopy[index] = 1;
-    }
     if (!sentiment) {
       setSentiment(true);
-      for (i = 0; i < maxSentiment.length; i++) {
-        document.getElementById(maxSentiment[i]).style.backgroundColor =
-          "purple";
-        // document.getElementById(maxSentiment[i]).innerHTML =
-        //   sentences[i] +
-        //   "(" +
-        //   (sentiments[maxSentiment[i]] * 100).toFixed(2) +
-        //   "%)";
-        document.getElementById(minSentiment[i]).style.backgroundColor =
-          "green";
-        // document.getElementById(minSentiment[i]).innerHTML =
-        //   sentences[i] +
-        //   "(" +
-        //   (sentiments[minSentiment[i]] * 100).toFixed(2) +
-        //   "%)";
+      for (i = 0; i < sentiments.length; i++) {
+        if (sentiments[i] > .67) document.getElementById(i).style.backgroundColor = "purple";
+        if (sentiments[i] < .15) document.getElementById(i).style.backgroundColor = "green";
       }
     } else {
       setSentiment(false);
-      for (i = 0; i < maxSentiment.length; i++) {
-        document.getElementById(maxSentiment[i]).style.backgroundColor =
-          "transparent";
-        // document.getElementById(maxSentiment[i]).innerHTML = sentences[i];
-        document.getElementById(minSentiment[i]).style.backgroundColor =
-          "transparent";
-        // document.getElementById(minSentiment[i]).innerHTML = sentences[i];
+      for (i = 0; i < sentiments.length; i++) {
+        document.getElementById(i).style.backgroundColor = "transparent";
       }
     }
   };
@@ -131,11 +80,10 @@ const Article = (props) => {
         <img className="article-image" src={article.thumbnail} alt=""></img>
       </div>
       <div className="article-body" id="article-body">
-        {/* {sentences.map((sentence) => ( sentence + " "))} */}
         {sentences !== undefined &&
           sentences.length > 0 &&
           sentences.map((sentence, index) => (
-            <span id={index}>{sentence}</span>
+            <span className = "article-sentence" id={index} onMouseOver={() => displaySentenceBias(index)} onMouseOut={() => hideSentenceBias(index)}>{sentence}</span>
           ))}
       </div>
       <div className="horizontal-line"></div>
