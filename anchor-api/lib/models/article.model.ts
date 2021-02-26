@@ -20,6 +20,8 @@ export interface IArticle extends Document {
   body: string | AIOutput[];
   category: string; // TODO make this an enum
   publisher: string;
+  average_bias: number;
+  average_sentiment: number;
 }
 
 const ArticleSchema: Schema = new Schema({
@@ -33,6 +35,8 @@ const ArticleSchema: Schema = new Schema({
   body: { type: Schema.Types.Mixed, required: true },
   category: { type: String, required: false }, // TODO make this an enum
   publisher: { type: String, required: false },
+  average_bias: { type: Number, required: false},
+  average_sentiment: { type: Number, required: false},
 });
 
 ArticleSchema.index({ '$**': 'text' });
