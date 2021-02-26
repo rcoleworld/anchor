@@ -25,6 +25,7 @@ const Category = ()  => {
         <div className="category-page">
             <img className="category-image" src={image_source}/>
             <h1 className="category-title">{category}</h1>
+            <div className="recent-articles">
             <div className="articles">
                 {articles !== undefined && articles.length > 0 &&
                 articles.map((article, index) => (
@@ -39,10 +40,12 @@ const Category = ()  => {
                     date = {article.firstPublishDate}
                     source = {article.publisher}
                     authors = {article.contributors}
-                    bias= {article.average}
+                    bias= {article.average_bias}
+                    sentiment = {article.average_sentiment}
                 ></ArticleThumb>
                 ))
             }
+            </div>
             </div>
     </div>
     )
