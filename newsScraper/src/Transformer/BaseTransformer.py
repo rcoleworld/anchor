@@ -14,6 +14,8 @@ class BaseTransformer:
     transformed_data = None
     saved_model_path = "./_combinedBaisDetection"
     model_loaded = tf.keras.models.load_model(saved_model_path)
+    saved_model_path_sentiment = "./_bigBert"
+    model_loaded_sentiment = tf.keras.models.load_model(saved_model_path_sentiment)
 
     def __init__(self):
         pass
@@ -30,31 +32,38 @@ class BaseTransformer:
     def run_ai(self):
         #get the raw data
         raw = self.transformed_data["body"]
-
+        passthrough = raw
         #clean out things that don't tokenize well
         raw = pt.remove_html(raw)
         raw = pt.remove_url(raw)
-        raw = pt.clean_lower(raw)
 
         #break into sentences
         sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
         sentenceTouple = sent_detector.tokenize(raw)
         newtuple = []
         for element in range(len(sentenceTouple)):
-            newtuple.append(pt.remove_nonalphanumeric(sentenceTouple[element]))
+            newtuple.append(pt.clean_lower(pt.remove_nonalphanumeric(sentenceTouple[element])))
 
         res = []
+        sent_res = []
         ave = 0
+        sent_ave = 0
         for element in newtuple:
             if element == None or element == "":
                 res.append(-1)
+                sent_res.append(-1)
                 continue
-            res.append(float(tf.sigmoid(self.model_loaded(tf.constant([element])))[0][0]))
+            padded = pt.padInput(newtuple,element)
+            res.append(float(tf.sigmoid(self.model_loaded(tf.constant([padded])))[0][0]))
+            sent_res.append(float(tf.sigmoid(self.model_loaded_sentiment(tf.constant([padded])))[0][0]))
             ave += res[-1]
-        ave = ave/ len(res)
+            sent_ave += sent_res[-1]
+        ave = ave/len(res)
+        sent_ave = sent_ave/len(sent_res)
         #evaluate the sentence
         out = []
         for element in range(len(sentenceTouple)):
-            out.append((sentenceTouple[element],res[element]))
+            out.append((sentenceTouple[element],res[element],sent_res[element]))
         self.transformed_data["body"] = out
-        self.transformed_data["average"] = ave
+        self.transformed_data["average_bias"] = ave
+        self.transformed_data["average_sentiment"] = sent_ave
