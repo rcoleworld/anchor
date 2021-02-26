@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { withRouter } from 'react-router-dom'
 import ArticleThumb from './ArticleThumb';
+import '../stylesheets/search.css';
 import axios from 'axios';
 
 const SearchResults = (props) => {
@@ -9,7 +10,7 @@ const SearchResults = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5001/articles/search/${props.location.state.search}`)
+      .get(`http://home.flores.sh:5001/articles/search/${props.location.state.search}`)
       .then((response) => {
           console.log(props.location.state.search);
         if (response.status === 200) {
@@ -23,24 +24,27 @@ const SearchResults = (props) => {
   }, [props.location.key]); // Reloads component everytime key is changed.
 
   return (
-    <>
+    <div className="search-page">
       <h1>Results</h1>
+      <div className="results">
       {articles !== undefined &&
         articles.length > 0 &&
         articles.map((article, index) => (
           <ArticleThumb
             headline={article.headline}
             id={article._id}
-            thumbnail={article.thumbnailUrl}
+            thumbnail={article.thumbnail}
             section={article.section}
             category={article.category}
             body={article.body}
             url={article.url}
             date={article.firstPublishDate}
             source={article.publisher}
-            authors={article.contributers}></ArticleThumb>
+            authors={article.contributors}
+            bias={article.average}></ArticleThumb>
         ))}
-    </>
+        </div>
+    </div>
   );
 };
 

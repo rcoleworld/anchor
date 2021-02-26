@@ -6,14 +6,12 @@ import '../stylesheets/categorypage.css';
 
 const Category = ()  => {
     var category = window.location.pathname.slice(1);
-    category = category.charAt(0).toUpperCase() + category.slice(1)
     var image_source = "../images/categories/" + category + ".jpg"
-
     const [articles, setArticles] = useState([]);
     console.log(articles)
     useEffect(() => {
-        axios.get('http://127.0.0.1:5001/articles?category=' + category).then((response) => {
-        if(response.status === 201) {
+        axios.get('http://home.flores.sh:5001/articles?category=' + category).then((response) => {
+        if(response.status === 200) {
             setArticles(response.data)
             console.log(response)
         }
@@ -21,6 +19,7 @@ const Category = ()  => {
             console.log(error)
         })
     }, [category]) 
+
 
     return (
         <div className="category-page">
@@ -32,14 +31,15 @@ const Category = ()  => {
                 <ArticleThumb
                     headline = {article.headline}
                     id = {article._id}
-                    thumbnail = {article.thumbnailUrl}
+                    thumbnail = {article.thumbnail}
                     section = {article.section}
                     category = {article.category}
                     body = {article.body}
                     url = {article.url}
                     date = {article.firstPublishDate}
                     source = {article.publisher}
-                    authors = {article.contributers}
+                    authors = {article.contributors}
+                    bias= {article.average}
                 ></ArticleThumb>
                 ))
             }
