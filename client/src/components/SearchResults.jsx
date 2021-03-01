@@ -10,7 +10,7 @@ const SearchResults = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://home.flores.sh:5001/articles/?limit=18&search/${props.location.state.search}`)
+      .get(`http://home.flores.sh:5001/articles/search/${props.location.state.search}?limit=18`)
       .then((response) => {
           console.log(props.location.state.search);
         if (response.status === 200) {
