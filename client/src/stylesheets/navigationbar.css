@@ -3,10 +3,6 @@ body {
     margin: 0;
 }
 
-:root{
-    --bg: rgb(80, 78, 78);
-}
-
 .navbar ul {
     list-style: none;
     padding: 0;
@@ -19,8 +15,11 @@ body {
 }
 
 .navbar {
+    position: sticky;
+    z-index: 9999;
+    top: 0;
     height: 60px;
-    background-color: var(--bg);
+    background-color: rgb(80, 78, 78);
     display: flex;
     font-family:'IBM Plex Mono','Inconsolata', monospace;
     width: 100%;

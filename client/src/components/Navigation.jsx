@@ -23,44 +23,44 @@ const Navigation = (props) => {
       setTheme('blue')
       passedTheme = 'blue-theme'
     }
-    document.getElementById("image").src = "../images/bulb-" + theme + ".png";  
+    document.getElementById("image").src = "../images/bulb-" + theme + ".png";
     props.parentCallback(passedTheme);
   }
   var theme_image = "../images/bulb-" + theme + ".png"
   return (
     <nav className="navbar">
-      <a className="navbar-left" href="/">
-        <img className="navbar-logo" src="../images/anchor-light.png" alt = ""></img>
-      </a>
+      <Link className="navbar-left" to={{ pathname: "/" }}>
+        <img className="navbar-logo" src="../images/anchor-light.png" alt=""></img>
+      </Link>
       <ul className="navbar-right">
         <li className="navbar-compare">
-          <a href="/about" className="navbar-link" >About</a>
+          <Link className="navbar-link" to={{ pathname: "/about", state: { theme: { theme } } }}>About</Link>
         </li>
         <li className="navbar-compare">
-          <a href="/compare" className="navbar-link">Compare
+          <Link className="navbar-link" to={{ pathname: "/compare" }}>Compare
             <img className="navbar-dropdown-arrow" src="../images/dropdown-arrow.png"></img>
-          </a>
-              <div className="navbar-compare-dropdown">
-                <a href="compare/sources" className="navbar-dropdown-item">Sources</a>
-                <a href="compare/articles" className="navbar-dropdown-item">Articles</a>
-            </div>
+          </Link>
+          <div className="navbar-compare-dropdown">
+            <Link className="navbar-dropdown-item" to={{ pathname: "/compare/sources" }}>Sources</Link>
+            <Link className="navbar-dropdown-item" to={{ pathname: "/compare/articles" }}>Articles</Link>
+          </div>
         </li>
         <li className="navbar-categories">
-        <a href="/categories" className="navbar-link">Categories
+          <Link className="navbar-link" to={{ pathname: "/categories" }}>Categories
           <img className="navbar-dropdown-arrow" src="../images/dropdown-arrow.png"></img>
-          </a>
+          </Link>
           <div className="navbar-category-dropdown" >
-              <Link className="navbar-dropdown-item" to = {{pathname: "/politics", state: {category: "politics"}}}>Politics</Link>
-              <Link className="navbar-dropdown-item" to = {{pathname: "/world", state: {category: "world"}}}>World</Link>
-              <Link className="navbar-dropdown-item" to = {{pathname: "/health", state: {category: "health"}}}>Health</Link>
-              <Link className="navbar-dropdown-item" to = {{pathname: "/science", state: {category: "science"}}}>Science</Link>
+            <Link className="navbar-dropdown-item" to={{ pathname: "/politics" }}>Politics</Link>
+            <Link className="navbar-dropdown-item" to={{ pathname: "/world" }}>World</Link>
+            <Link className="navbar-dropdown-item" to={{ pathname: "/health" }}>Health</Link>
+            <Link className="navbar-dropdown-item" to={{ pathname: "/science" }}>Science</Link>
             <div className="navbar-horizontal-line"></div>
-          <a href="/categories" className="navbar-dropdown-item">View All</a>
-        </div>
-      </li>
-        <input className = "navbar-search-bar" type="text" placeholder="Search" onChange={changeSearchString}/>
+            <Link className="navbar-dropdown-item" to={{ pathname: "/categories" }}>View All</Link>
+          </div>
+        </li>
+        <input className="navbar-search-bar" type="text" placeholder="Search" onChange={changeSearchString} />
         {/* UUID is unique everytime so everytime this link is clicked the key changes. This is used later in SearchResults.jsx to handle the react lifecycle of when this component updates. */}
-        <Link className="navbar-search-button" key={uuid()} to={{pathname: "/search", state: {search: searchString}}}><img className="navbar-search-icon" src="../images/search.png"></img></Link>
+        <Link className="navbar-search-button" key={uuid()} to={{ pathname: "/search", state: { search: searchString } }}><img className="navbar-search-icon" src="../images/search.png"></img></Link>
         <img id="image" className="navbar-color-mode-icon" src={theme_image} onClick={themeToggler}></img>
       </ul>
     </nav>
