@@ -4,6 +4,8 @@ import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
 import "./stylesheets/homepage.css";
 
+const { REACT_APP_DB_URL } = process.env;
+
 const defaultArticle = {
   contributers: ["Christina Vercelletto"],
   _id: "6019da8859883600218dbb70",
@@ -97,7 +99,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "http://home.flores.sh:5001/articles?limit=18&orderBy=firstPublishDate&orderType=des"
+        `${REACT_APP_DB_URL}/articles?limit=18&orderBy=firstPublishDate&orderType=des`
       )
       .then((response) => {
         if (response.status === 200) {
@@ -113,7 +115,7 @@ const Home = () => {
   // Most Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&limit=3")
+      .get(`${REACT_APP_DB_URL}/articles?orderBy=average_bias&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostBiasArticles(response.data);
@@ -128,7 +130,7 @@ const Home = () => {
   // Least Bias Articles 
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&orderType=asc&limit=3")
+      .get(`${REACT_APP_DB_URL}/articles?orderBy=average_bias&orderType=asc&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setLeastBiasArticles(response.data);
