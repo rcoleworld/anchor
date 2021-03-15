@@ -4,7 +4,7 @@
 .title-class {
   /* background-color: green; */
   margin: 0;
-  padding: 3%;
+  padding: 20px;
 }
 #anchor-title {
   margin: 0;
@@ -30,7 +30,7 @@
 #bias-title {
   text-align: center;
 }
-.most-bias-articles {
+.most-least-container {
   /* background-color: purple; */
   border: 1px solid var(--decor-color);
   padding: 1%;
@@ -83,13 +83,14 @@
   background-position: 50% 50%;
   background-size: cover;
   pointer-events: none;
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   object-fit: cover;
 }
 
 .bias-source {
   align-self: flex-end;
+  font-size: 12px;
 }
 /* Recent Stories  */
 .recent-articles {
