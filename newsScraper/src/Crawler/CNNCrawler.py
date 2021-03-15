@@ -5,8 +5,8 @@ import json
 class CNNCrawler(BaseCrawler):
     articles_list = []
 
-    def __init__(self, query="*", num_of_articles=500):
-        self.articles_list = self.get_articles("https://search.api.cnn.io/content?q=" + query + "&sort=newest&size=50&from={}", num_of_articles)
+    def __init__(self, config, num_of_articles=500):
+        self.articles_list = self.get_articles("https://search.api.cnn.io/content?q=" + config.get("query") + "&sort=newest&size=50&from={}", num_of_articles)
 
     def get_articles(self, endpoint: str, num_of_articles=500):
         articles = []

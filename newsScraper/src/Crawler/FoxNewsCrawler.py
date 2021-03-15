@@ -5,7 +5,7 @@ import json
 class FoxNewsCrawler(BaseCrawler):
     articles_list = []
 
-    def __init__(self, query="*", num_of_articles=500):
+    def __init__(self, config, num_of_articles=500):
         self.articles_list = self.get_articles("https://api.foxnews.com/v3/articles?size=50&from={}", num_of_articles)
 
     def get_articles(self, endpoint: str, num_of_articles=500):
