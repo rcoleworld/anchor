@@ -1,98 +1,81 @@
 @import url("https://use.typekit.net/kdg1ffy.css");
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: rgb(39, 62, 92);
-  color: black;
-}
+/* Title Class */
 .title-class {
-  background-repeat: no-repeat;
-  font-family: soleil, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  color: white;
-  background-size: 100%;
-  font-size: 25px;
+  /* background-color: green; */
   margin: 0;
-  padding: 0;
+  padding: 3%;
 }
-
-#scroll {
+#anchor-title {
+  margin: 0;
   color: white;
-  border: 1px solid white;
-  text-decoration: none;
-  font-size: 15px;
+  font-family: bebas-neue-by-fontfabric, sans-serif;
+  font-size:70px;
+  text-align: center;
+  font-weight: 700;
 }
-.home-title {
-  color: white;
-  font-size: 55px;
-  font-family: soleil, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  scroll-behavior: smooth;
-  text-decoration: none;
-}
+/*  */
 
+/* Bias Articles Class */
 .bias-articles {
-  margin: 0% 2%;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  /* background-color: red; */
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  color: white;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 
-.bias-articles-container {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  
+#bias-title {
+  text-align: center;
 }
 .most-bias-articles {
-  margin: 1% 2%;
+  /* background-color: purple; */
+  border: 1px solid var(--decor-color);
+  padding: 1%;
+  margin: 1%;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: center;
 }
-.least-bias-articles {
-  margin: 1% 2%;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: center;
-}
-
+/* Containers and Content for Bias/Sentiment/Objectivity */
 .bias-box {
+  /* background-color: chocolate; */
   margin: 1% 0%;
   display: flex;
-  width: 500px;
-  color: white;
+  flex-direction: row;
+  width: 450px;
   font-family: soleil;
   font-weight: 300px;
   font-size: 16px;
   text-decoration: none;
   flex-grow: 1;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.bias-title {
+.bias-content {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.bias-sub-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.bias-category {
+  align-self: flex-start;
+  font-family: gravesend-sans, sans-serif;
+}
+
+.bias-headline {
   pointer-events: none;
   font-family: soleil;
   font-weight: 300px;
   font-size: 16px;
-  padding: 5px;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  height: auto;
 }
 
 .bias-thumbnail {
@@ -100,16 +83,15 @@ body {
   background-position: 50% 50%;
   background-size: cover;
   pointer-events: none;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
-#trending {
-  width: 100%;
-  margin:0;
+.bias-source {
+  align-self: flex-end;
 }
-
+/* Recent Stories  */
 .recent-articles {
   color: white;
   margin: 0;
@@ -122,15 +104,12 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-
+/* Containers and Content for Recent Stories Thumbnails */
 .default-box-container {
-  
   display: grid;
   flex-grow: 1;
   width: 300px;
   height: 300px;
-  
-
   margin: 1% 1%;
 }
 .default-box {
@@ -138,8 +117,6 @@ body {
   text-decoration: none;
   display: grid;
   flex-grow: 1;
-  
-  
 }
 .default-title {
   pointer-events: none;
@@ -215,26 +192,6 @@ body {
   font-size: 16px;
 }
 
-.about-picture {
-  margin: 0px;
-  height: 220px;
-  width: auto;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.container {
-  width: 250px;
-  height: 300px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.center-category {
-  position: relative;
-  top: -40%;
-  font-weight: bold;
-}
-
 .svg {
   display: block;
   margin: 20px auto;
@@ -252,4 +209,13 @@ body {
   font-size: inherit;
   text-anchor: middle;
   fill: #fff;
+}
+
+#anchor-title::before, #anchor-title::after {
+  display: inline-block;
+    content: "";
+    border-top: .3rem solid var(--decor-color);
+    width: 25%;
+    margin: 0 1rem;
+    transform: translateY(-1rem);
 }

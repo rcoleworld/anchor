@@ -93,7 +93,7 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const [mostBiasArticles, setMostBiasArticles] = useState([]);
   const [leastBiasArticles, setLeastBiasArticles] = useState([]);
-  // Recent Articles 
+  // Recent Articles
   useEffect(() => {
     axios
       .get(
@@ -125,10 +125,12 @@ const Home = () => {
         console.log(error);
       });
   }, []);
-  // Least Bias Articles 
+  // Least Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&orderType=asc&limit=3")
+      .get(
+        "http://home.flores.sh:5001/articles?orderBy=average_bias&orderType=asc&limit=3"
+      )
       .then((response) => {
         if (response.status === 200) {
           setLeastBiasArticles(response.data);
@@ -144,59 +146,53 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="title-class">
-        <div className="home-title" id="anchor-title">Anchor News</div>
-        <div className="logo" id="anchor-title"></div>
-        {/* <a id="scroll" href="#trending">
-          Get Started
-        </a> */}
+        <p id="anchor-title">Anchor News</p>
       </div>
-      <div className="bias-articles" id="trending">
-        <div className="bias-articles-container">
-        <div className="most-bias-articles">
-          <h1>Left Leaning</h1>
-          {mostBiasArticles !== undefined &&
-            mostBiasArticles.length > 0 &&
-            mostBiasArticles.map((article, index) => (
-              <ArticleThumbTrending
-                headline={article.headline}
-                id={article._id}
-                thumbnail={article.thumbnail}
-                section={article.section}
-                category={article.category}
-                body={article.body}
-                url={article.url}
-                date={article.firstPublishDate}
-                source={article.publisher}
-                authors={article.contributors}
-                bias={article.average_bias}
-                sentiment={article.average_sentiment}
-                objectivity={article.average_objectivity}
-              ></ArticleThumbTrending>
-            ))}
-        </div>
-        <div className="least-bias-articles">
-          <h1>Right Leaning</h1>
-          {leastBiasArticles !== undefined &&
-            leastBiasArticles.length > 0 &&
-            leastBiasArticles.map((article, index) => (
-              <ArticleThumbTrending
-                headline={article.headline}
-                id={article._id}
-                thumbnail={article.thumbnail}
-                section={article.section}
-                category={article.category}
-                body={article.body}
-                url={article.url}
-                date={article.firstPublishDate}
-                source={article.publisher}
-                authors={article.contributors}
-                bias={article.average_bias}
-                sentiment={article.average_sentiment}
-                objectivity={article.average_objectivity}
-              ></ArticleThumbTrending>
-            ))}
-        </div>
-        </div>
+      <div className="bias-articles">
+          <div className="most-bias-articles">
+            <h1 id="bias-title">Left Leaning</h1>
+            {mostBiasArticles !== undefined &&
+              mostBiasArticles.length > 0 &&
+              mostBiasArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
+          <div className="most-bias-articles">
+            <h1 id="bias-title">Right Leaning</h1>
+            {leastBiasArticles !== undefined &&
+              leastBiasArticles.length > 0 &&
+              leastBiasArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
       </div>
       <div className="recent-articles">
         <h1> Recent Stories </h1>

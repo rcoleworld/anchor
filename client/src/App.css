@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+
+:root {
+  --decor-color: teal;
 }
 
 h1 {
@@ -24,10 +25,8 @@ h2 {
 
 /* Light Theme */
 .light-theme {
-  background-image: url(./assets/marble.jpg);
   background-size: 100%;
   color: black;
-  text-align: center;
 }
 
 .light-theme h1{
@@ -45,7 +44,7 @@ h2 {
 }
 
 .light-theme #trending{
-  background-color: rgb(177, 177, 177);
+  background-color: transparent;
 }
 
 .light-theme nav {
@@ -56,6 +55,18 @@ h2 {
   color: rgb(255, 255, 255);
 }
 
+.light-theme .bias-category {
+  color: var(--decor-color)
+}
+
+.light-theme .bias-source {
+  color: var(--decor-color);
+}
+
+.light-theme .bias-headline {
+  color: black;
+}
+
 
 /* Dark Theme */
 .dark-theme {
@@ -63,7 +74,6 @@ h2 {
   background-position: 50% 50%;
   background-size:100%;
   color: white;
-  text-align: center;
 }
 
 .dark-theme nav {
@@ -83,14 +93,24 @@ h2 {
   background-color: transparent;
 }
 
+.dark-theme .bias-headline {
+  color: white;
+}
+
+.dark-theme .bias-category {
+  color: var(--decor-color)
+}
+
+.dark-theme .bias-source {
+  color: var(--decor-color);
+}
+
 
 /* Blue Theme */
 .blue-theme {
-  /* background-image: url(./assets/gradient.jpg); */
   background-color:rgb(42, 49, 66);
   background-size: 100%;
   color: white;
-  text-align: center;
 }
 
 .blue-theme nav {
@@ -105,6 +125,18 @@ h2 {
 .blue-theme #recent-articles{
   background-image: url(./assets/gradient.jpg);
 
+}
+
+.blue-theme .bias-category {
+  color: var(--decor-color)
+}
+
+.blue-theme .bias-headline {
+  color: white;
+}
+
+.blue-theme .bias-source {
+  color: var(--decor-color)
 }
 
 @media (prefers-reduced-motion: no-preference) {
