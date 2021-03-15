@@ -28,7 +28,7 @@ const getArticleLimiter = rateLimit({
   });
 app.post('/articles', handleWebScraper);
 app.get('/articles', getArticleLimiter, getArticles);
-app.get(['/articles/search/:searchString','/articles/search'], searchArticles);
+app.get(['/articles/search/:searchString', '/articles/search'], getArticleLimiter, searchArticles);
 
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
