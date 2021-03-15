@@ -1,4 +1,5 @@
 import express from 'express';
+import rateLimit from 'express-rate-limit';
 import Article from './models/article.model';
 import { getArticles } from './controllers/getArticles';
 import {handleWebScraper } from './controllers/handleWebScraper';
@@ -19,8 +20,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const getArticleLimiter = rateLimit({
+    windowMs: 60 * 1000, // 60 second window
+    max: 10, // start blocking after 10 requests
+    message:
+      "Too many accounts created from this IP, please try again after an hour"
+  });
 app.post('/articles', handleWebScraper);
-app.get('/articles', getArticles);
+app.get('/articles', getArticleLimiter, getArticles);
 app.get(['/articles/search/:searchString','/articles/search'], searchArticles);
 
 app.listen(PORT, HOST);
