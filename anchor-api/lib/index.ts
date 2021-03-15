@@ -12,7 +12,7 @@ dotenv.config();
 const PORT: number = Number(process.env.PORT) || 5001;
 const HOST: string = process.env.HOST || '0.0.0.0';
 
-const MONGODB_URI = process.env.MongoDB_URL;
+const MONGODB_URI = process.env.MONGODB_URL;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
