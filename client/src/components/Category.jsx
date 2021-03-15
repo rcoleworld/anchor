@@ -4,7 +4,7 @@ import axios from 'axios';
 import ArticleThumb from './ArticleThumb';
 import '../stylesheets/categorypage.css';
 
-const { REACT_APP_DB_URL } = process.env;
+const { REACT_APP_SERVER_URL } = process.env;
 
 const Category = ()  => {
     var category = window.location.pathname.slice(1);
@@ -12,7 +12,7 @@ const Category = ()  => {
     const [articles, setArticles] = useState([]);
     console.log(articles)
     useEffect(() => {
-        axios.get(`${REACT_APP_DB_URL}/articles?category=` + category).then((response) => {
+        axios.get(`${REACT_APP_SERVER_URL}/articles?category=` + category).then((response) => {
         if(response.status === 200) {
             setArticles(response.data)
             console.log(response)
