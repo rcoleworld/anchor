@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(cors());
 
 const getArticleLimiter = rateLimit({
-    windowMs: 60 * 1000, // 60 second window
-    max: 10, // start blocking after 10 requests
+    windowMs: 60 * 500, // 30 second window
+    max: 5, // start blocking after 5 requests
     message:
       "Too many accounts created from this IP, please try again after an hour"
   });
