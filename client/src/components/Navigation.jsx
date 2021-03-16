@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 
 const Navigation = (props) => {
   const [searchString, setSearchString] = useState('');
-
+  
   const changeSearchString = (e) => {
     setSearchString(e.target.value);
   }
@@ -27,6 +27,13 @@ const Navigation = (props) => {
     props.parentCallback(passedTheme);
   }
   var theme_image = "../images/bulb-" + theme + ".png"
+  window.onload = () => {
+    document.getElementById("searchbar").addEventListener("keyup", function (e) {
+      if (e.code === 'Enter') {
+        document.getElementById("searchbutton").click();
+      }
+    });
+  }
   return (
     <nav className="navbar">
       <Link className="navbar-left" to={{ pathname: "/" }}>
@@ -58,9 +65,9 @@ const Navigation = (props) => {
             <Link className="navbar-dropdown-item" to={{ pathname: "/categories" }}>View All</Link>
           </div>
         </li>
-        <input className="navbar-search-bar" type="text" placeholder="Search" onChange={changeSearchString} />
+        <input id="searchbar" className="navbar-search-bar" type="text" placeholder="Search" onChange={changeSearchString} />
         {/* UUID is unique everytime so everytime this link is clicked the key changes. This is used later in SearchResults.jsx to handle the react lifecycle of when this component updates. */}
-        <Link className="navbar-search-button" key={uuid()} to={{ pathname: "/search", state: { search: searchString } }}><img className="navbar-search-icon" src="../images/search.png"></img></Link>
+        <Link id="searchbutton" className="navbar-search-button" key={uuid()} to={{ pathname: "/search", state: { search: searchString } }}><img className="navbar-search-icon" src="../images/search.png"></img></Link>
         <img id="image" className="navbar-color-mode-icon" src={theme_image} onClick={themeToggler}></img>
       </ul>
     </nav>
