@@ -1,6 +1,7 @@
 
 :root {
   --decor-color: teal;
+  --background-color: #blue;
 }
 
 h1 {
@@ -70,7 +71,7 @@ h2 {
 
 /* Dark Theme */
 .dark-theme {
-  background:rgb(36, 36, 36);
+  background:#111111;
   background-position: 50% 50%;
   background-size:100%;
   color: white;
