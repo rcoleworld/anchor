@@ -10,7 +10,7 @@
   margin: 0;
   color: white;
   font-family: bebas-neue-by-fontfabric, sans-serif;
-  font-size:70px;
+  font-size: 70px;
   text-align: center;
   font-weight: 700;
 }
@@ -32,7 +32,7 @@
 }
 .most-least-container {
   /* background-color: purple; */
-  border: 1px solid var(--decor-color);
+  /* border: 1px solid var(--decor-color); */
   padding: 1%;
   margin: 1%;
   display: flex;
@@ -55,7 +55,7 @@
 .bias-content {
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   flex-grow: 1;
   padding: 5px;
 }
@@ -72,7 +72,7 @@
 }
 
 .bias-headline {
-  pointer-events: none;
+  text-decoration: none;
   font-family: soleil;
   font-weight: 300px;
   font-size: 16px;
@@ -133,9 +133,6 @@
     0px 0px 1px black;
 }
 
-.default-box :hover {
-  color: #c0c9be;
-}
 
 .default-thumbnail :hover {
   color: white;
@@ -212,11 +209,27 @@
   fill: #fff;
 }
 
-#anchor-title::before, #anchor-title::after {
+#anchor-title::before,
+#anchor-title::after {
   display: inline-block;
-    content: "";
-    border-top: .3rem solid var(--decor-color);
-    width: 25%;
-    margin: 0 1rem;
-    transform: translateY(-1rem);
+  content: "";
+  border-top: 0.3rem solid var(--decor-color);
+  width: 25%;
+  margin: 0 1rem;
+  transform: translateY(-1rem);
 }
+.hr {
+  display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid var(--decor-color);
+    margin: 1em 0;
+    padding: 0;
+}
+
+.vertical-row {
+  Float:left;
+  height:650px;
+  width:1px; /* edit this if you want */
+  background-color: var(--decor-color);
+ } 

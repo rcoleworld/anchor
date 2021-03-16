@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../stylesheets/homepage.css';
 import ProgressRing from './ProgressRing'
+
+import '../stylesheets/homepage.css';
 
 const ArticleThumb = (props) => {
     const [progress, setProgress] = useState(0);

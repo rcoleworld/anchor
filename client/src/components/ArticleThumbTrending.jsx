@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../stylesheets/homepage.css";
 import ProgressRing from "./ProgressRing";
+
+import '../stylesheets/homepage.css';
 
 const ArticleThumbTrending = (props) => {
   const [progress, setProgress] = useState(0);
@@ -25,30 +26,52 @@ const ArticleThumbTrending = (props) => {
     }
   };
 
+  var sourceImage = "./images/" + props.source + ".png";
+
   useEffect(() => {
     changeProgress();
   });
 
   return (
-    <Link
-      className="bias-box"
-      to={{
-        pathname: `${props.section}/${props.id}`,
-        state: {
-          article: { props },
-        },
-      }}
-    >
-      <img className="bias-thumbnail" src={props.thumbnail} alt=" "></img>
-      <div className="bias-content">
-        <div className="bias-category">{props.category}</div>
-        <div className="bias-sub-content">
-          <div className="bias-headline">{props.headline}</div>
-          {/* <div className="bias-description">Description</div> */}
-          <div className="bias-source">Source: {props.source}</div>
+    <div>
+      <div className="hr"></div>
+      <div className="bias-box">
+        <Link to={{
+                pathname: `${props.section}/${props.id}`,
+                state: {
+                  article: { props },
+                },
+              }}>
+        <img className="bias-thumbnail" src={props.thumbnail} alt=" "></img>
+        </Link>
+        <div className="bias-content">
+          <div className="bias-category">{props.category}</div>
+          <div className="bias-sub-content">
+            <Link
+              className="bias-headline"
+              to={{
+                pathname: `${props.section}/${props.id}`,
+                state: {
+                  article: { props },
+                },
+              }}
+            >
+              {props.headline}
+            </Link>
+            {/* <div className="bias-description">Description</div> */}
+            <div className="bias-source">
+              <img
+                id="img-source"
+                src={sourceImage}
+                alt=""
+                width="25"
+                height="25"
+              ></img>
+            </div>
+          </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

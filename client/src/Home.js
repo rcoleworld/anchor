@@ -106,7 +106,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "http://home.flores.sh:5001/articles?limit=18&orderBy=firstPublishDate&orderType=des"
+        "http://home.flores.sh:5001/articles?limit=28&orderBy=firstPublishDate&orderType=des"
       )
       .then((response) => {
         if (response.status === 200) {
@@ -249,6 +249,7 @@ const Home = () => {
                 ></ArticleThumbTrending>
               ))}
           </div>
+          {/* <div className="vertical-row"></div> */}
           <div className="most-least-container">
             <h1 id="bias-title">Right Leaning</h1>
             {leastBiasArticles !== undefined &&
