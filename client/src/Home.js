@@ -93,20 +93,22 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const [mostBiasArticles, setMostBiasArticles] = useState([]);
   const [leastBiasArticles, setLeastBiasArticles] = useState([]);
+  const [rateLimited, setRateLimited] = useState(false);
   // Recent Articles 
   useEffect(() => {
     axios
       .get(
-        "http://home.flores.sh:5001/articles?limit=18&orderBy=firstPublishDate&orderType=des"
+        "http://localhost:5001/articles?limit=18&orderBy=firstPublishDate&orderType=des"
       )
       .then((response) => {
         if (response.status === 200) {
           setArticles(response.data);
-        } else {
+        }else {
           setArticles([defaultArticle]);
         }
       })
       .catch((error) => {
+        if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
   }, []); //will change, it's to load all articles at once when the page loads /
@@ -142,6 +144,8 @@ const Home = () => {
   }, []);
 
   return (
+    <>
+  {!rateLimited ?  
     <div className="Home">
       <div className="title-class">
         <div className="home-title" id="anchor-title">Anchor News</div>
@@ -222,7 +226,8 @@ const Home = () => {
             ))}
         </div>
       </div>
-    </div>
+    </div> : <h1>Too many request, try again in a bit!</h1>}
+    </>
   );
 };
 export default Home;
