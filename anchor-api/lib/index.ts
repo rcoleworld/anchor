@@ -1,7 +1,7 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import Article from './models/article.model';
-import { getArticles } from './controllers/getArticles';
+import { getArticles, getSources } from './controllers/getArticles';
 import {handleWebScraper } from './controllers/handleWebScraper';
 import { searchArticles } from './controllers/searchArticles';
 import dotenv from 'dotenv';
@@ -27,8 +27,9 @@ const getArticleLimiter = rateLimit({
       "Too many accounts created from this IP, please try again after an hour"
   });
 app.post('/articles', handleWebScraper);
-app.get('/articles', getArticleLimiter, getArticles);
-app.get(['/articles/search/:searchString', '/articles/search'], getArticleLimiter, searchArticles);
+app.get('/articles', getArticles);
+app.get(['/articles/search/:searchString','/articles/search'], searchArticles);
+app.get('/sources', getSources);
 
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
