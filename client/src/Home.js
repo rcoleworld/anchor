@@ -4,6 +4,8 @@ import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
 import "./stylesheets/homepage.css";
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 const defaultArticle = {
   contributers: ["Christina Vercelletto"],
   _id: "6019da8859883600218dbb70",
@@ -103,19 +105,20 @@ const Home = () => {
   const [leastObjectivityArticles, setLeastObjectivityArticles] = useState([]);
 
   // Recent Articles
+  const [rateLimited, setRateLimited] = useState(false);
+  // Recent Articles 
   useEffect(() => {
     axios
-      .get(
-        "http://home.flores.sh:5001/articles?limit=28&orderBy=firstPublishDate&orderType=des"
-      )
+      .get(`${REACT_APP_SERVER_URL}/articles?limit=18&orderBy=firstPublishDate&orderType=des`)
       .then((response) => {
         if (response.status === 200) {
           setArticles(response.data);
-        } else {
+        }else {
           setArticles([defaultArticle]);
         }
       })
       .catch((error) => {
+        if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
   }, []); //will change, it's to load all articles at once when the page loads 
@@ -123,7 +126,7 @@ const Home = () => {
   // Most Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_bias&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostBiasArticles(response.data);
@@ -138,9 +141,7 @@ const Home = () => {
   // Least Bias Articles
   useEffect(() => {
     axios
-      .get(
-        "http://home.flores.sh:5001/articles?orderBy=average_bias&orderType=asc&limit=3"
-      )
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_bias&orderType=asc&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setLeastBiasArticles(response.data);
@@ -222,6 +223,8 @@ const Home = () => {
 
 
   return (
+    <>
+  {!rateLimited ?  
     <div className="Home">
       <div className="title-class">
         <p id="anchor-title">Anchor News</p>
@@ -389,7 +392,8 @@ const Home = () => {
             ))}
         </div>
       </div>
-    </div>
+    </div> : <h1>Too many request, try again in a bit!</h1>}
+    </>
   );
 };
 export default Home;
