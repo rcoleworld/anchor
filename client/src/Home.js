@@ -4,6 +4,8 @@ import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
 import "./stylesheets/homepage.css";
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 const defaultArticle = {
   contributers: ["Christina Vercelletto"],
   _id: "6019da8859883600218dbb70",
@@ -90,30 +92,41 @@ const defaultArticle = {
 };
 
 const Home = () => {
+  // Set Recent Articles
   const [articles, setArticles] = useState([]);
+  // Set Right and Left Articles
   const [mostBiasArticles, setMostBiasArticles] = useState([]);
   const [leastBiasArticles, setLeastBiasArticles] = useState([]);
+  // Set Least/Most Sentiment Articles
+  const [mostSentimentArticles, setMostSentimentArticles] = useState([]);
+  const [leastSentimentArticles, setLeastSentimentArticles] = useState([]);
+  // Set Least/Most Objectivity Articles
+  const [mostObjectivityArticles, setMostObjectivityArticles] = useState([]);
+  const [leastObjectivityArticles, setLeastObjectivityArticles] = useState([]);
+
+  // Recent Articles
+  const [rateLimited, setRateLimited] = useState(false);
   // Recent Articles 
   useEffect(() => {
     axios
-      .get(
-        "http://home.flores.sh:5001/articles?limit=18&orderBy=firstPublishDate&orderType=des"
-      )
+      .get(`${REACT_APP_SERVER_URL}/articles?limit=18&orderBy=firstPublishDate&orderType=des`)
       .then((response) => {
         if (response.status === 200) {
           setArticles(response.data);
-        } else {
+        }else {
           setArticles([defaultArticle]);
         }
       })
       .catch((error) => {
+        if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
-  }, []); //will change, it's to load all articles at once when the page loads /
+  }, []); //will change, it's to load all articles at once when the page loads 
+
   // Most Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_bias&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostBiasArticles(response.data);
@@ -125,10 +138,10 @@ const Home = () => {
         console.log(error);
       });
   }, []);
-  // Least Bias Articles 
+  // Least Bias Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_bias&orderType=asc&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_bias&orderType=asc&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setLeastBiasArticles(response.data);
@@ -141,62 +154,219 @@ const Home = () => {
       });
   }, []);
 
+  // Most Sentiment Articles
+  useEffect(() => {
+    axios
+      .get("http://home.flores.sh:5001/articles?orderBy=average_sentiment&limit=3")
+      .then((response) => {
+        if (response.status === 200) {
+          setMostSentimentArticles(response.data);
+        } else {
+          setMostSentimentArticles([defaultArticle]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  // Least Sentiment Articles
+  useEffect(() => {
+    axios
+      .get(
+        "http://home.flores.sh:5001/articles?orderBy=average_sentiment&orderType=asc&limit=3"
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          setLeastSentimentArticles(response.data);
+        } else {
+          setLeastSentimentArticles([defaultArticle]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // Most Sentiment Articles
+  useEffect(() => {
+    axios
+      .get("http://home.flores.sh:5001/articles?orderBy=average_objectivity&limit=3")
+      .then((response) => {
+        if (response.status === 200) {
+          setMostObjectivityArticles(response.data);
+        } else {
+          setMostObjectivityArticles([defaultArticle]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  // Least Sentiment Articles
+  useEffect(() => {
+    axios
+      .get(
+        "http://home.flores.sh:5001/articles?orderBy=average_objectivity&orderType=asc&limit=3"
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          setLeastObjectivityArticles(response.data);
+        } else {
+          setLeastObjectivityArticles([defaultArticle]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
+
   return (
+    <>
+  {!rateLimited ?  
     <div className="Home">
       <div className="title-class">
-        <div className="home-title" id="anchor-title">Anchor News</div>
-        <div className="logo" id="anchor-title"></div>
-        {/* <a id="scroll" href="#trending">
-          Get Started
-        </a> */}
+        <p id="anchor-title">Anchor News</p>
       </div>
-      <div className="bias-articles" id="trending">
-        <div className="bias-articles-container">
-        <div className="most-bias-articles">
-          <h1>Left Leaning</h1>
-          {mostBiasArticles !== undefined &&
-            mostBiasArticles.length > 0 &&
-            mostBiasArticles.map((article, index) => (
-              <ArticleThumbTrending
-                headline={article.headline}
-                id={article._id}
-                thumbnail={article.thumbnail}
-                section={article.section}
-                category={article.category}
-                body={article.body}
-                url={article.url}
-                date={article.firstPublishDate}
-                source={article.publisher}
-                authors={article.contributors}
-                bias={article.average_bias}
-                sentiment={article.average_sentiment}
-                objectivity={article.average_objectivity}
-              ></ArticleThumbTrending>
-            ))}
-        </div>
-        <div className="least-bias-articles">
-          <h1>Right Leaning</h1>
-          {leastBiasArticles !== undefined &&
-            leastBiasArticles.length > 0 &&
-            leastBiasArticles.map((article, index) => (
-              <ArticleThumbTrending
-                headline={article.headline}
-                id={article._id}
-                thumbnail={article.thumbnail}
-                section={article.section}
-                category={article.category}
-                body={article.body}
-                url={article.url}
-                date={article.firstPublishDate}
-                source={article.publisher}
-                authors={article.contributors}
-                bias={article.average_bias}
-                sentiment={article.average_sentiment}
-                objectivity={article.average_objectivity}
-              ></ArticleThumbTrending>
-            ))}
-        </div>
-        </div>
+      <div className="bias-articles">
+          <div className="most-least-container">
+            <h1 id="bias-title">Left Leaning</h1>
+            {mostBiasArticles !== undefined &&
+              mostBiasArticles.length > 0 &&
+              mostBiasArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
+          {/* <div className="vertical-row"></div> */}
+          <div className="most-least-container">
+            <h1 id="bias-title">Right Leaning</h1>
+            {leastBiasArticles !== undefined &&
+              leastBiasArticles.length > 0 &&
+              leastBiasArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
+      </div>
+      <div className="bias-articles">
+          <div className="most-least-container">
+            <h1 id="bias-title">Most Sentiment</h1>
+            {mostSentimentArticles !== undefined &&
+              mostSentimentArticles.length > 0 &&
+              mostSentimentArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
+          <div className="most-least-container">
+            <h1 id="bias-title">Least Sentiment</h1>
+            {leastSentimentArticles !== undefined &&
+              leastSentimentArticles.length > 0 &&
+              leastSentimentArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
+      </div>
+      <div className="bias-articles">
+          <div className="most-least-container">
+            <h1 id="bias-title">Most Objective</h1>
+            {mostObjectivityArticles !== undefined &&
+              mostObjectivityArticles.length > 0 &&
+              mostObjectivityArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
+          <div className="most-least-container">
+            <h1 id="bias-title">Least Objective</h1>
+            {leastObjectivityArticles !== undefined &&
+              leastObjectivityArticles.length > 0 &&
+              leastObjectivityArticles.map((article, index) => (
+                <ArticleThumbTrending
+                  headline={article.headline}
+                  id={article._id}
+                  thumbnail={article.thumbnail}
+                  section={article.section}
+                  category={article.category}
+                  body={article.body}
+                  url={article.url}
+                  date={article.firstPublishDate}
+                  source={article.publisher}
+                  authors={article.contributors}
+                  bias={article.average_bias}
+                  sentiment={article.average_sentiment}
+                  objectivity={article.average_objectivity}
+                ></ArticleThumbTrending>
+              ))}
+          </div>
       </div>
       <div className="recent-articles">
         <h1> Recent Stories </h1>
@@ -222,7 +392,8 @@ const Home = () => {
             ))}
         </div>
       </div>
-    </div>
+    </div> : <h1>Too many request, try again in a bit!</h1>}
+    </>
   );
 };
 export default Home;
