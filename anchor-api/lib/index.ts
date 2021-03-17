@@ -2,8 +2,11 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import Article from './models/article.model';
 import { getArticles } from './controllers/getArticles';
+import { getSources } from './controllers/getSources';
+import {handleWebScraper } from './controllers/handleWebScraper';
+
 import {getAverageStats} from './controllers/getStats';
-import { handleWebScraper } from './controllers/handleWebScraper';
+
 import { searchArticles } from './controllers/searchArticles';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
