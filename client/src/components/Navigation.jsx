@@ -11,17 +11,29 @@ const Navigation = (props) => {
   }
   const [theme, setTheme] = useState('blue');
   const themeToggler = () => {
+    var root = document.documentElement;
+
     if (theme == 'blue') {
       setTheme('light');
       var passedTheme = 'light-theme'
+
+      root.style.setProperty('--background-color', 'white');
+      root.style.setProperty('--text-color', 'black');
     }
     else if (theme == 'light') {
       setTheme('dark')
       passedTheme = 'dark-theme'
+
+      root.style.setProperty('--background-color', '#111111');
+      root.style.setProperty('--text-color', 'white');
+
     }
     else {
       setTheme('blue')
       passedTheme = 'blue-theme'
+
+      root.style.setProperty('--background-color', 'rgb(42, 49, 66)');
+      root.style.setProperty('--text-color', 'white');
     }
     document.getElementById("image").src = "../images/bulb-" + theme + ".png";
     props.parentCallback(passedTheme);
