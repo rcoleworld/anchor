@@ -14,7 +14,6 @@ const SpectrumBar = props => {
     useEffect(() => {
         var ball = document.getElementById(ballId);
         var margin = 680-(percentage/100)*680;
-        console.log(margin);
         ball.style.marginLeft = margin + "px"
         var spectrum = document.getElementById(id);
         spectrum.style.backgroundImage = 'linear-gradient(to right, '+ colors[0] + ', grey, '+ colors[1] +')';

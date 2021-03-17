@@ -32,9 +32,9 @@ const Article = (props) => {
   }
 
   const hideSentenceBias = (id) => {
-    // setTimeout(() => {
-    document.getElementById(id).innerHTML = sentences[id];
-    // }, 2000)
+    setTimeout(() => {
+      document.getElementById(id).innerHTML = sentences[id];
+    }, 2000)
   }
 
   const displayBias = () => {
@@ -45,12 +45,16 @@ const Article = (props) => {
         if (biases[i] > .67) document.getElementById(i).style.backgroundColor = "#0066ff";
         if (biases[i] < .15) document.getElementById(i).style.backgroundColor = "#ff4d4d";
       }
+      document.getElementsByClassName("article-analysis-bias")[0].style.display = "block";
+      document.getElementsByClassName("horizontal-line-bias")[0].style.display = "block";
     } else {
       setBias(false);
       for (i = 0; i < biases.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
         document.getElementById(i).innerHTML = sentences[i];
       }
+      document.getElementsByClassName("article-analysis-bias")[0].style.display = "none";
+      document.getElementsByClassName("horizontal-line-bias")[0].style.display = "none";
     }
   };
 
@@ -62,11 +66,16 @@ const Article = (props) => {
         if (sentiments[i] > .67) document.getElementById(i).style.backgroundColor = "#55185b";
         if (sentiments[i] < .15) document.getElementById(i).style.backgroundColor = "#185b32";
       }
+      document.getElementsByClassName("article-analysis-sentiment")[0].style.display = "block";
+      document.getElementsByClassName("horizontal-line-sentiment")[0].style.display = "block";
+      window.scrollBy(0, -500);
     } else {
       setSentiment(false);
       for (i = 0; i < sentiments.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
       }
+      document.getElementsByClassName("article-analysis-sentiment")[0].style.display = "none";
+      document.getElementsByClassName("horizontal-line-sentiment")[0].style.display = "none";
     }
   };
 
@@ -78,11 +87,15 @@ const Article = (props) => {
         if (objectivitys[i] > .67) document.getElementById(i).style.backgroundColor = "#e28743";
         if (objectivitys[i] < .15) document.getElementById(i).style.backgroundColor = "#154c79";
       }
+      document.getElementsByClassName("article-analysis-objectivity")[0].style.display = "block";
+      document.getElementsByClassName("horizontal-line-objectivity")[0].style.display = "block";
     } else {
       setObjectivity(false);
       for (i = 0; i < objectivitys.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
       }
+      document.getElementsByClassName("article-analysis-objectivity")[0].style.display = "none";
+      document.getElementsByClassName("horizontal-line-objectivity")[0].style.display = "none";
     }
   };
 
@@ -106,44 +119,50 @@ const Article = (props) => {
             <span className="article-sentence" id={index} onMouseOver={() => displaySentenceBias(index)} onMouseOut={() => hideSentenceBias(index)}>{sentence}</span>
           ))}
       </div>
-      <div className="horizontal-line"></div>
-      <button className="bias-viewer" onClick={displayBias}>
-        View Bias
+      <div className="article-analysis">
+        <button className="article-analysis-button" onClick={displayBias}>
+          View Bias
+      </button>|
+        <button className="article-analysis-button" onClick={displaySentiment}>
+          View Sentiment
+      </button>|
+        <button className="article-analysis-button" onClick={displayObjectivity}>
+          View Objectivity
       </button>
-      <button className="sentiment-viewer" onClick={displaySentiment}>
-        View Sentiment
-      </button>
-      <button className="objectivity-viewer" onClick={displayObjectivity}>
-        View Objectivity
-      </button>
-      <div className="horizontal-line"></div>
+      </div>
+      <div className="article-analysis-bias">
         <SpectrumBar
-        id="spectrum-bias"
-        ballId="spectrum-ball-bias"
+          id="spectrum-bias"
+          ballId="spectrum-ball-bias"
           name="Bias"
           percentage={averageBias}
           colors={['#0066ff', '#ff4d4d']}
           subtitles={["Left Leaning", "Unbiased", "Right Leaning"]}
         />
-      <div className="horizontal-line"></div>
+      </div>
+      <div className="horizontal-line-bias"></div>
+      <div className="article-analysis-sentiment">
         <SpectrumBar
-        id="spectrum-sentiment"
-        ballId="spectrum-ball-sentiment"
+          id="spectrum-sentiment"
+          ballId="spectrum-ball-sentiment"
           name="Sentiment"
           percentage={avgerageSentiment}
           colors={['#55185b', '#185b32']}
-          subtitles={["No Sentiment", "Some Sentiment", "More Sentiment"]}
+          subtitles={["Negative", "Neutral", "Positive"]}
         />
-        <div className="horizontal-line"></div>
+      </div>
+      <div className="horizontal-line-sentiment"></div>
+      <div className="article-analysis-objectivity">
         <SpectrumBar
-        id="spectrum-objectivity"
-        ballId="spectrum-ball-objectivity"
+          id="spectrum-objectivity"
+          ballId="spectrum-ball-objectivity"
           name="Objectivity"
           percentage={avgerageObjectivity}
           colors={['#e28743', '#154c79']}
-          subtitles={["No Objectivity", "Some Objectivity", "More Objectivity"]}
+          subtitles={["Subjective", "Ambiguous", "Objective"]}
         />
-      <div className="horizontal-line"></div>
+      </div>
+      <div className="horizontal-line-objectivity"></div>
       <div className="article-url">
         Find this article at:{" "}
         <a target="_blank" href={article.url}>
