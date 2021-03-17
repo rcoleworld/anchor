@@ -1,0 +1,31 @@
+.compare-page {
+  text-align: center;
+}
+
+.sources-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.source-grid {
+  border: 1px solid var(--decor-color);
+  margin: 0% 1%;
+  padding: 15px;
+}
+.source-grid :hover {
+  opacity: 50%;
+}
+
+#sources-button {
+    display: none;
+    font-size: 30px;
+}
+
+.compare-sources-button {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 10px;
+}
