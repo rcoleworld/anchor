@@ -1,8 +1,10 @@
 .categories-page-title {
+    font-family: bebas-neue-by-fontfabric, sans-serif;
     font-size:70px;
     font-weight: 300;
     color: white;
     padding-bottom: 25px;
+    text-align: center;
 }
 
 .categories-grid {
@@ -11,6 +13,7 @@
 }
 
 .categories-grid-item {
+    
     flex:50%;
     max-width: 50%;
 }

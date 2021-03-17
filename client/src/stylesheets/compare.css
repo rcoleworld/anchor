@@ -1,3 +1,4 @@
+
 html,
 body {
   margin: 0;
@@ -8,10 +9,11 @@ body {
 }
 
 .compare-banner {
-  background: #111111;
+  background: var(--background-color);
   border-bottom: 1px solid var(--decor-color);
   height: 10vh;
   font-family: bebas-neue-by-fontfabric, sans-serif;
+  padding: 10px;
   font-size: 70px;
   color: #fff;
   display: flex;
@@ -20,8 +22,8 @@ body {
 }
 .compare-container {
   display: flex;
-  height: 100vh;
-  background: #111111;
+  height: 90vh;
+  background: var(--background-color);
 }
 .compare-sources {
   width: 50%;
@@ -40,12 +42,13 @@ body {
 }
 
 .compare-button {
+  /* background-color: yellow; */
   --offset: 10px;
   --border-size: 2px;
   display: block;
   position: relative;
   padding: 1.5em 3em;
-  appearance: none;
+  text-decoration: none;
   border: 0;
   background: transparent;
   color: var(--decor-color);
@@ -103,9 +106,9 @@ body {
 }
 
 .compare-button:hover .compare-button__horizontal {
-  transform: scaleX(0);
+  transform: scaleY(0);
 }
 
 .compare-button:hover .compare-button__vertical {
-  transform: scaleY(0);
+  transform: scaleX(0);
 }

@@ -278,7 +278,7 @@ const Home = () => {
       </div>
       <div className="bias-articles">
           <div className="most-least-container">
-            <h1 id="bias-title">Most Sentiment</h1>
+            <h1 id="bias-title">Positive</h1>
             {mostSentimentArticles !== undefined &&
               mostSentimentArticles.length > 0 &&
               mostSentimentArticles.map((article, index) => (
@@ -300,7 +300,7 @@ const Home = () => {
               ))}
           </div>
           <div className="most-least-container">
-            <h1 id="bias-title">Least Sentiment</h1>
+            <h1 id="bias-title">Negative</h1>
             {leastSentimentArticles !== undefined &&
               leastSentimentArticles.length > 0 &&
               leastSentimentArticles.map((article, index) => (
@@ -324,7 +324,7 @@ const Home = () => {
       </div>
       <div className="bias-articles">
           <div className="most-least-container">
-            <h1 id="bias-title">Most Objective</h1>
+            <h1 id="bias-title">Objective</h1>
             {mostObjectivityArticles !== undefined &&
               mostObjectivityArticles.length > 0 &&
               mostObjectivityArticles.map((article, index) => (
@@ -346,7 +346,7 @@ const Home = () => {
               ))}
           </div>
           <div className="most-least-container">
-            <h1 id="bias-title">Least Objective</h1>
+            <h1 id="bias-title">Subjective</h1>
             {leastObjectivityArticles !== undefined &&
               leastObjectivityArticles.length > 0 &&
               leastObjectivityArticles.map((article, index) => (
