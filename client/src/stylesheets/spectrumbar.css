@@ -27,6 +27,7 @@
 .spectrum-middle {
     justify-content: center;
     flex: 33%;
+    margin-left: 120px;
 }
 
 .spectrum-right{
