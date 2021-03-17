@@ -31,11 +31,7 @@ const Article = (props) => {
     }
   }
 
-  const hideSentenceBias = (id) => {
-    setTimeout(() => {
-      document.getElementById(id).innerHTML = sentences[id];
-    }, 2000)
-  }
+  const hideSentenceBias = (id) => {document.getElementById(id).innerHTML = sentences[id];}
 
   const displayBias = () => {
     if (!bias) {
@@ -47,6 +43,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-bias")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-bias")[0].style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
     } else {
       setBias(false);
       for (i = 0; i < biases.length; i++) {
@@ -68,7 +65,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-sentiment")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-sentiment")[0].style.display = "block";
-      window.scrollBy(0, -500);
+      window.scrollTo(0, document.body.scrollHeight);
     } else {
       setSentiment(false);
       for (i = 0; i < sentiments.length; i++) {
@@ -89,6 +86,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-objectivity")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-objectivity")[0].style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
     } else {
       setObjectivity(false);
       for (i = 0; i < objectivitys.length; i++) {
