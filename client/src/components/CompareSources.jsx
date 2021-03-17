@@ -50,8 +50,8 @@ const CompareSources = () => {
                 resultsDiv.innerHTML =
                   "Comparing " + selected[0] + " and " + selected[1];
                 
-                  document.getElementById("container-left").innerHTML = selected[0];
-                  document.getElementById("container-right").innerHTML = selected[1];
+                  document.getElementById("container-left").innerHTML = selected[0] + "<p>Average Objectivity: </p><p>Average Sentiment: </p><p>Average Bias: </p>";
+                  document.getElementById("container-right").innerHTML = selected[1]+ "<p>Average Objectivity: </p><p>Average Sentiment: </p><p>Average Bias: </p>";
               }
             });
         } else {

@@ -13,7 +13,7 @@
   padding: 15px;
 }
 .source-grid :hover {
-  opacity: 50%;
+  opacity: 80%;
 }
 
 #sources-button {
@@ -58,7 +58,6 @@
   flex-direction: row;
   display: none;
   justify-content: center;
-  font-family: Georgia, "Times New Roman", Times, serif;
   font-family: gravesend-sans, sans-serif;
 }
 #left-right-containers {
