@@ -16,6 +16,10 @@ class CNNTransformer(BaseTransformer):
         dict: transformed_data - modified article data
         """
         self.transformed_data = None
+
+        body = raw_article['body']
+        body.replace("  ", "\n")
+
         if raw_article['type'] == "article":
             self.transformed_data = {"url": raw_article['url'], 
                     "firstPublishDate": raw_article['firstPublishDate'],

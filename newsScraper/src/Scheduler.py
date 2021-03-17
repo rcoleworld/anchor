@@ -4,6 +4,8 @@ from Transformer.FoxNewsTransformer import FoxNewsTransformer
 from Crawler.CNNCrawler import CNNCrawler
 from Putter.BasePutter import BasePutter
 from Transformer.CNNTransformer import CNNTransformer
+from Crawler.NYTCrawler import NYTCrawler
+from Transformer.NYTTransformer import NYTTransformer
 
 class Scheduler:
     configs = {}
@@ -21,25 +23,35 @@ class Scheduler:
         with open("config.json", "r") as read_configs:
             self.configs = json.load(read_configs)
 
-    def create_cnn_queue(self, query="*") -> dict:
+    def create_cnn_queue(self, config) -> dict:
         """
         Returns queue of articles to parse for CNN
 
         input: a query to search for
         return: a dict to append to the general queue
         """
-        cnn_crawler = CNNCrawler(num_of_articles=10)
+        cnn_crawler = CNNCrawler(config=config, num_of_articles=50)
         return {"cnn": cnn_crawler.articles_list}
 
-    def create_fox_queue(self, query="*") -> dict:
+    def create_fox_queue(self, config) -> dict:
         """
         Returns queue of articles to parse for Fox News
 
         input: a query to search for
         return: a dict to append to the general queue
         """
-        fox_crawler = FoxNewsCrawler(num_of_articles=10)
+        fox_crawler = FoxNewsCrawler(config=config, num_of_articles=50)
         return {"fox": fox_crawler.articles_list}
+
+    def create_nyt_queue(self, config) -> dict:
+        """
+        Returns queue of articles to parse for Fox News
+
+        input: a query to search for
+        return: a dict to append to the general queue
+        """
+        nyt_crawler = NYTCrawler(config=config, num_of_articles=50)
+        return {"nyt": nyt_crawler.articles_list}
 
     def create_queue(self):
         """
@@ -48,14 +60,16 @@ class Scheduler:
         function_mapping = {
             "cnn": self.create_cnn_queue,
             "fox": self.create_fox_queue,
+            "nyt": self.create_nyt_queue,
         }
         transformer_mapping = {
             "cnn": CNNTransformer,
             "fox": FoxNewsTransformer,
+            "nyt": NYTTransformer,
         }
 
         for website in self.configs.get("websites"):
-            self.queue.update(function_mapping.get(website.get("website_name"))(website.get("query")))
+            self.queue.update(function_mapping.get(website.get("website_name"))(config=website))
 
             self.transformers.update({website.get("website_name"): transformer_mapping.get(website.get("website_name"))()})
 

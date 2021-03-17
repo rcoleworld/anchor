@@ -19,7 +19,9 @@ class FoxNewsTransformer(BaseTransformer):
         combined_body = ""
         for component in raw_article.get("attributes").get("components"):
             if(component.get("content_type") == "text"):
-                combined_body+=component.get("content").get("text")
+                element = component.get("content").get("text")
+                if "<p><strong><a href=" not in element:
+                    combined_body += element + "\n"
 
 
         self.transformed_data = {"url": raw_article["attributes"].get("canonical_url"), 
