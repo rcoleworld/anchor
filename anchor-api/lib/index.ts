@@ -1,6 +1,7 @@
 import express from 'express';
 import Article from './models/article.model';
-import { getArticles, getSources } from './controllers/getArticles';
+import { getArticles } from './controllers/getArticles';
+import { getSources } from './controllers/getSources';
 import {handleWebScraper } from './controllers/handleWebScraper';
 import { searchArticles } from './controllers/searchArticles';
 import dotenv from 'dotenv';
