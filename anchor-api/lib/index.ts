@@ -1,11 +1,12 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import Article from './models/article.model';
-import { getArticles, getSources } from './controllers/getArticles';
-import {handleWebScraper } from './controllers/handleWebScraper';
+import { getArticles } from './controllers/getArticles';
+import {getAverageStats} from './controllers/getStats';
+import { handleWebScraper } from './controllers/handleWebScraper';
 import { searchArticles } from './controllers/searchArticles';
 import dotenv from 'dotenv';
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import cors from 'cors';
 
 dotenv.config();
@@ -28,7 +29,9 @@ const getArticleLimiter = rateLimit({
   });
 app.post('/articles', handleWebScraper);
 app.get('/articles', getArticles);
-app.get(['/articles/search/:searchString','/articles/search'], searchArticles);
+app.get(['/articles/search/:searchString', '/articles/search'], searchArticles);
+app.get('/stats/:field', getAverageStats);
+
 app.get('/sources', getSources);
 
 app.listen(PORT, HOST);
