@@ -5,12 +5,14 @@ import ArticleThumb from './ArticleThumb';
 import '../stylesheets/search.css';
 import axios from 'axios';
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 const SearchResults = (props) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://home.flores.sh:5001/articles/search/${props.location.state.search}?limit=18`)
+      .get(`${REACT_APP_SERVER_URL}/articles/search/${props.location.state.search}?limit=18`)
       .then((response) => {
           console.log(props.location.state.search);
         if (response.status === 200) {
