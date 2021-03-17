@@ -1,0 +1,69 @@
+.spectrum-title{
+}
+
+.spectrum-subtitles, .spectrum-percentages{
+    display: flex;
+    list-style: none;
+    font-size: 15px;
+    font-family: 'IBM Plex Mono','Inconsolata', monospace;
+    font-weight: 400;
+}
+
+.spectrum-percentage-left{
+    flex: 50%;
+    text-align: left;
+    margin-left: -40px;
+}
+
+.spectrum-percentage-right{
+    flex: 50%;
+    text-align: right;
+}
+
+.spectrum-left {
+    justify-content: flex-start;
+    flex: 33%;
+    margin-left: -40px;
+    text-align: left;
+}
+
+.spectrum-middle {
+    justify-content: center;
+    flex: 33%;
+}
+
+.spectrum-right{
+    justify-content: flex-end;
+    flex: 33%;
+    text-align: right;
+}
+
+.spectrum{
+    background-image: linear-gradient(to right, blue, grey, red);
+    min-height: 20px;
+}
+
+.spectrum-ball{
+    height:19px;
+    width:19px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.spectrum-ball:hover .spectrum-percentage{
+    display:block;
+}
+
+.spectrum-ball:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+.spectrum-percentage{
+    display: none;
+    margin-left: -17px;
+    position: relative;
+    bottom: 100%;
+    font-size: 15px;
+    font-family: 'IBM Plex Mono','Inconsolata', monospace;
+    font-weight: 400;
+}

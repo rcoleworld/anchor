@@ -1,6 +1,7 @@
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 import "../stylesheets/articleview.css";
+import SpectrumBar from "./SpectrumBar";
 
 const Article = (props) => {
   const article = props.location.state.article.props;
@@ -23,10 +24,10 @@ const Article = (props) => {
   var avgerageObjectivity = (article.objectivity * 100).toFixed(2);
 
   const displaySentenceBias = (id) => {
-    if (bias){
-        if (biases[id] > .67) document.getElementById(id).style.backgroundColor = "#0066ff";
-        if (biases[id] < .15) document.getElementById(id).style.backgroundColor = "#ff4d4d";
-        document.getElementById(id).innerHTML = sentences[id] + "(" + (biases[id] * 100).toFixed(2) + "%)";
+    if (bias) {
+      if (biases[id] > .67) document.getElementById(id).style.backgroundColor = "#0066ff";
+      if (biases[id] < .15) document.getElementById(id).style.backgroundColor = "#ff4d4d";
+      document.getElementById(id).innerHTML = sentences[id] + "(" + (biases[id] * 100).toFixed(2) + "%)";
     }
   }
 
@@ -38,17 +39,17 @@ const Article = (props) => {
 
   const displayBias = () => {
     if (!bias) {
-        setBias(true);
-        var i;
+      setBias(true);
+      var i;
       for (i = 0; i < biases.length; i++) {
-          if (biases[i] > .67) document.getElementById(i).style.backgroundColor = "#0066ff";
-          if (biases[i] < .15) document.getElementById(i).style.backgroundColor = "#ff4d4d";
+        if (biases[i] > .67) document.getElementById(i).style.backgroundColor = "#0066ff";
+        if (biases[i] < .15) document.getElementById(i).style.backgroundColor = "#ff4d4d";
       }
     } else {
       setBias(false);
       for (i = 0; i < biases.length; i++) {
-          document.getElementById(i).style.backgroundColor = "transparent";
-          document.getElementById(i).innerHTML = sentences[i];
+        document.getElementById(i).style.backgroundColor = "transparent";
+        document.getElementById(i).innerHTML = sentences[i];
       }
     }
   };
@@ -102,13 +103,8 @@ const Article = (props) => {
         {sentences !== undefined &&
           sentences.length > 0 &&
           sentences.map((sentence, index) => (
-            <span className = "article-sentence" id={index} onMouseOver={() => displaySentenceBias(index)} onMouseOut={() => hideSentenceBias(index)}>{sentence}</span>
+            <span className="article-sentence" id={index} onMouseOver={() => displaySentenceBias(index)} onMouseOut={() => hideSentenceBias(index)}>{sentence}</span>
           ))}
-      </div>
-      <div className="horizontal-line"></div>
-      <div className="article-rating">
-        Bias: {averageBias}% | Objectivity: {avgerageObjectivity}% | Sentiment:{" "}
-        {avgerageSentiment}%
       </div>
       <div className="horizontal-line"></div>
       <button className="bias-viewer" onClick={displayBias}>
@@ -120,6 +116,34 @@ const Article = (props) => {
       <button className="objectivity-viewer" onClick={displayObjectivity}>
         View Objectivity
       </button>
+      <div className="horizontal-line"></div>
+        <SpectrumBar
+        id="spectrum-bias"
+        ballId="spectrum-ball-bias"
+          name="Bias"
+          percentage={averageBias}
+          colors={['#0066ff', '#ff4d4d']}
+          subtitles={["Left Leaning", "Unbiased", "Right Leaning"]}
+        />
+      <div className="horizontal-line"></div>
+        <SpectrumBar
+        id="spectrum-sentiment"
+        ballId="spectrum-ball-sentiment"
+          name="Sentiment"
+          percentage={avgerageSentiment}
+          colors={['#55185b', '#185b32']}
+          subtitles={["No Sentiment", "Some Sentiment", "More Sentiment"]}
+        />
+        <div className="horizontal-line"></div>
+        <SpectrumBar
+        id="spectrum-objectivity"
+        ballId="spectrum-ball-objectivity"
+          name="Objectivity"
+          percentage={avgerageObjectivity}
+          colors={['#e28743', '#154c79']}
+          subtitles={["No Objectivity", "Some Objectivity", "More Objectivity"]}
+        />
+      <div className="horizontal-line"></div>
       <div className="article-url">
         Find this article at:{" "}
         <a target="_blank" href={article.url}>
