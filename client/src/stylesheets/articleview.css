@@ -53,7 +53,9 @@
     border-right: solid 1px rgb(221, 221, 221);
 }
 
-.article-analysis-button{
+.article-analysis-bias-button,
+.article-analysis-sentiment-button,
+.article-analysis-objectivity-button{
     text-decoration: none;
     background-color: transparent;
     color:rgb(255, 255, 255);
@@ -64,7 +66,9 @@
     padding: 10px 62px 10px 62px;
 }
 
-.article-analysis-button:hover{
+.article-analysis-bias-button:hover,
+.article-analysis-sentiment-button:hover,
+.article-analysis-objectivity-button:hover{
     color:rgb(194, 194, 194);
     cursor: pointer;
 }

@@ -43,6 +43,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-bias")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-bias")[0].style.display = "block";
+      document.getElementsByClassName("article-analysis-bias-button")[0].style.color = "rgb(131, 131, 131)";
       window.scrollTo(0, document.body.scrollHeight);
     } else {
       setBias(false);
@@ -52,6 +53,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-bias")[0].style.display = "none";
       document.getElementsByClassName("horizontal-line-bias")[0].style.display = "none";
+      document.getElementsByClassName("article-analysis-bias-button")[0].style.color = "rgb(255, 255, 255)";
     }
   };
 
@@ -65,6 +67,8 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-sentiment")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-sentiment")[0].style.display = "block";
+      document.getElementsByClassName("article-analysis-sentiment-button")[0].style.color = "rgb(131, 131, 131)";
+
       window.scrollTo(0, document.body.scrollHeight);
     } else {
       setSentiment(false);
@@ -73,6 +77,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-sentiment")[0].style.display = "none";
       document.getElementsByClassName("horizontal-line-sentiment")[0].style.display = "none";
+      document.getElementsByClassName("article-analysis-sentiment-button")[0].style.color = "rgb(255, 255, 255)";
     }
   };
 
@@ -86,6 +91,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-objectivity")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-objectivity")[0].style.display = "block";
+      document.getElementsByClassName("article-analysis-objectivity-button")[0].style.color = "rgb(131, 131, 131)";
       window.scrollTo(0, document.body.scrollHeight);
     } else {
       setObjectivity(false);
@@ -94,6 +100,7 @@ const Article = (props) => {
       }
       document.getElementsByClassName("article-analysis-objectivity")[0].style.display = "none";
       document.getElementsByClassName("horizontal-line-objectivity")[0].style.display = "none";
+      document.getElementsByClassName("article-analysis-objectivity-button")[0].style.color = "rgb(255, 255, 255)";
     }
   };
 
@@ -118,13 +125,13 @@ const Article = (props) => {
           ))}
       </div>
       <div className="article-analysis">
-        <button className="article-analysis-button" onClick={displayBias}>
+        <button className="article-analysis-bias-button" onClick={displayBias}>
           View Bias
       </button>|
-        <button className="article-analysis-button" onClick={displaySentiment}>
+        <button className="article-analysis-sentiment-button" onClick={displaySentiment}>
           View Sentiment
       </button>|
-        <button className="article-analysis-button" onClick={displayObjectivity}>
+        <button className="article-analysis-objectivity-button" onClick={displayObjectivity}>
           View Objectivity
       </button>
       </div>
