@@ -6,6 +6,7 @@ const Article = (props) => {
   const article = props.location.state.article.props;
   const [bias, setBias] = useState(false);
   const [sentiment, setSentiment] = useState(false);
+  const [objectivity, setObjectivity] = useState(false);
 
   var date = article.date.split("T")[0].split("-");
   date = new Date(date[0], date[1] - 1, date[2]);
@@ -16,8 +17,10 @@ const Article = (props) => {
   var sentences = article.body.map((body_info) => body_info[0]);
   var biases = article.body.map((body_info) => body_info[1]);
   var sentiments = article.body.map((body_info) => body_info[2]);
+  var objectivitys = article.body.map((body_info) => body_info[2]);
   var averageBias = (article.bias * 100).toFixed(2);
   var avgerageSentiment = (article.sentiment * 100).toFixed(2);
+  var avgerageObjectivity = (article.objectivity * 100).toFixed(2);
 
   const displaySentenceBias = (id) => {
     if (bias){
@@ -55,12 +58,28 @@ const Article = (props) => {
     if (!sentiment) {
       setSentiment(true);
       for (i = 0; i < sentiments.length; i++) {
-        if (sentiments[i] > .67) document.getElementById(i).style.backgroundColor = "purple";
-        if (sentiments[i] < .15) document.getElementById(i).style.backgroundColor = "green";
+        if (sentiments[i] > .67) document.getElementById(i).style.backgroundColor = "#55185b";
+        if (sentiments[i] < .15) document.getElementById(i).style.backgroundColor = "#185b32";
       }
     } else {
       setSentiment(false);
       for (i = 0; i < sentiments.length; i++) {
+        document.getElementById(i).style.backgroundColor = "transparent";
+      }
+    }
+  };
+
+  const displayObjectivity = () => {
+    var i;
+    if (!objectivity) {
+      setObjectivity(true);
+      for (i = 0; i < objectivitys.length; i++) {
+        if (objectivitys[i] > .67) document.getElementById(i).style.backgroundColor = "#e28743";
+        if (objectivitys[i] < .15) document.getElementById(i).style.backgroundColor = "#154c79";
+      }
+    } else {
+      setObjectivity(false);
+      for (i = 0; i < objectivitys.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
       }
     }
@@ -88,7 +107,7 @@ const Article = (props) => {
       </div>
       <div className="horizontal-line"></div>
       <div className="article-rating">
-        Bias: {averageBias}% | Objectivity: tbd% | Sentiment:{" "}
+        Bias: {averageBias}% | Objectivity: {avgerageObjectivity}% | Sentiment:{" "}
         {avgerageSentiment}%
       </div>
       <div className="horizontal-line"></div>
@@ -97,6 +116,9 @@ const Article = (props) => {
       </button>
       <button className="sentiment-viewer" onClick={displaySentiment}>
         View Sentiment
+      </button>
+      <button className="objectivity-viewer" onClick={displayObjectivity}>
+        View Objectivity
       </button>
       <div className="article-url">
         Find this article at:{" "}
