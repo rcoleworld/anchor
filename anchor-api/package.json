@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/rcoleworld/anchor#readme",
   "dependencies": {
+    "@types/express-rate-limit": "^5.1.1",
     "@types/mongoose": "^5.7.28",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.2.6",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.20"
   },
