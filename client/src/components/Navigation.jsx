@@ -13,14 +13,14 @@ const Navigation = (props) => {
   const themeToggler = () => {
     var root = document.documentElement;
 
-    if (theme == 'blue') {
+    if (theme === 'blue') {
       setTheme('light');
       var passedTheme = 'light-theme'
 
       root.style.setProperty('--background-color', 'white');
       root.style.setProperty('--text-color', 'black');
     }
-    else if (theme == 'light') {
+    else if (theme === 'light') {
       setTheme('dark')
       passedTheme = 'dark-theme'
 

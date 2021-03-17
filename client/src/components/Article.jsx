@@ -153,7 +153,7 @@ const Article = (props) => {
           name="Sentiment"
           percentage={avgerageSentiment}
           colors={['#55185b', '#185b32']}
-          subtitles={["Negative", "Neutral", "Positive"]}
+          subtitles={["Positive", "Neutral", "Negative"]}
         />
       </div>
       <div className="horizontal-line-sentiment"></div>
@@ -164,7 +164,7 @@ const Article = (props) => {
           name="Objectivity"
           percentage={avgerageObjectivity}
           colors={['#e28743', '#154c79']}
-          subtitles={["Subjective", "Ambiguous", "Objective"]}
+          subtitles={["Objective", "Ambiguous", "Subjective"]}
         />
       </div>
       <div className="horizontal-line-objectivity"></div>
