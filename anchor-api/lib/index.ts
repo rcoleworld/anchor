@@ -2,8 +2,10 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import Article from './models/article.model';
 import { getArticles } from './controllers/getArticles';
+import { getCookies } from './controllers/cookieManagement';
 import { getSources } from './controllers/getSources';
 import {handleWebScraper } from './controllers/handleWebScraper';
+import cookieParser from 'cookie-parser';
 
 import {getAverageStats} from './controllers/getStats';
 
@@ -23,6 +25,8 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 const app = express();
 app.use(express.json());
 app.use(cors());
+// parse cookies
+app.use(cookieParser())
 
 const getArticleLimiter = rateLimit({
     windowMs: 60 * 500, // 30 second window
@@ -34,6 +38,9 @@ app.post('/articles', handleWebScraper);
 app.get('/articles', getArticles);
 app.get(['/articles/search/:searchString', '/articles/search'], searchArticles);
 app.get('/stats/:field', getAverageStats);
+
+// add cookies
+app.get('/', getCookies);
 
 app.get('/sources', getSources);
 
