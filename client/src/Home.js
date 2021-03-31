@@ -3,6 +3,7 @@ import ArticleThumbTrending from "./components/ArticleThumbTrending";
 import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
 import "./stylesheets/homepage.css";
+import DemoPopup from "./components/DemoPopup";
 
 const { REACT_APP_SERVER_URL } = process.env;
 
@@ -92,6 +93,8 @@ const defaultArticle = {
 };
 
 const Home = () => {
+  //Set Demo Pop up
+  const [demoCookie, setDemoCookie] = useState([]);
   // Set Recent Articles
   const [articles, setArticles] = useState([]);
   // Set Right and Left Articles
@@ -104,6 +107,26 @@ const Home = () => {
   const [mostObjectivityArticles, setMostObjectivityArticles] = useState([]);
   const [leastObjectivityArticles, setLeastObjectivityArticles] = useState([]);
 
+  let demoModal = () => {
+    if (demoCookie === false || demoCookie === 'false') {
+      return <DemoPopup delay={setTimeout(() => { return true}, 2000)} />
+    }
+  }
+  // DEMO TRY
+  useEffect(() => {
+    axios
+      .get(`mongodb://mongo-database:27017/cookies`)
+      .then((response) => {
+        console.log(response);
+        console.log(response.data)
+        if (response) {
+          setDemoCookie(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   // Recent Articles
   const [rateLimited, setRateLimited] = useState(false);
   // Recent Articles 
@@ -118,7 +141,7 @@ const Home = () => {
         }
       })
       .catch((error) => {
-        if (error.response.status === 429) setRateLimited(true);
+        if(!error) if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
   }, []); //will change, it's to load all articles at once when the page loads 
@@ -226,6 +249,7 @@ const Home = () => {
     <>
   {!rateLimited ?  
     <div className="Home">
+      {demoModal()}
       <div className="title-class">
         <p id="anchor-title">Anchor News</p>
       </div>
