@@ -40,7 +40,7 @@ app.get(['/articles/search/:searchString', '/articles/search'], searchArticles);
 app.get('/stats/:field', getAverageStats);
 
 // add cookies
-app.get('/', getCookies);
+app.get('/cookies', getCookies);
 
 app.get('/sources', getSources);
 

@@ -20,12 +20,12 @@ export function getCookies(req: express.Request, res: express.Response) {
     }
 
     // Too see cookie on ther server side
-    console.log('demo cookie value: ' + req.cookies.displayDemo)
+    //console.log('demo cookie value: ' + req.cookies.displayDemo)
 
     // console.log('clearing demo');
     // clearDemoCookie(req, res);
 
-    console.log('COOKIE IS ALREADY SET, NO NEED TO DISPLAY DEMO');
+    //console.log('COOKIE IS ALREADY SET, NO NEED TO DISPLAY DEMO');
     res.send(req.cookies.displayDemo);
 
 
