@@ -1,6 +1,7 @@
 from BaseCrawler import BaseCrawler
 from bs4 import BeautifulSoup
 import requests
+import json
 import feedparser
 
 class NYPostCrawler(BaseCrawler):
@@ -12,22 +13,47 @@ class NYPostCrawler(BaseCrawler):
     def get_articles(self, endpoint: str):
         articles = []
         feed = feedparser.parse(endpoint)
+        for entry in feed.entries:
+                with requests.Session() as r:
+                    req = r.get(entry.get("links")[0].get("href"))
+                    soup = BeautifulSoup(req.content, 'html.parser')
 
+                    try:
+                        section_tags = soup.find('p', class_="section-tag")
+                        section = section_tags.find('a')
+                        text = soup.find('div', class_="entry-content entry-content-read-more")
+                        article_body = text.find_all('p')
+                    except:
+                        continue
+                    final_body = ""
+                    for p in article_body:
+                        final_body += p.get_text() + "\n"
+                    entry.update({"body": final_body})
+                    entry.update({"section": section})
+                    articles.append(entry)
         return articles
 
 def testing():
+    articles = []
     feed = feedparser.parse("https://nypost.com/feed")
 
-    e = feed.entries[0]
-    print(e.get("links")[0].get("href"))
-    req = requests.get(e.get("links")[0].get("href"))
+    for entry in feed.entries:
+        with requests.Session() as r:
+            req = r.get(entry.get("links")[0].get("href"))
+            soup = BeautifulSoup(req.content, 'html.parser')
 
-    soup = BeautifulSoup(req.content, 'html.parser')
-
-    text = soup.find('div', class_="entry-content entry-content-read-more")
-    article_body = text.find_all('p')
-    for p in article_body:
-        print(p)
+            try:
+                text = soup.find('div', class_="entry-content entry-content-read-more")
+                article_body = text.find_all('p')
+            except:
+                continue
+            final_body = ""
+            for p in article_body:
+                final_body += p.get_text() + "\n"
+            entry.update({"body": final_body})
+            
+            articles.append(entry)
+    print(json.dumps(articles, indent=4, sort_keys=True))
 
 if __name__ == '__main__':
     testing()
