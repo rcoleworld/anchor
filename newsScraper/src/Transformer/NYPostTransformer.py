@@ -1,5 +1,5 @@
 from .BaseTransformer import BaseTransformer
-import datetime
+import dateutil
 
 
 class NYPostTransformer(BaseTransformer):
@@ -21,9 +21,8 @@ class NYPostTransformer(BaseTransformer):
 
         contributors = []
 
-        dt = datetime.parser.parse(raw_article['published'])
+        dt = dateutil.parser.parse(raw_article['published'])
         contrib = raw_article["authors"][0]['name'].split(", ")
-
 
         self.transformed_data = {"url": raw_article['link'], 
                 "firstPublishDate": str(dt),
@@ -31,7 +30,7 @@ class NYPostTransformer(BaseTransformer):
                 "contributors": contrib,
                 "headline": raw_article['title'],
                 "section": raw_article['section'],
-                "thumbnail": raw_article['media_thumbnail']["url"],
+                "thumbnail": raw_article['thumbnail'],
                 "body": raw_article['body'],
                 "category": raw_article['section'],
                 "publisher": "New York Post"

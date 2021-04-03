@@ -1,4 +1,4 @@
-from BaseCrawler import BaseCrawler
+from .BaseCrawler import BaseCrawler
 from bs4 import BeautifulSoup
 import requests
 import json
@@ -23,37 +23,18 @@ class NYPostCrawler(BaseCrawler):
                         section = section_tags.find('a')
                         text = soup.find('div', class_="entry-content entry-content-read-more")
                         article_body = text.find_all('p')
+                        thumbnail = entry['media_content'][0]["url"]
                     except:
                         continue
                     final_body = ""
                     for p in article_body:
                         final_body += p.get_text() + "\n"
                     entry.update({"body": final_body})
-                    entry.update({"section": section})
+                    entry.update({"section": section.get_text()})
+                    entry.update({"thumbnail": thumbnail})
                     articles.append(entry)
         return articles
 
-def testing():
-    articles = []
-    feed = feedparser.parse("https://nypost.com/feed")
-
-    for entry in feed.entries:
-        with requests.Session() as r:
-            req = r.get(entry.get("links")[0].get("href"))
-            soup = BeautifulSoup(req.content, 'html.parser')
-
-            try:
-                text = soup.find('div', class_="entry-content entry-content-read-more")
-                article_body = text.find_all('p')
-            except:
-                continue
-            final_body = ""
-            for p in article_body:
-                final_body += p.get_text() + "\n"
-            entry.update({"body": final_body})
-            
-            articles.append(entry)
-    print(json.dumps(articles, indent=4, sort_keys=True))
 
 if __name__ == '__main__':
-    testing()
+    pass
