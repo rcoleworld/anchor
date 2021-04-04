@@ -1,16 +1,12 @@
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const DemoPopup = (props) => {
-    const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
     return (
       <>
         <Modal
-            show={this.props.delay}
-            onHide={handleClose}
+            show={props.show}
+            onHide={props.handleClose}
             backdrop="static"
             keyboard={false}
             size="lg"
@@ -22,10 +18,10 @@ const DemoPopup = (props) => {
           </Modal.Header>
           <Modal.Body>
           Whether it's your first time here or some time since you've vistied, we suggest looking at our demo page 
-          so you can understand how to understand the data on our application!         
+          so you know how to use and interpret the data on our application!         
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={props.handleClose}>
               Close
             </Button>
             <Button variant="primary">View Demo</Button> 

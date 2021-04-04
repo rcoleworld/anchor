@@ -24,7 +24,12 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: 'http://0.0.0.0:3000',
+optionsSuccessStatus: 200,
+methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+credentials: true}));
+
+
 // parse cookies
 app.use(cookieParser())
 
@@ -40,7 +45,7 @@ app.get(['/articles/search/:searchString', '/articles/search'], searchArticles);
 app.get('/stats/:field', getAverageStats);
 
 // add cookies
-app.get('/cookies', getCookies);
+app.get('/cookieDemo', getCookies);
 
 app.get('/sources', getSources);
 

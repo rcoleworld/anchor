@@ -4,6 +4,7 @@ import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
 import "./stylesheets/homepage.css";
 import DemoPopup from "./components/DemoPopup";
+import Cookies from 'js-cookie';
 
 const { REACT_APP_SERVER_URL } = process.env;
 
@@ -95,6 +96,7 @@ const defaultArticle = {
 const Home = () => {
   //Set Demo Pop up
   const [demoCookie, setDemoCookie] = useState([]);
+  const [show, setShow] = useState(false);
   // Set Recent Articles
   const [articles, setArticles] = useState([]);
   // Set Right and Left Articles
@@ -106,27 +108,47 @@ const Home = () => {
   // Set Least/Most Objectivity Articles
   const [mostObjectivityArticles, setMostObjectivityArticles] = useState([]);
   const [leastObjectivityArticles, setLeastObjectivityArticles] = useState([]);
+  
+
+  // Start of DEMO Popup Stuff
+  const handleClose = () => {
+    setShow(false);
+    handleState();
+    }
+
+  const handleState = () => {
+    if(Cookies.get('displayDemo')) setDemoCookie(Cookies.get('displayDemo'));
+    } 
 
   let demoModal = () => {
-    if (demoCookie === false || demoCookie === 'false') {
-      return <DemoPopup delay={setTimeout(() => { return true}, 2000)} />
+    if (demoCookie === false) {
+      setTimeout(() => { 
+        setShow(true);
+      }, 2000);
+      return <DemoPopup  show={show} status={handleState} handleClose={handleClose}/>
     }
   }
-  // DEMO TRY
+  
   useEffect(() => {
+    console.log(Cookies.get('displayDemo'));
     axios
-      .get(`mongodb://mongo-database:27017/cookies`)
+      .get(`http://0.0.0.0:5001/cookieDemo`, {withCredentials: true})
       .then((response) => {
-        console.log(response);
-        console.log(response.data)
         if (response) {
-          setDemoCookie(response.data);
+          console.log(Cookies.get('displayDemo'));
+          if(response.status === 200) setDemoCookie(Cookies.get('displayDemo'));
+          else{
+            // response is 204
+            setDemoCookie(false);
+          }
         }
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  // End of Deo Pop Up Stuff 
+
   // Recent Articles
   const [rateLimited, setRateLimited] = useState(false);
   // Recent Articles 
