@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import '../stylesheets/demopopup.css';
 
 const DemoPopup = (props) => {
     return (
@@ -12,19 +13,20 @@ const DemoPopup = (props) => {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            dialogClassName="modal-title-special"
         >
-          <Modal.Header closeButton>
-            <Modal.Title>First Time Here?</Modal.Title>
+          <Modal.Header bsPrefix="modal-header-special" closeButton>
+            <Modal.Title as="h2" bsPrefix="modal-title-special">First Time Here?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body bsPrefix="modal-body-special">
           Whether it's your first time here or some time since you've vistied, we suggest looking at our demo page 
           so you know how to use and interpret the data on our application!         
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={props.handleClose}>
+            <Button variant="secondary" size="medium" onClick={props.handleClose}>
               Close
             </Button>
-            <Button variant="primary">View Demo</Button> 
+            <Button variant="demo" size="medium">View Demo</Button> 
           </Modal.Footer>
         </Modal>
       </>

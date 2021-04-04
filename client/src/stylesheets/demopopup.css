@@ -1,0 +1,43 @@
+@import url("https://use.typekit.net/kdg1ffy.css");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+.modal-header-special{
+    /* text-align: center; */
+    color:  rgb(42, 49, 66);
+    display: grid;
+    grid-template-columns: 95% auto;
+    grid-template-rows: auto;
+    justify-items: center;
+    /* align-items: flex-start; */
+    justify-content: space-evenly;
+    padding: 0.5rem 1rem;
+    border-bottom: 3px solid teal;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+
+}
+
+.modal-title-special{
+    font-family: bebas-neue-by-fontfabric, sans-serif;
+    font-size: 45px;
+    margin-bottom: 0px;
+}
+
+.modal-body-special{
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+}
+
+.btn-demo{
+    background-color: teal !important;
+    color: white !important;
+}
+
+.btn-medium {
+    font-size: 1.2rem !important;
+    font-weight: bolder !important;
+  }

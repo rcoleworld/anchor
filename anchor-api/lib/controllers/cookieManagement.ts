@@ -19,9 +19,7 @@ export function getCookies(req: express.Request, res: express.Response) {
           .send(false);
     }else{
       console.log('COOKIE IS ALREADY SET, NO NEED TO DISPLAY DEMO');
-
-     // res.status(200).send(req.cookies.displayDemo);
-      res.status(200).send("All Good");
+      res.status(200)
     }
 
   }

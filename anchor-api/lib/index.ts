@@ -24,7 +24,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
 app.use(express.json());
-app.use(cors({origin: 'http://0.0.0.0:3000',
+app.use(cors({origin: 'http://home.flores.sh:3000',
 optionsSuccessStatus: 200,
 methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
 credentials: true}));

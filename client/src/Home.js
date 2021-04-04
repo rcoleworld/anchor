@@ -132,7 +132,7 @@ const Home = () => {
   useEffect(() => {
     console.log(Cookies.get('displayDemo'));
     axios
-      .get(`http://0.0.0.0:5001/cookieDemo`, {withCredentials: true})
+      .get(`${REACT_APP_SERVER_URL}/cookieDemo`, {withCredentials: true})
       .then((response) => {
         if (response) {
           console.log(Cookies.get('displayDemo'));
@@ -202,7 +202,7 @@ const Home = () => {
   // Most Sentiment Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_sentiment&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_sentiment&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostSentimentArticles(response.data);
@@ -218,7 +218,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "http://home.flores.sh:5001/articles?orderBy=average_sentiment&orderType=asc&limit=3"
+        `${REACT_APP_SERVER_URL}/articles?orderBy=average_sentiment&orderType=asc&limit=3`
       )
       .then((response) => {
         if (response.status === 200) {
@@ -235,7 +235,7 @@ const Home = () => {
   // Most Sentiment Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_objectivity&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_objectivity&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostObjectivityArticles(response.data);
@@ -250,8 +250,7 @@ const Home = () => {
   // Least Sentiment Articles
   useEffect(() => {
     axios
-      .get(
-        "http://home.flores.sh:5001/articles?orderBy=average_objectivity&orderType=asc&limit=3"
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_objectivity&orderType=asc&limit=3`
       )
       .then((response) => {
         if (response.status === 200) {
