@@ -6,8 +6,8 @@ export function getCookies(req: express.Request, res: express.Response) {
         console.log('First time visiting or cookie has expired.... creating a cookie for future use');
 
         const date = new Date();
-        // date.setMonth(date.getMonth() + 1);
-        date.setMinutes(date.getMinutes() + 1); // right now it expires after a minute
+        date.setMonth(date.getMonth() + 1); //month
+        //date.setMinutes(date.getMinutes() + 1); // right now it expires after a minute
         const options = {
           expires: date,
           httpOnly: false,
