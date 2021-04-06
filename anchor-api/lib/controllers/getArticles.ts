@@ -36,9 +36,8 @@ export function getArticles(req: express.Request, res: express.Response) {
     if (err) {
       console.log(err);
     }
-    console.log('Made it to memcached get');
     if (data !== null) {
-      console.log('Got data from memcached: ' + data);
+      console.log('Got data from redis: ' + data);
       res.status(200).send(JSON.parse(data));
     } else {
       Article.find(where, {}, options)
@@ -48,14 +47,13 @@ export function getArticles(req: express.Request, res: express.Response) {
             res.status(403).send(error);
             throw error;
           }
-          console.log('Inside of Article find.');
           client.set(fullUrl, JSON.stringify(results), function (err) {
-            console.log('Made it to memcached set');
             if (err) {
               console.log(err);
             }
           });
-          client.expire(fullUrl, 10); // expires key after x seconds
+          client.expire(fullUrl, 60 * 15); // expires key after x seconds
+          console.log('Set redis data')
           res.status(200).send(results);
         });
     }
