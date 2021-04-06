@@ -35,7 +35,5 @@ app.get('/articles', getArticles);
 app.get(['/articles/search/:searchString', '/articles/search'], searchArticles);
 app.get('/stats/:field', getAverageStats);
 
-app.get('/sources', getSources);
-
 app.listen(PORT, HOST);
 console.log(`Listening on ${HOST}:${PORT}`);
