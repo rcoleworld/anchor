@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LazyLoad from 'react-lazyload';
 import ArticleThumbTrending from "./components/ArticleThumbTrending";
 import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
@@ -109,7 +110,7 @@ const Home = () => {
   // Recent Articles 
   useEffect(() => {
     axios
-      .get(`${REACT_APP_SERVER_URL}/articles?limit=18&orderBy=firstPublishDate&orderType=des`)
+      .get(`${REACT_APP_SERVER_URL}/articles?limit=400&orderBy=firstPublishDate&orderType=des`)
       .then((response) => {
         if (response.status === 200) {
           setArticles(response.data);
@@ -235,6 +236,7 @@ const Home = () => {
             {mostBiasArticles !== undefined &&
               mostBiasArticles.length > 0 &&
               mostBiasArticles.map((article, index) => (
+                <LazyLoad heighy={250} once>
                 <ArticleThumbTrending
                   headline={article.headline}
                   id={article._id}
@@ -250,6 +252,7 @@ const Home = () => {
                   sentiment={article.average_sentiment}
                   objectivity={article.average_objectivity}
                 ></ArticleThumbTrending>
+                </LazyLoad>
               ))}
           </div>
           {/* <div className="vertical-row"></div> */}
@@ -374,6 +377,7 @@ const Home = () => {
           {articles !== undefined &&
             articles.length > 0 &&
             articles.map((article, index) => (
+            
               <ArticleThumb
                 headline={article.headline}
                 id={article._id}
@@ -389,6 +393,7 @@ const Home = () => {
                 sentiment={article.average_sentiment}
                 objectivity={article.average_objectivity}
               ></ArticleThumb>
+             
             ))}
         </div>
       </div>

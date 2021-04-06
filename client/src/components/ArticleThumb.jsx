@@ -1,6 +1,8 @@
+import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProgressRing from './ProgressRing'
+import ProgressRing from './ProgressRing';
+import LazyLoad from 'react-lazyload';
 
 import '../stylesheets/homepage.css';
 
@@ -20,15 +22,10 @@ const ArticleThumb = (props) => {
         }
     }
 
-//     pointer-events: none;
-//   width: 100%;
-//   height: 300px;
-//   background-size: contain;
-//   background-position: 50% 50%;
-//   resize: both;
-//   background-repeat: no-repeat;
     return (
         <div className="default-box-container" onMouseEnter={changeProgress}>
+            <LazyLoad>
+            
             <Link className="default-box" to={{
                 pathname: `${props.section}/${props.id}`,
                 state: {
@@ -61,6 +58,7 @@ const ArticleThumb = (props) => {
 
 
             </Link>
+            </LazyLoad>
         </div>
 
     )
