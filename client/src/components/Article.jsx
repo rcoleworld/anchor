@@ -23,11 +23,20 @@ const Article = (props) => {
   var avgerageSentiment = (article.sentiment * 100).toFixed(2);
   var avgerageObjectivity = (article.objectivity * 100).toFixed(2);
 
+  const highlightOpacity = (color1, color2, weight) => {
+    var w1 = weight;
+    var w2 = 1 - w1;
+    var rgb = [Math.round(color1[0] * w1 + color2[0] * w2), 
+      Math.round(color1[1] * w1 + color2[1] * w2), 
+      Math.round(color1[2] * w1 + color2[2] * w2)];
+    return rgb;
+  }
+
   const displaySentenceBias = (id) => {
     if (bias) {
-      if (biases[id] > .67) document.getElementById(id).style.backgroundColor = "#0066ff";
-      if (biases[id] < .15) document.getElementById(id).style.backgroundColor = "#ff4d4d";
-      document.getElementById(id).innerHTML = sentences[id] + "(" + (biases[id] * 100).toFixed(2) + "%)";
+    //   if (biases[id] > .67) document.getElementById(id).style.backgroundColor = "#0066ff";
+    //   if (biases[id] < .15) document.getElementById(id).style.backgroundColor = "#ff4d4d";
+      // document.getElementById(id).innerHTML = sentences[id] + "(" + (biases[id] * 100).toFixed(2) + "%)";
     }
   }
 
@@ -38,8 +47,18 @@ const Article = (props) => {
       setBias(true);
       var i;
       for (i = 0; i < biases.length; i++) {
-        if (biases[i] > .67) document.getElementById(i).style.backgroundColor = "#0066ff";
-        if (biases[i] < .15) document.getElementById(i).style.backgroundColor = "#ff4d4d";
+        if (biases[i] > .5) 
+        {
+          var rgb = highlightOpacity([0,102,255],[128, 128, 128],(biases[i] - .5)/.5);
+          document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+        }
+          
+        if (biases[i] < .5) 
+        {
+          var rgb = highlightOpacity([225,77,77],[128, 128, 128],(.5-biases[i])/.5);
+          document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+
+        }
       }
       document.getElementsByClassName("article-analysis-bias")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-bias")[0].style.display = "block";
