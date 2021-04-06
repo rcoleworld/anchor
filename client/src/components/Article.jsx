@@ -45,10 +45,8 @@ const Article = (props) => {
   const displayBias = () => {
     if (!bias) {
       setBias(true);
-      var i;
-      for (i = 0; i < biases.length; i++) {
-        if (biases[i] > .5) 
-        {
+      for (var i = 0; i < biases.length; i++) {
+        if (biases[i] >= .5) {
           var rgb = highlightOpacity([0,102,255],[128, 128, 128],(biases[i] - .5)/.5);
           document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
         }
@@ -57,14 +55,14 @@ const Article = (props) => {
         {
           var rgb = highlightOpacity([225,77,77],[128, 128, 128],(.5-biases[i])/.5);
           document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
-
         }
       }
       document.getElementsByClassName("article-analysis-bias")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-bias")[0].style.display = "block";
       document.getElementsByClassName("article-analysis-bias-button")[0].style.color = "rgb(131, 131, 131)";
       window.scrollTo(0, document.body.scrollHeight);
-    } else {
+    } 
+    else {
       setBias(false);
       for (i = 0; i < biases.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
@@ -81,15 +79,21 @@ const Article = (props) => {
     if (!sentiment) {
       setSentiment(true);
       for (i = 0; i < sentiments.length; i++) {
-        if (sentiments[i] > .67) document.getElementById(i).style.backgroundColor = "#55185b";
-        if (sentiments[i] < .15) document.getElementById(i).style.backgroundColor = "#185b32";
+        if (sentiments[i] >= .5) {
+          var rgb = highlightOpacity([85,24,91],[128, 128, 128],(sentiments[i]-.5)/.5);
+          document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+        }
+        if (sentiments[i] < .5) {
+          var rgb = highlightOpacity([24,91,50],[128, 128, 128],(.5-sentiments[i])/.5);
+          document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+        }
       }
       document.getElementsByClassName("article-analysis-sentiment")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-sentiment")[0].style.display = "block";
       document.getElementsByClassName("article-analysis-sentiment-button")[0].style.color = "rgb(131, 131, 131)";
-
       window.scrollTo(0, document.body.scrollHeight);
-    } else {
+    } 
+    else {
       setSentiment(false);
       for (i = 0; i < sentiments.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
@@ -101,18 +105,24 @@ const Article = (props) => {
   };
 
   const displayObjectivity = () => {
-    var i;
     if (!objectivity) {
       setObjectivity(true);
-      for (i = 0; i < objectivitys.length; i++) {
-        if (objectivitys[i] > .67) document.getElementById(i).style.backgroundColor = "#e28743";
-        if (objectivitys[i] < .15) document.getElementById(i).style.backgroundColor = "#154c79";
+      for (var i = 0; i < objectivitys.length; i++) {
+        if (objectivitys[i] >= 0.5) {
+          var rgb = highlightOpacity([226,135,67],[128, 128, 128],(objectivitys[i]-.5)/.5);
+          document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+        }
+        if (objectivitys[i] < .5) {
+          var rgb = highlightOpacity([21,76,121],[128, 128, 128],(.5-objectivitys[i])/.5);
+          document.getElementById(i).style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+        }
       }
       document.getElementsByClassName("article-analysis-objectivity")[0].style.display = "block";
       document.getElementsByClassName("horizontal-line-objectivity")[0].style.display = "block";
       document.getElementsByClassName("article-analysis-objectivity-button")[0].style.color = "rgb(131, 131, 131)";
       window.scrollTo(0, document.body.scrollHeight);
-    } else {
+    } 
+    else {
       setObjectivity(false);
       for (i = 0; i < objectivitys.length; i++) {
         document.getElementById(i).style.backgroundColor = "transparent";
