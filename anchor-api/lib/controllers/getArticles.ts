@@ -32,10 +32,19 @@ export function getArticles(req: express.Request, res: express.Response) {
       sort[String(req.query.orderBy)] = -1;
     }
   }
+  
+  if (req.query.id !== undefined) {
+        where._id = String(req.query.id)
+  }
+  
   client.get(fullUrl, function (err, data) {
     if (err) {
       console.log(err);
+    }    
+    if (req.query.id !== undefined) {
+        where._id = String(req.query.id)
     }
+
     if (data !== null) {
       console.log('Got data from redis: ' + data);
       res.status(200).send(JSON.parse(data));

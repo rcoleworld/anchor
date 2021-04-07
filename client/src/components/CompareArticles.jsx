@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../stylesheets/comparearticles.css";
+const { REACT_APP_SERVER_URL } = process.env;
 
 const CompareArticles = () => {
   const [articles, setArticles] = useState([]);
@@ -11,7 +12,7 @@ const CompareArticles = () => {
   useEffect(() => {
     axios
       .get(
-        "http://home.flores.sh:5001/articles?orderBy=average_sentiment&limit=12"
+        `${REACT_APP_SERVER_URL}/articles?orderBy=average_sentiment&limit=12`
       )
       .then((response) => {
         if (response.status === 200) {
