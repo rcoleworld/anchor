@@ -164,9 +164,6 @@ const Home = () => {
         }
       })
       .catch((error) => {
-        if(error){
-          if (error.response.status === 429) setRateLimited(true);
-        }
         console.log(error);
       });
   }, []); //will change, it's to load all articles at once when the page loads 
