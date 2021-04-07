@@ -1,13 +1,20 @@
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "node:constants";
 import React, { Component } from "react";
 import { useState, useEffect } from "react";
 
 import "../stylesheets/comparesources.css";
 const sourceImages = [
-  "../images/CNN.png",
-  "../images/Fox News.png",
-  "../images/The New York Times.png",
+  "../images/sources/CNN.png",
+  "../images/sources/Fox News.png",
+  "../images/sources/The New York Times.png",
 ];
 const sources = ["CNN", "Fox News", "The New York Times"];
+var firstSentiment = 0;
+var secondSentiment = 0;
+var firstObjectivity = 0;
+var secondObjectivity = 0;
+var firstBias = 0;
+var secondBias = 0;
 
 const CompareSources = () => {
   var selected = [];
@@ -50,8 +57,8 @@ const CompareSources = () => {
                 resultsDiv.innerHTML =
                   "Comparing " + selected[0] + " and " + selected[1];
                 
-                  document.getElementById("container-left").innerHTML = selected[0] + "<p>Average Objectivity: </p><p>Average Sentiment: </p><p>Average Bias: </p>";
-                  document.getElementById("container-right").innerHTML = selected[1]+ "<p>Average Objectivity: </p><p>Average Sentiment: </p><p>Average Bias: </p>";
+                  document.getElementById("container-left").innerHTML = selected[0] + "<p>Average Objectivity: " + firstObjectivity + "</p><p>Average Sentiment:  "+ firstSentiment + "</p><p>Average Bias: </p>"+ firstBias ;
+                  document.getElementById("container-right").innerHTML = selected[1]+ "<p>Average Objectivity: " + secondObjectivity + "</p><p>Average Sentiment: "+ secondSentiment + "</p><p>Average Bias: </p>" + secondBias;
               }
             });
         } else {

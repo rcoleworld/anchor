@@ -19,7 +19,7 @@ const DemoPopup = (props) => {
             <Modal.Title as="h2" bsPrefix="modal-title-special">First Time Here?</Modal.Title>
           </Modal.Header>
           <Modal.Body bsPrefix="modal-body-special">
-          Whether it's your first time here or some time since you've vistied, we suggest looking at our demo page 
+          Whether it's your first time here or some time since you've visited, we suggest looking at our demo page 
           so you know how to use and interpret the data on our application!         
           </Modal.Body>
           <Modal.Footer>
