@@ -10,6 +10,8 @@ const Source = (props) => {
   const [sentiment, setSentiment] = useState([]);
   const [bias, setBias] = useState([]);
   const [rateLimited, setRateLimited] = useState(false);
+  
+  var sources = []
 
   // Set Objectivity
   useEffect(() => {
@@ -18,7 +20,6 @@ const Source = (props) => {
       .then((response) => {
         if (response.status === 200) {
           setObjectivity(response.data);
-          console.log(response);
         } else {
           console.log("error objectivity");
         }
@@ -27,6 +28,12 @@ const Source = (props) => {
         if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
+
+      objectivity !== undefined &&
+        objectivity.length > 0 &&
+        objectivity.map((ob, index) => (
+          sources.push(ob._id)
+        ))
   }, []);
 
   // Set Sentiment
@@ -44,6 +51,8 @@ const Source = (props) => {
         if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
+
+
   }, []);
 
   // Set Sentiment
@@ -63,6 +72,8 @@ const Source = (props) => {
       });
   }, []);
 
+  console.log("sources" + sources);
+  console.log(sentiment);
   return (
     <div className="source">
       <h1>{source.source}</h1>
