@@ -27,10 +27,14 @@ services:
     volumes:
       - ./anchor-api/:/usr/src/app/anchor-api
       - /app/node_modules/
+    networks:
+      - anchor-api-network
 
   redis:
     image: 'redis:alpine'
-
+    networks:
+      - anchor-api-network
+    
   mongo-database:
     container_name: mongo-database
     image: mongo:latest

@@ -18,9 +18,9 @@ class NYTTransformer(BaseTransformer):
         self.transformed_data = None
 
         contributors = []
+
         for element in raw_article['byline']['person']:
             contributors.append(element['firstname'] + (" " + element.get('lastname') if element.get('lastname') != None else ""))
-
         try:
             thumbnail = "https://www.nytimes.com" + raw_article.get('multimedia')[0]['url']
         except:
