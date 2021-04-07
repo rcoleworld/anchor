@@ -60,13 +60,19 @@ const ArticleThumbTrending = (props) => {
             </Link>
             {/* <div className="bias-description">Description</div> */}
             <div className="bias-source">
+            <Link to={{
+                pathname: `/source/${props.source}`,
+                state: {
+                    source: { props },
+                },
+            }}>
               <img
                 id="img-source"
                 src={sourceImage}
                 alt=""
                 width="25"
                 height="25"
-              ></img>
+              ></img> </Link>
             </div>
           </div>
         </div>
