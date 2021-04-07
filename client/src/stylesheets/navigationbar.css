@@ -11,7 +11,7 @@ body {
 
 .navbar a {
     color: var(--text-color);
-    text-decoration: none;
+    text-decoration: none; 
 }
 
 .navbar {
