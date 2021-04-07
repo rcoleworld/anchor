@@ -20,7 +20,7 @@ const SpectrumBar = props => {
     });
     return (
         <>
-            <h1 className="spectrum-title">{name} Analysis</h1>
+            <h1 className="spectrum-title">{name}</h1>
             <div className="spectrum-wrapper">
                 <div className="spectrum-bar-container">
                     <ul className="spectrum-percentages">

@@ -1,36 +1,10 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ProgressRing from "./ProgressRing";
 
 import '../stylesheets/homepage.css';
 
 const ArticleThumbTrending = (props) => {
-  const [progress, setProgress] = useState(0);
-  const [color, setColor] = useState("");
-  const colorArray = [
-    "#03254c",
-    "#960019",
-    "#00fcf0",
-    "#d2fc00",
-    "#7bff00",
-    "#fa6900",
-  ];
-
-  const changeProgress = () => {
-    var bias = Math.ceil(props.bias * 100);
-    setProgress(bias);
-    if (bias < 50) {
-      setColor(colorArray[1]);
-    } else {
-      setColor(colorArray[0]);
-    }
-  };
 
   var sourceImage = "./images/sources/" + props.source + ".png";
-
-  useEffect(() => {
-    changeProgress();
-  });
 
   return (
     <div>
@@ -60,13 +34,19 @@ const ArticleThumbTrending = (props) => {
             </Link>
             {/* <div className="bias-description">Description</div> */}
             <div className="bias-source">
+            <Link to={{
+                pathname: `/source/${props.source}`,
+                state: {
+                    source: { props },
+                },
+            }}>
               <img
                 id="img-source"
                 src={sourceImage}
                 alt=""
                 width="25"
                 height="25"
-              ></img>
+              ></img> </Link>
             </div>
           </div>
         </div>
