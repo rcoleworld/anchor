@@ -148,7 +148,7 @@ const Home = () => {
         console.log(error);
       });
   }, []);
-  // End of Deo Pop Up Stuff 
+  // End of Demo Pop Up Stuff 
 
   // Recent Articles
   const [rateLimited, setRateLimited] = useState(false);
