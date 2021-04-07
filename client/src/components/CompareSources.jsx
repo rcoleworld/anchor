@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 
 import "../stylesheets/comparesources.css";
 const sourceImages = [
-  "../images/CNN.png",
-  "../images/Fox News.png",
-  "../images/The New York Times.png",
+  "../images/Sources/CNN.png",
+  "../images/Sources/Fox News.png",
+  "../images/Sources/The New York Times.png",
 ];
 const sources = ["CNN", "Fox News", "The New York Times"];
 
