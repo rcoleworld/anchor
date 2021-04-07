@@ -182,7 +182,7 @@ const Article = (props) => {
         <SpectrumBar
           id="spectrum-bias"
           ballId="spectrum-ball-bias"
-          name="Bias"
+          name="Bias Analysis"
           percentage={averageBias}
           colors={['#0066ff', '#ff4d4d']}
           subtitles={["Left Leaning", "Unbiased", "Right Leaning"]}
@@ -193,7 +193,7 @@ const Article = (props) => {
         <SpectrumBar
           id="spectrum-sentiment"
           ballId="spectrum-ball-sentiment"
-          name="Sentiment"
+          name="Sentiment Analysis"
           percentage={avgerageSentiment}
           colors={['#55185b', '#185b32']}
           subtitles={["Positive", "Neutral", "Negative"]}
@@ -204,7 +204,7 @@ const Article = (props) => {
         <SpectrumBar
           id="spectrum-objectivity"
           ballId="spectrum-ball-objectivity"
-          name="Objectivity"
+          name="Objectivity Analysis"
           percentage={avgerageObjectivity}
           colors={['#e28743', '#154c79']}
           subtitles={["Objective", "Ambiguous", "Subjective"]}
