@@ -18,6 +18,10 @@ export function getArticles(req: express.Request, res: express.Response) {
     if (req.query.category !== undefined) {
       where.category = String(req.query.category);
     }
+    
+    if (req.query.id !== undefined) {
+        where._id = String(req.query.id)
+    }
 
     if (req.query.orderBy !== undefined) {
       if (req.query.orderType === 'asc') {
