@@ -6,6 +6,8 @@ from Putter.BasePutter import BasePutter
 from Transformer.CNNTransformer import CNNTransformer
 from Crawler.NYTCrawler import NYTCrawler
 from Transformer.NYTTransformer import NYTTransformer
+from Crawler.NYPostCrawler import NYPostCrawler
+from Transformer.NYPostTransformer import NYPostTransformer
 
 class Scheduler:
     configs = {}
@@ -52,6 +54,16 @@ class Scheduler:
         """
         nyt_crawler = NYTCrawler(config=config, num_of_articles=50)
         return {"nyt": nyt_crawler.articles_list}
+        
+    def create_nypost_queue(self, config) -> dict:
+        """
+        Returns queue of articles to parse for Fox News
+
+        input: a query to search for
+        return: a dict to append to the general queue
+        """
+        nypost_crawler = NYPostCrawler(config=config, num_of_articles=50)
+        return {"nypost": nypost_crawler.articles_list}
 
     def create_queue(self):
         """
@@ -60,14 +72,15 @@ class Scheduler:
         function_mapping = {
             "cnn": self.create_cnn_queue,
             "fox": self.create_fox_queue,
+            "nypost": self.create_nypost_queue,
             "nyt": self.create_nyt_queue,
         }
         transformer_mapping = {
             "cnn": CNNTransformer,
             "fox": FoxNewsTransformer,
+            "nypost": NYPostTransformer,
             "nyt": NYTTransformer,
         }
-
         for website in self.configs.get("websites"):
             self.queue.update(function_mapping.get(website.get("website_name"))(config=website))
 
@@ -83,7 +96,7 @@ class Scheduler:
             for article in self.queue.get(website):
                 t = self.transformers.get(website).transform(article)
                 if self.transformers.get(website).transformed_data is not None:
-                    self.transformers.get(website).run_ai()
+                    #self.transformers.get(website).run_ai()
                     self.putter.put_article(self.transformers.get(website).transformed_data)
                     # testing return
                     #return t
