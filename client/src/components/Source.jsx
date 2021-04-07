@@ -10,8 +10,8 @@ const Source = (props) => {
   const [sentiment, setSentiment] = useState([]);
   const [bias, setBias] = useState([]);
   const [rateLimited, setRateLimited] = useState(false);
-  
-  var sources = []
+
+  var sources = [];
 
   // Set Objectivity
   useEffect(() => {
@@ -29,11 +29,9 @@ const Source = (props) => {
         console.log(error);
       });
 
-      objectivity !== undefined &&
-        objectivity.length > 0 &&
-        objectivity.map((ob, index) => (
-          sources.push(ob._id)
-        ))
+    objectivity !== undefined &&
+      objectivity.length > 0 &&
+      objectivity.map((ob, index) => sources.push(ob._id));
   }, []);
 
   // Set Sentiment
@@ -51,8 +49,6 @@ const Source = (props) => {
         if (error.response.status === 429) setRateLimited(true);
         console.log(error);
       });
-
-
   }, []);
 
   // Set Sentiment
@@ -72,11 +68,46 @@ const Source = (props) => {
       });
   }, []);
 
-  console.log("sources" + sources);
-  console.log(sentiment);
   return (
     <div className="source">
       <h1>{source.source}</h1>
+      <div className="source-objectivity">
+          <h2>Objectivity</h2>
+        {objectivity.map((ob, index) => {
+          if (ob._id === source.source) {
+              return(
+            <div>
+
+              
+              {ob.average}
+            </div>);
+          }
+        })}
+      </div>
+      <div className="source-sentiment">
+          <h2>Sentiment</h2>
+        {sentiment.map((sent, index) => {
+          if (sent._id === source.source) {
+              return(
+            <div>
+              {sent.average}
+            </div>);
+          }
+        })}
+      </div>
+      <div className="obj">
+          <h2>Bias (Left/Right Leaning)</h2>
+        {bias.map((bias, index) => {
+          if (bias._id === source.source) {
+              return(
+            <div>
+
+              
+              {bias.average}
+            </div>);
+          }
+        })}
+      </div>
     </div>
   );
 };
