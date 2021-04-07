@@ -8,7 +8,9 @@ const Article = (props) => {
   const [bias, setBias] = useState(false);
   const [sentiment, setSentiment] = useState(false);
   const [objectivity, setObjectivity] = useState(false);
+  const [executed, setExecuted] = useState(false);
 
+  var imgSrc = "../images/sources/" + article.source + ".png";
   var date = article.date.split("T")[0].split("-");
   date = new Date(date[0], date[1] - 1, date[2]);
   const year = new Intl.DateTimeFormat("en", { year: "numeric" }).format(date);
@@ -22,6 +24,10 @@ const Article = (props) => {
   var averageBias = (article.bias * 100).toFixed(2);
   var avgerageSentiment = (article.sentiment * 100).toFixed(2);
   var avgerageObjectivity = (article.objectivity * 100).toFixed(2);
+  if (!executed) {
+    window.scrollTo(0, -document.body.scrollHeight);
+    setExecuted(true);
+  }
 
   const displaySentenceBias = (id) => {
     if (bias) {
@@ -31,7 +37,7 @@ const Article = (props) => {
     }
   }
 
-  const hideSentenceBias = (id) => {document.getElementById(id).innerHTML = sentences[id];}
+  const hideSentenceBias = (id) => { document.getElementById(id).innerHTML = sentences[id]; }
 
   const displayBias = () => {
     if (!bias) {
@@ -110,10 +116,18 @@ const Article = (props) => {
         <h3> {article.headline} </h3>
       </div>
       <div className="article-info">
-        From {article.source.charAt(0).toUpperCase() + article.source.slice(1)}{" "}
-        | By {article.authors.map((author, index) => " " + author)}
+        <div>
+        <a target="_blank" href={article.url}><img className="article-source" src={imgSrc}/></a>
+        </div>
+        <div>
+          <div>
+            By {article.authors.map((author, index) => " " + author)}
+          </div>
+          <div>{date}</div>
+        </div>
+
       </div>
-      <div className="article-date">{date}</div>
+
       <div>
         <img className="article-image" src={article.thumbnail} alt=""></img>
       </div>
