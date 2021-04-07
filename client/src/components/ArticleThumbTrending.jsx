@@ -26,7 +26,7 @@ const ArticleThumbTrending = (props) => {
     }
   };
 
-  var sourceImage = "./images/" + props.source + ".png";
+  var sourceImage = "./images/sources/" + props.source + ".png";
 
   useEffect(() => {
     changeProgress();

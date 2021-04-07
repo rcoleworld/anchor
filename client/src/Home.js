@@ -4,6 +4,8 @@ import ArticleThumbTrending from "./components/ArticleThumbTrending";
 import ArticleThumb from "./components/ArticleThumb";
 import axios from "axios";
 import "./stylesheets/homepage.css";
+import DemoPopup from "./components/DemoPopup";
+import Cookies from 'js-cookie';
 
 const { REACT_APP_SERVER_URL } = process.env;
 
@@ -93,6 +95,9 @@ const defaultArticle = {
 };
 
 const Home = () => {
+  //Set Demo Pop up
+  const [demoCookie, setDemoCookie] = useState([]);
+  const [show, setShow] = useState(false);
   // Set Recent Articles
   const [articles, setArticles] = useState([]);
   // Set Right and Left Articles
@@ -104,6 +109,46 @@ const Home = () => {
   // Set Least/Most Objectivity Articles
   const [mostObjectivityArticles, setMostObjectivityArticles] = useState([]);
   const [leastObjectivityArticles, setLeastObjectivityArticles] = useState([]);
+  
+
+  // Start of DEMO Popup Stuff
+  const handleClose = () => {
+    setShow(false);
+    handleState();
+    }
+
+  const handleState = () => {
+    if(Cookies.get('displayDemo')) setDemoCookie(Cookies.get('displayDemo'));
+    } 
+
+  let demoModal = () => {
+    if (demoCookie === false) {
+      setTimeout(() => { 
+        setShow(true);
+      }, 2000);
+      return <DemoPopup  show={show} status={handleState} handleClose={handleClose}/>
+    }
+  }
+  
+  useEffect(() => {
+    console.log(Cookies.get('displayDemo'));
+    axios
+      .get(`${REACT_APP_SERVER_URL}/cookieDemo`, {withCredentials: true})
+      .then((response) => {
+        if (response) {
+          console.log(Cookies.get('displayDemo'));
+          if(response.status === 200) setDemoCookie(Cookies.get('displayDemo'));
+          else{
+            // response is 204
+            setDemoCookie(false);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  // End of Deo Pop Up Stuff 
 
   // Recent Articles
   const [rateLimited, setRateLimited] = useState(false);
@@ -119,7 +164,9 @@ const Home = () => {
         }
       })
       .catch((error) => {
-        if (error.response.status === 429) setRateLimited(true);
+        if(error){
+          if (error.response.status === 429) setRateLimited(true);
+        }
         console.log(error);
       });
   }, []); //will change, it's to load all articles at once when the page loads 
@@ -158,7 +205,7 @@ const Home = () => {
   // Most Sentiment Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_sentiment&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_sentiment&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostSentimentArticles(response.data);
@@ -174,7 +221,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "http://home.flores.sh:5001/articles?orderBy=average_sentiment&orderType=asc&limit=3"
+        `${REACT_APP_SERVER_URL}/articles?orderBy=average_sentiment&orderType=asc&limit=3`
       )
       .then((response) => {
         if (response.status === 200) {
@@ -191,7 +238,7 @@ const Home = () => {
   // Most Sentiment Articles
   useEffect(() => {
     axios
-      .get("http://home.flores.sh:5001/articles?orderBy=average_objectivity&limit=3")
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_objectivity&limit=3`)
       .then((response) => {
         if (response.status === 200) {
           setMostObjectivityArticles(response.data);
@@ -206,8 +253,7 @@ const Home = () => {
   // Least Sentiment Articles
   useEffect(() => {
     axios
-      .get(
-        "http://home.flores.sh:5001/articles?orderBy=average_objectivity&orderType=asc&limit=3"
+      .get(`${REACT_APP_SERVER_URL}/articles?orderBy=average_objectivity&orderType=asc&limit=3`
       )
       .then((response) => {
         if (response.status === 200) {
@@ -227,6 +273,7 @@ const Home = () => {
     <>
   {!rateLimited ?  
     <div className="Home">
+      {demoModal()}
       <div className="title-class">
         <p id="anchor-title">Anchor News</p>
       </div>
