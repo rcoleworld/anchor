@@ -23,7 +23,8 @@ const MONGODB_URI = process.env.MONGODB_URL;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 app.use(cors({origin: 'http://home.flores.sh:3000',
 optionsSuccessStatus: 200,
 methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
