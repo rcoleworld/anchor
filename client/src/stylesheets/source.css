@@ -1,0 +1,11 @@
+
+.source-objectivity, .source-bias, .source-sentiment {
+    padding: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 800;
+}

@@ -12,7 +12,6 @@ import {getAverageStats} from './controllers/getStats';
 import { searchArticles } from './controllers/searchArticles';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import cors from 'cors';
 
 dotenv.config();
 
@@ -25,14 +24,18 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 const app = express();
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
-app.use(cors({origin: 'http://home.flores.sh:3000',
-optionsSuccessStatus: 200,
-methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
-credentials: true}));
-
 
 // parse cookies
 app.use(cookieParser())
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://home.flores.sh:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', "true");
+
+  next();
+});
 
 const getArticleLimiter = rateLimit({
     windowMs: 60 * 500, // 30 second window
