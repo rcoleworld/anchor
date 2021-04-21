@@ -3,35 +3,28 @@ import Modal from 'react-bootstrap/Modal';
 import '../stylesheets/demopopup.css';
 
 const DemoPopup = (props) => {
-    return (
-      <>
-        <Modal
-            show={props.show}
-            onHide={props.handleClose}
-            backdrop="static"
-            keyboard={false}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            dialogClassName="modal-title-special"
-        >
-          <Modal.Header bsPrefix="modal-header-special" closeButton>
-            <Modal.Title as="h2" bsPrefix="modal-title-special">First Time Here?</Modal.Title>
-          </Modal.Header>
-          <Modal.Body bsPrefix="modal-body-special">
-          Whether it's your first time here or some time since you've visited, we suggest looking at our demo page 
-          so you know how to use and interpret the data on our application!         
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" size="medium" onClick={props.handleClose}>
-              Close
-            </Button>
-            <Button variant="demo" size="medium">View Demo</Button> 
-          </Modal.Footer>
-        </Modal>
-      </>
-    ); 
-  }
+  return (
+    <>
+      <div className="popup">
+        <div className="popup-inner">
+          <div className="popup-title">
+            <h1>First Time Here?</h1>
+          </div>
+          <div className="popup-body">
+            <span>
+              Whether it's your first time here or some time since you've visited, we suggest looking at our demo page
+              so you know how to use and interpret the data on our application!
+          </span>
+          </div>
+          <div className="popup-buttons">
+            <button onClick={props.handleClose}>Close</button>
+            <button>View Demo</button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
 
 
 export default DemoPopup;

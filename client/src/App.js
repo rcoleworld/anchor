@@ -13,7 +13,6 @@ import CompareArticles from './components/CompareArticles'
 import Source from './components/Source'
 import Home from './Home'
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [theme, setTheme] = useState('blue-theme');
