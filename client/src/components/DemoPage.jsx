@@ -9,7 +9,7 @@ const DemoPage = () => {
           <p id="intro-description"> </p>
         </div>
       </div>
-      <div className="about-master-containers">
+      <div className="demo-master-containers">
         <div className="about-block ubuntu">
           <div className="ubuntu-bar">
             <span class="dot"></span>
@@ -18,7 +18,7 @@ const DemoPage = () => {
           </div>
           <div className="content"> What is Anchor News? </div>
         </div>
-        <div className="about-block mac" id="test">
+        <div className="demo-block demo-mac" id="test">
           <div className="mac-bar">
             <span class="dot" id="mac-dot-1"></span>
             <span class="dot" id="mac-dot-2"></span>
@@ -30,7 +30,7 @@ const DemoPage = () => {
           </p>
         </div>
 
-        <div className="about-block ubuntu" id="test">
+        <div className="demo-block ubuntu" id="test">
           <div className="ubuntu-bar">
             <span class="dot"></span>
             <span class="dot"></span>
@@ -38,7 +38,7 @@ const DemoPage = () => {
           </div>
           <div className="content"> The Graphs </div>
         </div>
-        <div className="about-block mac">
+        <div className="demo-block demo-mac">
           <div className="mac-bar">
           <span class="dot" id="mac-dot-1"></span>
             <span class="dot" id="mac-dot-2"></span>
@@ -64,7 +64,7 @@ const DemoPage = () => {
           </p>
         </div>
 
-        <div className="about-block ubuntu">
+        <div className="demo-block ubuntu">
           <div className="ubuntu-bar">
           <span class="dot"></span>
             <span class="dot"></span>
@@ -72,7 +72,7 @@ const DemoPage = () => {
           </div>
           <div className="content"> Why is that sentence bias? </div>
         </div>
-        <div className="about-block mac" id="test">
+        <div className="demo-block demo-mac" id="test">
           <div className="mac-bar">
             <span class="dot" id="mac-dot-1"></span>
             <span class="dot" id="mac-dot-2"></span>
@@ -83,7 +83,7 @@ const DemoPage = () => {
             spectrum. Please note that the bias AI has an accuracy of 83%, therefore it can have flukes. </p>
         </div>
 
-        <div className="about-block ubuntu" id="test">
+        <div className="demo-block ubuntu" id="test">
           <div className="ubuntu-bar">
           <span class="dot"></span>
             <span class="dot"></span>
@@ -91,7 +91,7 @@ const DemoPage = () => {
           </div>
           <div className="content"> Want to know more? </div>
         </div>
-        <div className="about-block mac">
+        <div className="demo-block demo-mac">
           <div className="mac-bar">
           <span class="dot" id="mac-dot-1"></span>
             <span class="dot" id="mac-dot-2"></span>
