@@ -94,7 +94,7 @@
 }
 /* Recent Stories  */
 .recent-articles {
-  color: white;
+  text-align: center;
   margin: 0;
   padding: 5px;
 }
@@ -132,7 +132,6 @@
   text-shadow: 0px 0px 6px rgb(53, 53, 53), 0px 0px 6px rgb(43, 42, 42),
     0px 0px 1px black;
 }
-
 
 .default-thumbnail :hover {
   color: white;
@@ -220,16 +219,16 @@
 }
 .hr {
   display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid var(--decor-color);
-    margin: 1em 0;
-    padding: 0;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--decor-color);
+  margin: 1em 0;
+  padding: 0;
 }
 
 .vertical-row {
-  Float:left;
-  height:650px;
-  width:1px; /* edit this if you want */
+  float: left;
+  height: 650px;
+  width: 1px; /* edit this if you want */
   background-color: var(--decor-color);
- } 
+}
