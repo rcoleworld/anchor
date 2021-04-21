@@ -2,42 +2,79 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 
-.modal-header-special{
-    /* text-align: center; */
-    color:  rgb(42, 49, 66);
-    display: grid;
-    grid-template-columns: 95% auto;
-    grid-template-rows: auto;
-    justify-items: center;
-    /* align-items: flex-start; */
-    justify-content: space-evenly;
-    padding: 0.5rem 1rem;
-    border-bottom: 3px solid teal;
-    border-top-left-radius: calc(.3rem - 1px);
-    border-top-right-radius: calc(.3rem - 1px);
-
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
 }
 
-.modal-title-special{
+.popup-inner{
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    top: 40%;
+    bottom: auto;
+    margin: auto;
+    border-radius: 5px;
+    background: white;
+}
+
+.popup-title{
     font-family: bebas-neue-by-fontfabric, sans-serif;
     font-size: 45px;
-    margin-bottom: 0px;
+    border-bottom: 3px solid teal;
+    color: rgb(32, 32, 32);
+    text-align: center;
 }
 
-.modal-body-special{
+.popup-body{
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 1rem;
+    color: rgb(32, 32, 32);
+    
 }
 
-.btn-demo{
-    background-color: teal !important;
-    color: white !important;
+.popup-buttons{
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 10px;
+    text-align: right;
+    
 }
 
-.btn-medium {
-    font-size: 1.2rem !important;
-    font-weight: bolder !important;
-  }
+.popup-close-button, .popup-demo-button{
+    text-decoration: none;
+    background-color: transparent;
+    color:rgb(255, 255, 255);
+    font-family: bebas-neue-by-fontfabric, sans-serif;
+    font-size: large;
+    font-style: normal;
+    border: none;
+    border-radius: 2px;
+    min-height: 40px;
+    margin-right: 10px;
+}
+
+.popup-close-button{
+    background-color: gray;
+}
+
+.popup-demo-button{
+    background-color: teal;
+}
+
+.popup-close-button:hover{
+    background-color: rgb(144, 144, 144);
+}
+
+.popup-demo-button:hover{
+    background-color: rgb(2, 160, 160);
+}
