@@ -96,6 +96,7 @@ const defaultArticle = {
 
 const Home = () => {
   //Set Demo Pop up
+  const[hardCodeDemo, setHardCodeDemo] = useState(true);
   const [demoCookie, setDemoCookie] = useState([]);
   const [show, setShow] = useState(false);
   // Set Recent Articles
@@ -114,6 +115,7 @@ const Home = () => {
   // Start of DEMO Popup Stuff
   const handleClose = () => {
     setShow(false);
+    setHardCodeDemo(false);
     handleState();
     }
 
@@ -122,7 +124,8 @@ const Home = () => {
     } 
 
   let demoModal = () => {
-      if (demoCookie === false) {
+      // if (demoCookie === false) {
+      if (hardCodeDemo === true) {
       setTimeout(() => { 
         setShow(true);
       }, 2000);
