@@ -18,7 +18,7 @@
     position: absolute;
     left: 18%;
     right: 18%;
-    top: 25%;
+    top: 40%;
     bottom: auto;
     margin: auto;
     border-radius: 5px;
@@ -55,7 +55,7 @@
     background-color: transparent;
     color:rgb(255, 255, 255);
     font-family: bebas-neue-by-fontfabric, sans-serif;
-    font-weight: 400;
+    font-size: large;
     font-style: normal;
     border: none;
     border-radius: 2px;
