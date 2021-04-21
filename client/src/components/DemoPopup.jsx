@@ -17,8 +17,8 @@ const DemoPopup = (props) => {
           </span>
           </div>
           <div className="popup-buttons">
-            <button onClick={props.handleClose}>Close</button>
-            <button>View Demo</button>
+            <button className="popup-close-button" onClick={props.handleClose}>Close</button>
+            <button className="popup-demo-button">View Demo</button>
           </div>
         </div>
       </div>
