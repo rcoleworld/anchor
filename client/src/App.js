@@ -14,6 +14,7 @@ import Source from './components/Source'
 import Home from './Home'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DemoPage from './components/DemoPage';
 
 function App() {
   const [theme, setTheme] = useState('blue-theme');
@@ -33,6 +34,7 @@ function App() {
           <Route path="/compare"><Compare /></Route>
           <Route path="/search"><SearchResults/></Route>
           <Route path="/:category/:id"><Article/></Route>
+          <Route path="/demopage/"><DemoPage/></Route>
           
           <Route path="/:category"><Category/></Route>
           
