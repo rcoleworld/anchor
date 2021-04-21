@@ -1,22 +1,23 @@
 import { Link } from "react-router-dom";
 
-import '../stylesheets/homepage.css';
+import "../stylesheets/homepage.css";
 
 const ArticleThumbTrending = (props) => {
-
   var sourceImage = "./images/sources/" + props.source + ".png";
 
   return (
     <div>
       <div className="hr"></div>
       <div className="bias-box">
-        <Link to={{
-                pathname: `${props.section}/${props.id}`,
-                state: {
-                  article: { props },
-                },
-              }}>
-        <img className="bias-thumbnail" src={props.thumbnail} alt=" "></img>
+        <Link
+          to={{
+            pathname: `${props.section}/${props.id}`,
+            state: {
+              article: { props },
+            },
+          }}
+        >
+          <img className="bias-thumbnail" src={props.thumbnail} alt=" "></img>
         </Link>
         <div className="bias-content">
           <div className="bias-category">{props.category}</div>
@@ -34,19 +35,22 @@ const ArticleThumbTrending = (props) => {
             </Link>
             {/* <div className="bias-description">Description</div> */}
             <div className="bias-source">
-            <Link to={{
-                pathname: `/source/${props.source}`,
-                state: {
+              <Link
+                to={{
+                  pathname: `/source/${props.source}`,
+                  state: {
                     source: { props },
-                },
-            }}>
-              <img
-                id="img-source"
-                src={sourceImage}
-                alt=""
-                width="25"
-                height="25"
-              ></img> </Link>
+                  },
+                }}
+              >
+                <img
+                  id="img-source"
+                  src={sourceImage}
+                  alt=""
+                  width="25"
+                  height="25"
+                ></img>{" "}
+              </Link>
             </div>
           </div>
         </div>
