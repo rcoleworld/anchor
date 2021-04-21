@@ -1,6 +1,10 @@
 import express from 'express';
+import redis from 'redis';
 import Article from '../models/article.model';
-
+const client = redis.createClient({
+  port: 6379,
+  host: 'redis',
+});
 export function handleWebScraper(req: express.Request, res: express.Response) {
   const articleList: any = [];
 
@@ -17,14 +21,20 @@ export function handleWebScraper(req: express.Request, res: express.Response) {
     }
   }
 
-  // insert data into database
-  Article.insertMany(articleList)
-    .then(() => {
-      console.log('Data inserted'); // Success
-      res.status(201).send(req.body);
-    })
-    .catch((error) => {
-      console.log('error'); // Failure
-      res.status(403).send(error);
-    });
+  client.flushall(function (error, data) {
+    if (error) {
+      console.log(error);
+    }
+    console.log('Flushed')
+    // insert data into database
+    Article.insertMany(articleList)
+      .then(() => {
+        console.log('Data inserted'); // Success
+        res.status(201).send(req.body);
+      })
+      .catch((error) => {
+        console.log('error'); // Failure
+        res.status(403).send(error);
+      });
+  });
 }

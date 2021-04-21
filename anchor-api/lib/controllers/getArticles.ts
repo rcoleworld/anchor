@@ -46,7 +46,7 @@ export function getArticles(req: express.Request, res: express.Response) {
     }
 
     if (data !== null) {
-      console.log('Got data from redis: ' + data);
+      console.log('Got data from redis');
       res.status(200).send(JSON.parse(data));
     } else {
       Article.find(where, {}, options)
