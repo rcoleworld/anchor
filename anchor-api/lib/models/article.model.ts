@@ -33,7 +33,20 @@ const ArticleSchema: Schema = new Schema({
   headline: { type: String, required: true },
   section: { type: String, required: false },
   thumbnail: { type: String, required: false },
-  body: { type: Schema.Types.Mixed, required: true },
+  body: {
+    type: Schema.Types.Mixed,
+    validate: {
+      validator: (v:[] | string) => {
+        if(typeof v === 'string' || v instanceof String){
+          if(v === undefined || v.length === 0 || v === '') return false;
+        }
+        else{
+          if(v===undefined || v.length === 0 || !Array.isArray(v)) return false;
+        }
+      },
+    message: props => `${props.value} Body cannot be empty`
+  },
+    required: true },
   category: { type: String, required: false }, // TODO make this an enum
   publisher: { type: String, required: false },
   average_bias: { type: Number, required: false},
