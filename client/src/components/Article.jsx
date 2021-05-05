@@ -220,9 +220,9 @@ const Article = (props) => {
   var biases = article.body.map((body_info) => body_info[1]);
   var sentiments = article.body.map((body_info) => body_info[2]);
   var objectivitys = article.body.map((body_info) => body_info[2]);
-  var averageBias = (article.bias * 100).toFixed(2);
-  var avgerageSentiment = (article.sentiment * 100).toFixed(2);
-  var avgerageObjectivity = (article.objectivity * 100).toFixed(2);
+  var averageBias = (articleLoaded) ? (article.average_bias * 100).toFixed(2) : (article.bias * 100).toFixed(2);
+  var avgerageSentiment = (articleLoaded) ? (article.average_sentiment * 100).toFixed(2) : (article.sentiment * 100).toFixed(2);
+  var avgerageObjectivity = (articleLoaded) ? (article.average_objectivity * 100).toFixed(2) : (article.objectivity * 100).toFixed(2);
   if (!executed) {
     window.scrollTo(0, -document.body.scrollHeight);
     setExecuted(true);
