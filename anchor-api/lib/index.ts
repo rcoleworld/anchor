@@ -25,19 +25,19 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 const app = express();
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
-app.use(cors());
+// app.use(cors());
 
 // parse cookies
 app.use(cookieParser())
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://home.flores.sh:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', "true");
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://home.flores.sh:3000');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   res.setHeader('Access-Control-Allow-Credentials', "true");
 
-  next();
-});
+//   next();
+// });
 
 const getArticleLimiter = rateLimit({
     windowMs: 60 * 500, // 30 second window
