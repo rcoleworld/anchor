@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
+  align-self: center;
 }
 
 .grids-container {
@@ -18,6 +20,7 @@
 }
 
 .articles-grid {
+  
   width: 500px;
   font-family: gravesend-sans, sans-serif;
   display: flex;
@@ -30,6 +33,8 @@
 .article-container {
   display: flex;
   margin: 20px;
+  align-content: center;
+  align-self: center;
 }
 
 .article-grid :hover {

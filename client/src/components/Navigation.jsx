@@ -61,7 +61,6 @@ const Navigation = (props) => {
           </Link>
           <div className="navbar-compare-dropdown">
             <Link className="navbar-dropdown-item" to={{ pathname: "/compare/sources" }}>Sources</Link>
-            <Link className="navbar-dropdown-item" to={{ pathname: "/compare/articles" }}>Articles</Link>
           </div>
         </li>
         <li className="navbar-categories">

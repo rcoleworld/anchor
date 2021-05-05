@@ -189,6 +189,10 @@
   font-size: 16px;
 }
 
+#thumb-section {
+  font-family: gravesend-sans, sans-serif;
+}
+
 .svg {
   display: block;
   margin: 20px auto;
