@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressRing from "./ProgressRing";
 import LazyLoad from "react-lazyload";
+import SpectrumBar from "./SpectrumBar";
 
 import "../stylesheets/homepage.css";
 
@@ -70,7 +71,9 @@ const ArticleThumb = (props) => {
                 height="25"
               ></img>
             </div>
+            <p id="thumb-section">{props.section}</p>
             {props.headline}
+
           </div>
         </Link>
       </LazyLoad>

@@ -60,7 +60,7 @@ body {
 .navbar-compare-dropdown {
     position: absolute;
     display: none;
-    top: 68px;
+    top: 64px;
     width: 110px;
     transform: translateY(-10%);
     background-color: rgb(36, 36, 36);

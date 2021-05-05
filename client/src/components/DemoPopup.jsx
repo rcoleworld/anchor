@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import '../stylesheets/demopopup.css';
 
@@ -18,7 +19,7 @@ const DemoPopup = (props) => {
           </div>
           <div className="popup-buttons">
             <button className="popup-close-button" onClick={props.handleClose}>Close</button>
-            <button className="popup-demo-button">View Demo</button>
+            <button className="popup-demo-button"><Link to={{ pathname: "/demopage" }}>View Demo</Link></button>
           </div>
         </div>
       </div>
@@ -28,3 +29,4 @@ const DemoPopup = (props) => {
 
 
 export default DemoPopup;
+

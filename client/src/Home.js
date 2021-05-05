@@ -96,8 +96,8 @@ const defaultArticle = {
 
 const Home = () => {
   //Set Demo Pop up
-  const[hardCodeDemo, setHardCodeDemo] = useState(true);
-  const [demoCookie, setDemoCookie] = useState([]);
+  const[hardCodeDemo, setHardCodeDemo] = useState(false);
+  const [demoCookie, setDemoCookie] = useState(false);
   const [show, setShow] = useState(false);
   // Set Recent Articles
   const [articles, setArticles] = useState([]);
@@ -125,7 +125,7 @@ const Home = () => {
 
   let demoModal = () => {
       // if (demoCookie === false) {
-      if (hardCodeDemo === true) {
+      if (demoCookie === true) {
       setTimeout(() => { 
         setShow(true);
       }, 2000);
@@ -158,7 +158,7 @@ const Home = () => {
   // Recent Articles 
   useEffect(() => {
     axios
-      .get(`${REACT_APP_SERVER_URL}/articles?limit=400&orderBy=firstPublishDate&orderType=des`)
+      .get(`${REACT_APP_SERVER_URL}/articles?limit=200&orderBy=firstPublishDate&orderType=des`)
       .then((response) => {
         if (response.status === 200) {
           setArticles(response.data);
