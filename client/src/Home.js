@@ -136,7 +136,7 @@ const Home = () => {
   useEffect(() => {
     console.log(Cookies.get('displayDemo'));
     axios
-      .get(`${REACT_APP_SERVER_URL}/cookieDemo`, {withCredentials: true})
+      .get(`${REACT_APP_SERVER_URL}/cookieDemo`)
       .then((response) => {
         if (response) {
           console.log(Cookies.get('displayDemo'));
