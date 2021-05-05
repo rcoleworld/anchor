@@ -97,7 +97,7 @@ const defaultArticle = {
 const Home = () => {
   //Set Demo Pop up
   const[hardCodeDemo, setHardCodeDemo] = useState(false);
-  const [demoCookie, setDemoCookie] = useState([]);
+  const [demoCookie, setDemoCookie] = useState(false);
   const [show, setShow] = useState(false);
   // Set Recent Articles
   const [articles, setArticles] = useState([]);

@@ -13,8 +13,9 @@ const sourceImages = [
   "../images/sources/CNN.png",
   "../images/sources/Fox News.png",
   "../images/sources/The New York Times.png",
+  "../images/sources/New York Post.png"
 ];
-const sources = ["CNN", "Fox News", "The New York Times"];
+const sources = ["CNN", "Fox News", "The New York Times", "New York Post"];
 const { REACT_APP_SERVER_URL } = process.env;
 const [rateLimited, setRateLimited] = useState(false);
 
