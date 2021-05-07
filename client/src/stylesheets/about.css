@@ -54,6 +54,14 @@
   display: flex;
   flex-flow: column;
 }
+.about-img-section{
+  display: block;
+  flex:content;
+}
+
+.about-img{
+  height: 131px;
+}
 
 .content {
   line-height: 320px;

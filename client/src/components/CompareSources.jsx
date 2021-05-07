@@ -136,8 +136,7 @@ const CompareSources = () => {
                     setFirstBias((bias.average * 100).toFixed(2));
                   }
                   if (bias._id === selected[1]) {
-                    // setSecondBias((bias.average * 100).toFixed(2));
-                    setSecondBias((50).toFixed(2));
+                    setSecondBias((bias.average * 100).toFixed(2));
                   }
                 });
 
