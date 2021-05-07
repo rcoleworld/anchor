@@ -62,6 +62,7 @@
 }
 #left-right-containers {
   margin: 20px 100px 20px 100px;
+  max-width: 1300px;
 }
 #container-left {
   width: 50%;
