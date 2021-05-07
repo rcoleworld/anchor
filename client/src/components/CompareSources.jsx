@@ -2,81 +2,84 @@ import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../stylesheets/comparesources.css";
+import SpectrumBarDual from "./SpectrumBarDual";
 
 
 const CompareSources = () => {
 
   const [objectivity, setObjectivity] = useState([]);
-const [sentiment, setSentiment] = useState([]);
-const [bias, setBias] = useState([]);
-const sourceImages = [
-  "../images/sources/CNN.png",
-  "../images/sources/Fox News.png",
-  "../images/sources/The New York Times.png",
-  "../images/sources/New York Post.png"
-];
-const sources = ["CNN", "Fox News", "The New York Times", "New York Post"];
-const { REACT_APP_SERVER_URL } = process.env;
-const [rateLimited, setRateLimited] = useState(false);
+  const [sentiment, setSentiment] = useState([]);
+  const [bias, setBias] = useState([]);
+  const sourceImages = [
+    "../images/sources/CNN.png",
+    "../images/sources/Fox News.png",
+    "../images/sources/The New York Times.png",
+    "../images/sources/New York Post.png"
+  ];
+  const sources = ["CNN", "Fox News", "The New York Times", "New York Post"];
+  const { REACT_APP_SERVER_URL } = process.env;
+  const [rateLimited, setRateLimited] = useState(false);
 
-var firstSentiment = 0;
-var secondSentiment = 0;
-var firstObjectivity = 0;
-var secondObjectivity = 0;
-var firstBias = 0;
-var secondBias = 0;
+  const [sourceImg1, setSourceImg1] = useState([]);
+  const [sourceImg2, setSourceImg2] = useState([]);
+  const [firstSentiment, setFirstSentiment] = useState([]);
+  const [secondSentiment, setSecondSentiment] = useState([]);
+  const [firstObjectivity, setfirstObjectivity] = useState([]);
+  const [secondObjectivity, setSecondObjectivity] = useState([]);
+  const [firstBias, setFirstBias] = useState([]);
+  const [secondBias, setSecondBias] = useState([]);
 
-// Set Objectivity
-useEffect(() => {
-  axios
-    .get(`${REACT_APP_SERVER_URL}/stats/average_objectivity`)
-    .then((response) => {
-      if (response.status === 200) {
-        setObjectivity(response.data);
-      } else {
-        console.log("error objectivity");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // Set Objectivity
+  useEffect(() => {
+    axios
+      .get(`${REACT_APP_SERVER_URL}/stats/average_objectivity`)
+      .then((response) => {
+        if (response.status === 200) {
+          setObjectivity(response.data);
+        } else {
+          console.log("error objectivity");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-  objectivity !== undefined &&
-    objectivity.length > 0 &&
-    objectivity.map((ob, index) => sources.push(ob._id));
-}, []);
+    objectivity !== undefined &&
+      objectivity.length > 0 &&
+      objectivity.map((ob, index) => sources.push(ob._id));
+  }, []);
 
-// Set Sentiment
-useEffect(() => {
-  axios
-    .get(`${REACT_APP_SERVER_URL}/stats/average_sentiment`)
-    .then((response) => {
-      if (response.status === 200) {
-        setSentiment(response.data);
-      } else {
-        console.log("error sentiment");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}, []);
+  // Set Sentiment
+  useEffect(() => {
+    axios
+      .get(`${REACT_APP_SERVER_URL}/stats/average_sentiment`)
+      .then((response) => {
+        if (response.status === 200) {
+          setSentiment(response.data);
+        } else {
+          console.log("error sentiment");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-// Set Bias
-useEffect(() => {
-  axios
-    .get(`${REACT_APP_SERVER_URL}/stats/average_bias`)
-    .then((response) => {
-      if (response.status === 200) {
-        setBias(response.data);
-      } else {
-        console.log("error bias");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}, []);
+  // Set Bias
+  useEffect(() => {
+    axios
+      .get(`${REACT_APP_SERVER_URL}/stats/average_bias`)
+      .then((response) => {
+        if (response.status === 200) {
+          setBias(response.data);
+        } else {
+          console.log("error bias");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   var selected = [];
 
@@ -110,30 +113,31 @@ useEffect(() => {
               if (selected.length === 2) {
                 //FOR FIRST SOURCE SELECTED
                 objectivity.map((ob, index) => {
-                   console.log(selected[0])
+                  console.log(selected[0])
                   if (ob._id === selected[0]) {
-                    firstObjectivity = (ob.average * 100).toFixed(2);
+                    setfirstObjectivity((ob.average * 100).toFixed(2));
                   }
                   if (ob._id === selected[1]) {
-                    secondObjectivity = (ob.average * 100).toFixed(2);
+                    setSecondObjectivity((ob.average * 100).toFixed(2));
                   }
                 });
 
                 sentiment.map((sent, index) => {
                   if (sent._id === selected[0]) {
-                    firstSentiment = (sent.average * 100).toFixed(2);
+                    setFirstSentiment((sent.average * 100).toFixed(2));
                   }
                   if (sent._id === selected[1]) {
-                    secondSentiment = (sent.average * 100).toFixed(2);
+                    setSecondSentiment((sent.average * 100).toFixed(2));
                   }
                 });
 
                 bias.map((bias, index) => {
                   if (bias._id === selected[0]) {
-                    firstBias = (bias.average * 100).toFixed(2);
+                    setFirstBias((bias.average * 100).toFixed(2));
                   }
                   if (bias._id === selected[1]) {
-                    secondBias = (bias.average * 100).toFixed(2);
+                    // setSecondBias((bias.average * 100).toFixed(2));
+                    setSecondBias((50).toFixed(2));
                   }
                 });
 
@@ -148,24 +152,8 @@ useEffect(() => {
                 resultsDiv.innerHTML =
                   "Comparing " + selected[0] + " and " + selected[1];
 
-                document.getElementById("container-left").innerHTML =
-                  selected[0] +
-                  "<p>Average Objectivity: " +
-                  firstObjectivity +
-                  "</p><p>Average Sentiment:  " +
-                  firstSentiment +
-                  "</p><p>Average Bias: " +
-                  firstBias +
-                  "</p>";
-                document.getElementById("container-right").innerHTML =
-                  selected[1] +
-                  "<p>Average Objectivity: " +
-                  secondObjectivity +
-                  "</p><p>Average Sentiment: " +
-                  secondSentiment +
-                  "</p><p>Average Bias: " +
-                  secondBias +
-                  "</p>";
+                setSourceImg1("../images/sources/" + selected[0] + ".png");
+                setSourceImg2("../images/sources/" + selected[1] + ".png");
               }
             });
         } else {
@@ -193,11 +181,46 @@ useEffect(() => {
         </button>
       </div>
       <div id="compare-results-container">
-        <p id="compare-title">Comparing 1 and 2</p>
+        <h3 id="compare-title">Comparing 1 and 2</h3>
         <div id="left-right-containers">
-          <div id="container-left">hi</div>
-
-          <div id="container-right">hello</div>
+          <SpectrumBarDual
+            id="spectrum-bias"
+            ballId1="source1-ball-bias"
+            ballId2="source2-ball-bias"
+            source1={sourceImg1}
+            source2={sourceImg2}
+            name="Political Bias Analysis"
+            percentage1={firstBias}
+            percentage2={secondBias}
+            colors={['#0066ff', '#ff4d4d']}
+            subtitles={["Left Leaning", "Unbiased", "Right Leaning"]}
+          />
+          <div className="horizontal-line2-compare"></div>
+          <SpectrumBarDual
+            id="spectrum-sentiment"
+            ballId1="source1-ball-sentiment"
+            ballId2="source2-ball-sentiment"
+            source1={sourceImg1}
+            source2={sourceImg2}
+            name="Sentiment Analysis"
+            percentage1={firstSentiment}
+            percentage2={secondSentiment}
+            colors={['#55185b', '#185b32']}
+            subtitles={["Positive", "Neutral", "Negative"]}
+          />
+          <div className="horizontal-line2-compare"></div>
+          <SpectrumBarDual
+            id="spectrum-objectivity"
+            ballId1="source1-ball-objectivity"
+            ballId2="source2-ball-objectivity"
+            source1={sourceImg1}
+            source2={sourceImg2}
+            name="Objectivity Analysis"
+            percentage1={firstObjectivity}
+            percentage2={secondObjectivity}
+            colors={['#e28743', '#154c79']}
+            subtitles={["Objective", "Ambiguous", "Subjective"]}
+          />
         </div>
       </div>
     </div>
