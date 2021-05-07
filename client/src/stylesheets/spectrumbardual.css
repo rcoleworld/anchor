@@ -35,29 +35,40 @@
     text-align: right;
 }
 
-.spectrum{
+.spectrum2{
+    position: relative;
     background-image: linear-gradient(to right, blue, grey, red);
-    min-height: 20px;
+    min-height: 40px;
 }
 
-.spectrum-ball{
-    height:19px;
-    width:19px;
-    background-color: white;
+.spectrum-ball2{
+    position: absolute;
+    height:39px;
+    width:39px;
+    background-color: transparent;
     border-radius: 50%;
 }
+.spectrum-ball3{
+    position: absolute;
+    height:39px;
+    width:39px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: -19px;
+}
 
-.spectrum-ball:hover .spectrum-percentage{
+.spectrum-ball2:hover .spectrum-percentage2{
     display:block;
 }
 
-.spectrum-ball:hover{
-    background-color: rgb(212, 212, 212);
+.spectrum-ball2:hover{
+    z-index: 100;
 }
 
-.spectrum-percentage{
+.spectrum-percentage2{
     display: none;
-    margin-left: -17px;
+    margin-left: -7px;
+    margin-top: 18px;
     position: relative;
     bottom: 100%;
     font-size: 15px;
